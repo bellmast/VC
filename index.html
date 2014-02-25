@@ -1,10 +1,9 @@
 <html>  
     <head>  
-        <title>1 Million Cups Kansas City Survey</title>  
+        <title>Inc Orgs</title>  
         <script type="text/javascript" src="raphael-min.js"></script>
   	<script type="text/javascript" src="jquery-1.8.2.js"></script>
 	<script type="text/javascript" src="jquery-ui.min.js"></script> 
-	<script type="text/javascript" src="Comparison.js"></script>
 	
 	<style type="text/css">  
             #canvas_container {  
@@ -13,21 +12,7 @@
                 padding:10px;
 		position: relative;  
             } 
-	    #logo {
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		padding:10px;	
-	   }
-	    #yearbutton_radio {
-		font-family:arial;
-		color:#918070;
-		font-weight:450;		
-	   }
-	     #yearbutton_space {
-		font-family:arial;
-		color:#F58823;		
-	   }
+	    
 	   #about {
 	   font-family:arial;
 	   font-size: 12px;
@@ -36,19 +21,6 @@
     </head>  
     <body> 
 	<div id="canvas_container" width="800px" height="700px">
-	<div id="yearbutton_space">
-		<span id="yearbutton_label_space"><b>Select elements to display:</b></span>
-		<form name="Elementz">
-			<div id="yearbutton_radio" class="ui-buttonset" aria-disabled="false">
-				<input type="checkbox" id="1MC" value="1MC" name="yearbutton_radio" class="ui-helper-hidden-accessible" checked><label for="1MC" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left" role="button" aria-disabled="false"><span class="ui-button-text">1MC</span></label>
-				<input type="checkbox" id="FT" value="FT" name="yearbutton_radio" class="ui-helper-hidden-accessible" checked><label for="FT" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">FT</span></label>
-				<br/><input type="checkbox" id="Connection Lines" value="Connection Lines" name="yearbutton_radio" class="ui-helper-hidden-accessible"><label for="Connection Lines" aria-pressed="false" class="ui-button ui-widget ui-state-default ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Connection Lines</span></label>
-				<br/><br/><span id="about"><strong>Instructions:</strong> Check at least one gender, and at least one revenue category from the bottom-left to display the relevant data.  Connection lines can be toggled independently.  The legend at the top-left also has rollover features which override the checkboxes.</span>
-			</div>
-		</form>
-	</div> 
-	<div id="logo"><img src="OneMillionCupsREV.jpg" width="160"></div>
-	</div>
-	<div id="about"><p><strong>About:</strong> This network visualization maps out the relationship between attendees at 1 Million Cups and other local events/programs with which they are associated.  The event that most people have in common, Startup Weekend, sits at the center of the map.  The remaining organizations spiral out in rank order, with both size and radii from the center of the map proportional to how many people listed an association with it.  The colored squares and circles each represent an individual, and the size is proportional to how many organizations that individual listed.  The location of each individual on the map is determined by the average coordinates of the organizations to which they're connected.</p></div>
+	<div id="about"><p><strong>About:</strong> Description.</p></div>
     </body>  
 </html>  
