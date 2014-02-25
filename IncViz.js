@@ -42,6 +42,7 @@ function drawNetwork(data) {
     posConcatArray = []
     posConcatCount = [0, 0, 0, 0]
     startingPosConcat = undefined
+    testArray = []
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
 
@@ -69,6 +70,7 @@ function drawNetwork(data) {
             if(startingPosConcat != undefined) {
                 posConcatArray.push(startingPosConcat)
             }
+            testArray.push((-posConcatCount[i]+4))
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
