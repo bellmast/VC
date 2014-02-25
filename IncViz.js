@@ -33,7 +33,7 @@ function drawNetwork(data) {
     for(i = 1; i < orgNumber+1; i++) {
         xPos = slots*i
         orgXcoords.push(xPos)
-        radius = data[0][i-1]+20
+        radius = data[0][i-1]*2
         orgRadii.push(radius)
         orgSet.push(paper.circle(xPos, midY, radius).attr({stroke:0}).glow({width:3, color:orgColors[i-1]}))
         textSet.push(paper.text(xPos, midY+radius+10))
