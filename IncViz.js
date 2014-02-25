@@ -49,7 +49,7 @@ function drawNetwork(data) {
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))+20
             //curvePosY = midY-(midY/2)/h*i
-            lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":"90-#fff-#000"}))
+            lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
         }        
     }
 }
