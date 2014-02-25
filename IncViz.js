@@ -51,10 +51,12 @@ function drawNetwork(data) {
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
         }        
     }
+    ourDude = []
     for(i=orgNumber-1; i > -1; i--) {
         startingPosX = orgXcoords[i]
         startingPosY = midY+orgRadii[i]
         for(h=i-1; h > -1; h--) {
+            ourDude.push(h)
             endingPosX = orgXcoords[h]
             endingPosY = midY+orgRadii[h]
             curvePosX = (startingPosX+endingPosX)/2
