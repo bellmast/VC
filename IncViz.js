@@ -48,8 +48,8 @@ function drawNetwork(data) {
             endingPosY = midY-orgRadii[h]
             endingPosConcat = endingPosX+endingPosY
             if($.inArray(endingPosConcat, endingPosConcatArray) != -1) {
-                endingPosX = orgXcoords[h]-((orgRadii[h])*Math.sin((Math.PI/180)*(15*i))) //radius modified
-                endingPosY = orgXcoords[h]-((orgRadii[h])*Math.cos((Math.PI/180)*(15*i))) //radius modified
+                endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(60*i))) //radius modified
+                endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(60*i))) //radius modified
             }
             endingPosConcatArray.push(endingPosConcat)   
             curvePosX = (startingPosX+endingPosX)/2
