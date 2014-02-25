@@ -45,8 +45,8 @@ function drawNetwork(data) {
         for(h=i+1; h < orgNumber; h++) {
             endingPosX = orgXcoords[h]
             endingPosY = midY-orgRadii[h]
-            curvePosX = startingPosX/endingPosX
-            curvePosY = startingPosY/endingPosY
+            curvePosX = (startingPosX+endingPosX)/2
+            curvePosY = (startingPosY+endingPosY)/2
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5"}))
         }        
     }
