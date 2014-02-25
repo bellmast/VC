@@ -52,7 +52,7 @@ function drawNetwork(data) {
         }        
     }
     ourDude = []
-    i2 = 0
+    i2 = -1
     for(i=orgNumber-1; i > -1; i--) {
         i2 += 1
         startingPosX = orgXcoords[i]
