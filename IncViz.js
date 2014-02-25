@@ -37,6 +37,6 @@ function drawNetwork(data) {
     }
     
     //sCorpLineSet.push(paper.path("M"+orgXcoords[0]+" "+(midY-radius)+"Q"+((orgXcoords[0]+orgXcoords[3])/2)+" "+midY-(1/2*(midY))+" "+orgXcoords[3]+" "+(midY-radius)).attr({"stroke-width": ".5"}))
-    sCorpLineSet.push(paper.path("M"+orgXcoords[0]+" "+(midY-radius)+"Q"+((orgXcoords[0]+orgXcoords[3])/2)+" "(midY-(midY/2))+" "+orgXcoords[3]+" "+(midY-radius)).attr({"stroke-width": ".5"}))
+    sCorpLineSet.push(paper.path("M"+orgXcoords[0]+" "+(midY-radius)+"Q"+((orgXcoords[0]+orgXcoords[3])/2)+" "(midY-(midY/2))+" "+640+" "+345).attr({"stroke-width": ".5"}))
 
 }
