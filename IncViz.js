@@ -45,25 +45,25 @@ function drawNetwork(data) {
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
 
-            startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin((Math.PI/180)*(60*posConcatCount[i])))
-            startingPosY = midY+((orgRadii[i])*Math.cos((Math.PI/180)*(60*posConcatCount[i])))
+            startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin((Math.PI/180)*(-60*posConcatCount[i])))
+            startingPosY = midY+((orgRadii[i])*Math.cos((Math.PI/180)*(-60*posConcatCount[i])))
             if(i>0) {
                 startingPosConcat = startingPosX+startingPosY
             }
             if($.inArray(startingPosConcat, posConcatArray) != -1) {
                 posConcatCount[i] += 1
-                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin((Math.PI/180)*(60*posConcatCount[i]))) //radius modified
-                startingPosY = midY+((orgRadii[i])*Math.cos((Math.PI/180)*(60*posConcatCount[i]))) //radius modified
+                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin((Math.PI/180)*(-60*posConcatCount[i]))) //radius modified
+                startingPosY = midY+((orgRadii[i])*Math.cos((Math.PI/180)*(-60*posConcatCount[i]))) //radius modified
             }
             
-            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(60*posConcatCount[h])))
-            endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(60*posConcatCount[h])))
+            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(-60*posConcatCount[h])))
+            endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(-60*posConcatCount[h])))
             endingPosConcat = endingPosX+endingPosY
             
             if($.inArray(endingPosConcat, posConcatArray) != -1) {
                 posConcatCount[h] += 1
-                endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(60*posConcatCount[h]))) //radius modified
-                endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(60*posConcatCount[h]))) //radius modified
+                endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(-60*posConcatCount[h]))) //radius modified
+                endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(-60*posConcatCount[h]))) //radius modified
             }
             posConcatArray.push(endingPosConcat, startingPosConcat)
             curvePosX = (startingPosX+endingPosX)/2
