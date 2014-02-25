@@ -44,6 +44,12 @@ function drawNetwork(data) {
     startingPosConcat = undefined
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
+
+            //startingPosX = //left of the peak
+            //startingPosY = //left of the peak
+
+            //unless we're past the first node
+
             startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin((Math.PI/180)*(180*posConcatCount[i])))
             startingPosY = midY+((orgRadii[i])*Math.cos((Math.PI/180)*(180*posConcatCount[i])))
             if(i>0) {
@@ -64,10 +70,7 @@ function drawNetwork(data) {
                 endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(180*posConcatCount[h]))) //radius modified
                 endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(180*posConcatCount[h]))) //radius modified
             }
-            posConcatArray.push(endingPosConcat)
-            if(startingPosConcat != undefined) {
-                posConcatArray.push(startingPosConcat) 
-            } 
+            posConcatArray.push(endingPosConcat, startingPosConcat)
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
