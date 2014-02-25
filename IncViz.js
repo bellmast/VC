@@ -20,9 +20,11 @@ function runProgram() {
 function drawNetwork(data) {
 
     orgXcoords = []
+    orgRadii = []
     orgSet = paper.set();
     textSet = paper.set();
     sCorpLineSet = paper.set();
+    lineSet = paper.set();
     orgColors = ["#03899C", "#1240AB", "#FFAA00", "#FF7A00"]
     
     slots = canvasWidth/(orgNumber+1)
@@ -32,11 +34,20 @@ function drawNetwork(data) {
         xPos = slots*i
         orgXcoords.push(xPos)
         radius = data[0][i-1]
+        orgRadii.push(radius)
         orgSet.push(paper.circle(xPos, midY, radius).attr({stroke:0}).glow({width:3, color:orgColors[i-1]}))
         textSet.push(paper.text(xPos, midY+radius+10))
     }
-    
-    //sCorpLineSet.push(paper.path("M"+orgXcoords[0]+" "+(midY-radius)+"Q"+((orgXcoords[0]+orgXcoords[3])/2)+" "+midY-(1/2*(midY))+" "+orgXcoords[3]+" "+(midY-radius)).attr({"stroke-width": ".5"}))
-    sCorpLineSet.push(paper.path("M"+orgXcoords[0]+" "+(midY-radius)+"Q"+((orgXcoords[0]+orgXcoords[3])/2)+" "+(midY-(midY/2))+" "+orgXcoords[3]+" "+(midY-radius)).attr({"stroke-width": ".5"}))
 
+    for(i=0; i < orgNumber; i++) {
+        startingPosX = orgXcoords[i]
+        startingPosY = midY-orgRadii[i]
+        for(h=i+1; h < orgNumber; h++) {
+            endingPosX = orgXcoords[h]
+            endingPosY = midY-orgRadii[h]
+            curvePosX = startingPosX/endingPosX
+            curvePosY = startingPosY/endingPosY
+            lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5"}))
+        }        
+    }
 }
