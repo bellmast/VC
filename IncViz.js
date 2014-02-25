@@ -36,7 +36,7 @@ function drawNetwork(data) {
         textSet.push(paper.text(xPos, midY+radius+10))
     }
     
-    sCorpLineSet.push(paper.path("M"+orgXcoords[0]+" "+(midY-radius)+"Q"+((orgXcoords[0]+orgXcoords[3])/2)+" "+midY-(1/2*(midY))+" "+orgXcoords[3]+" "+(midY-radius)).attr({"stroke-width": ".5"}))
-
+    //sCorpLineSet.push(paper.path("M"+orgXcoords[0]+" "+(midY-radius)+"Q"+((orgXcoords[0]+orgXcoords[3])/2)+" "+midY-(1/2*(midY))+" "+orgXcoords[3]+" "+(midY-radius)).attr({"stroke-width": ".5"}))
+    sCorpLineSet.push(paper.path("M"+160+" "+345+"Q"+400+" "+175+" "+640+" "+345).attr({"stroke-width": ".5"}))
 
 }
