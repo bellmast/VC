@@ -51,7 +51,7 @@ function drawNetwork(data) {
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
             
-            startingPosY = midyY+orgRadii[i]
+            startingPosY = midY+orgRadii[i]
             endingPosX = orgXcoords[h]
             endingPosY = midY+orgRadii[h]
             curvePosY = Math.abs(((midY-(midY/5/h))/((h/(i+1)))-(10*h))-canvasHeight)
