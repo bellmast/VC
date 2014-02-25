@@ -39,7 +39,7 @@ function drawNetwork(data) {
         orgSet.push(paper.circle(xPos, midY, radius).attr({stroke:0}).glow({width:3, color:orgColors[i-1]}))
         textSet.push(paper.text(xPos, midY+radius+10, orgNames[i-1]))
     }
-    endingPosConCatArray = []
+    endingPosConcatArray = []
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
             startingPosX = orgXcoords[i]
@@ -47,7 +47,7 @@ function drawNetwork(data) {
             endingPosX = orgXcoords[h]
             endingPosY = midY-orgRadii[h]
             endingPosConcat = endingPosX+endingPosY
-            if($.inArray(endingPosConcat, endingPosConCatArray) != -1) {
+            if($.inArray(endingPosConcat, endingPosConcatArray) != -1) {
                 endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(15*i))) //radius modified
                 endingPosY = orgXcoords[h]+((orgRadii[h])*Math.cos((Math.PI/180)*(15*i))) //radius modified
             }
