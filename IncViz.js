@@ -50,7 +50,7 @@ function drawNetwork(data) {
                 startingPosConcat = startingPosX+startingPosY
             }
             if($.inArray(startingPosConcat, posConcatArray) != -1) {
-                posConCatCount[i] += 1
+                posConcatCount[i] += 1
                 startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin((Math.PI/180)*(300*posConcatCount[i]))) //radius modified
                 startingPosY = midY+((orgRadii[i])*Math.cos((Math.PI/180)*(300*posConcatCount[i]))) //radius modified
             }
@@ -60,7 +60,7 @@ function drawNetwork(data) {
             endingPosConcat = endingPosX+endingPosY
             
             if($.inArray(endingPosConcat, posConcatArray) != -1) {
-                posConCatCount[h] += 1
+                posConcatCount[h] += 1
                 endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin((Math.PI/180)*(300*posConcatCount[h]))) //radius modified
                 endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(300*posConcatCount[h]))) //radius modified
             }
