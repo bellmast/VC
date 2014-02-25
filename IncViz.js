@@ -65,7 +65,9 @@ function drawNetwork(data) {
                 endingPosY = midY+((orgRadii[h])*Math.cos((Math.PI/180)*(300*posConcatCount[h]))) //radius modified
             }
             posConcatArray.push(endingPosConcat)
-            posConcatArray.push(startingPosConcat)   
+            if(startingPosConcat != undefined) {
+                posConcatArray.push(startingPosConcat) 
+            } 
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
