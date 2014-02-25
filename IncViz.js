@@ -19,7 +19,7 @@ function runProgram() {
 
 function drawNetwork(data) {
 
-    orgXcoord = []
+    orgXcoords = []
     orgSet = paper.set();
     textSet = paper.set();
     orgColors = ["#03899C", "#1240AB", "#wFFAA00", "#FF7A00"]
