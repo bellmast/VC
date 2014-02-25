@@ -41,7 +41,7 @@ function drawNetwork(data) {
     }
     posConcatArray = []
     posConcatCount = [1, 1, 1, 1]
-    startingPostConcat = undefined
+    startingPosConcat = undefined
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
             startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin((Math.PI/180)*(300*posConcatCount[i])))
