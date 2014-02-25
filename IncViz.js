@@ -26,6 +26,7 @@ function drawNetwork(data) {
     sCorpLineSet = paper.set();
     lineSet = paper.set();
     orgColors = ["#03899C", "#1240AB", "#FFAA00", "#FF7A00"]
+    orgNames = ["S-corp", "C-corp", "LLC", "Other"]
     
     slots = canvasWidth/(orgNumber+1)
     midY = canvasHeight/2
@@ -36,7 +37,7 @@ function drawNetwork(data) {
         radius = data[0][i-1]*2
         orgRadii.push(radius)
         orgSet.push(paper.circle(xPos, midY, radius).attr({stroke:0}).glow({width:3, color:orgColors[i-1]}))
-        textSet.push(paper.text(xPos, midY+radius+10))
+        textSet.push(paper.text(xPos, midY+radius+10, orgNames[i-1]))
     }
 
     for(i=0; i < orgNumber; i++) {
