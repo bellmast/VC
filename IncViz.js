@@ -52,4 +52,7 @@ function drawNetwork(data) {
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
         }        
     }
+    for(i=orgNumber-1; i > -1; i--) {
+        ourDude = i
+    }
 }
