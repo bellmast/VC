@@ -42,29 +42,22 @@ function drawNetwork(data) {
 
     for(i=0; i < orgNumber; i++) {
         startingPosX = orgXcoords[i]
-        startingPosY = midY-orgRadii[i]
+
         for(h=i+1; h < orgNumber; h++) {
+            startingPosY = midY-orgRadii[i]
             endingPosX = orgXcoords[h]
             endingPosY = midY-orgRadii[h]
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
-        }        
-    }
-    ourDude = []
-    i2 = -1
-    for(i=orgNumber-1; i > -1; i--) {
-        i2 += 1
-        startingPosX = orgXcoords[i]
-        startingPosY = midY+orgRadii[i]
-        h2 = i2+1
-        for(h=i-1; h > -1; h--) {
-            h2 += 1
+            
+            startingPosY = midyY+orgRadii[i]
             endingPosX = orgXcoords[h]
             endingPosY = midY+orgRadii[h]
-            curvePosX = (startingPosX+endingPosX)/2
-            curvePosY = (midY+(midY/5/h2))/((h/(i2+1)))+(10*h2)
-            lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
-        } 
+            curvePosY = Math.abs(((midY-(midY/5/h))/((h/(i+1)))-(10*h))-canvasHeight)
+            lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[h]}))    
+
+
+        }        
     }
 }
