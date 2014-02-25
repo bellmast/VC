@@ -48,7 +48,6 @@ function drawNetwork(data) {
             endingPosY = midY-orgRadii[h]
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
-            //curvePosY = midY-(midY/2)/h*i
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
         }        
     }
@@ -59,8 +58,7 @@ function drawNetwork(data) {
             endingPosX = orgXcoords[h]
             endingPosY = midY+orgRadii[h]
             curvePosX = (startingPosX+endingPosX)/2
-            curvePosY = (midY+(midY/5/h))/((h/(i+1)))+(10*h)
-            //curvePosY = midY-(midY/2)/h*i
+            curvePosY = (midY+(midY/5*h))*((h/(i+1)))+(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
         } 
     }
