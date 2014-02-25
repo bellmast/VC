@@ -22,7 +22,7 @@ function drawNetwork(data) {
     orgXcoords = []
     orgSet = paper.set();
     textSet = paper.set();
-    orgColors = ["#03899C", "#1240AB", "#WFFAA00", "#FF7A00"]
+    orgColors = ["#03899C", "#1240AB", "#FFAA00", "#FF7A00"]
     
     slots = canvasWidth/(orgNumber+1)
     midY = canvasHeight/2
