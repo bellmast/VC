@@ -66,7 +66,7 @@ function drawNetwork(data) {
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
 
-            if(i2==4) {
+            if(i2==3) {
                 startingPosX = orgXcoords[i2]
                 startingPosY = midY+orgRadii[i2]
             } else {
