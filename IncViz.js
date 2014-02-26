@@ -47,16 +47,28 @@ function drawNetwork(data) {
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
 
-            if(h==orgNumber-1 && i!=orgNumber-2){
-                startingPiMod = orgCount[i]+2
-                endingPiMod = orgCount[h]+2
-            } else if(h==orgNumber-1 && i==orgNumber-2) {
-                startingPiMod = (-orgCount[i]+4)
+            if(h==orgNumber-1) {
                 endingPiMod = orgCount[h]+2
             } else {
-                startingPiMod = (-orgCount[i]+4)
                 endingPiMod = (-orgCount[h]+4)
             }
+
+            if(i==orgNumber-2) {
+                startingPiMod = (-orgCount[i]+4)
+            } else {
+                startingPiMod = orgCount[i]+2
+            }
+
+            // if(h==orgNumber-1 && i!=orgNumber-2){
+            //     startingPiMod = orgCount[i]+2
+            //     endingPiMod = orgCount[h]+2
+            // } else if(h==orgNumber-1 && i==orgNumber-2) {
+            //     startingPiMod = (-orgCount[i]+4)
+            //     endingPiMod = orgCount[h]+2
+            // } else {
+            //     startingPiMod = (-orgCount[i]+4)
+            //     endingPiMod = (-orgCount[h]+4)
+            // }
             if(i==0) {
                 startingPosX = orgXcoords[i]
                 startingPosY = midY-orgRadii[i]
