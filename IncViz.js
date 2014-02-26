@@ -8,7 +8,7 @@ var orgNumber = 4;
 var ourRadius = 5;
 var FTcount = 0;
 var oneMCcount = 0;
-var arrowRadius = 5;
+var arrowRadius = 2;
 
 $(document).ready(function () {runProgram()});
 
