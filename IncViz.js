@@ -74,10 +74,10 @@ function drawNetwork(data) {
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
             theta = Math.atan2((endingPosX-curvePosX), (endingPosY-curvePosY))
-            arrowCorner1x = endingPosX+(arrowRadius*Math.sin(theta*2))
-            arrowCorner1y = endingPosY+(arrowRadius*Math.cos(theta*2))
-            arrowCorner2x = endingPosX+(arrowRadius*Math.sin(theta/2))
-            arrowCorner2y = endingPosY+(arrowRadius*Math.cos(theta/2))
+            arrowCorner1x = endingPosX+(arrowRadius*Math.sin((180/Math.pi)*(theta*2)))
+            arrowCorner1y = endingPosY+(arrowRadius*Math.cos((180/Math.pi)*(theta*2)))
+            arrowCorner2x = endingPosX+(arrowRadius*Math.sin((180/Math.pi)*(theta/2)))
+            arrowCorner2y = endingPosY+(arrowRadius*Math.cos((180/Math.pi)*(theta/2)))
             lineSet.push(paper.path("M"+endingPosX+" "+endingPosX+"L"+arrowCorner1x+" "+arrowCorner1y+"L"+arrowCorner2x+" "+arrowCorner2y+"L"+endingPosX+" "+endingPosY))
 
             i2 = -i+orgNumber-1
