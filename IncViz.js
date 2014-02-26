@@ -47,7 +47,7 @@ function drawNetwork(data) {
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
 
-            if(h==orgNumber-1){
+            if(h==orgNumber-1 && i!=orgNumber-2){
                 startingPiMod = orgCount[i]+2
                 endingPiMod = orgCount[h]+2
             } else {
