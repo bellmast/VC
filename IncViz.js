@@ -26,7 +26,7 @@ Raphael.fn.arrow = function(x1, y1, x2, y2, size) {
   var y2b = y2 + Math.sin(a45m) * size;
   return this.path(
     "M"+x1+" "+y1+"L"+x1a+" "+y1a+
-    "L"+x1b+" "+y1b+"Z"
+    "M"+x1+" "+y1+"L"+x1b+" "+y1b
   );
 };
 
@@ -95,7 +95,7 @@ function drawNetwork(data) {
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
 
-            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i], stroke:"none"})
+            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i], stroke:orgColors[i]})
 
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
@@ -127,7 +127,7 @@ function drawNetwork(data) {
 
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i2]}))    
 
-            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i2], stroke:"none"})
+            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i2], stroke:orgColors[i2]})
 
         }        
     }
