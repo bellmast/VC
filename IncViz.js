@@ -50,12 +50,12 @@ function drawNetwork(data) {
                 startingPosX = orgXcoords[i]
                 startingPosY = midY-orgRadii[i]
             } else {
-                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin(((-orgCount[i]+4)*Math.PI)/6))
-                startingPosY = midY+((orgRadii[i])*Math.cos(((-orgCount[i]+4)*Math.PI)/6))
+                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin(((-orgCount[i]+4)*2*Math.PI)/6))
+                startingPosY = midY+((orgRadii[i])*Math.cos(((-orgCount[i]+4)*2*Math.PI)/6))
                 orgCount[i] += 1
             }
-            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin(((-orgCount[h]+4)*Math.PI)/6))
-            endingPosY = midY+((orgRadii[h])*Math.cos(((-orgCount[h]+4)*Math.PI)/6))
+            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin(((-orgCount[h]+4)*2*Math.PI)/6))
+            endingPosY = midY+((orgRadii[h])*Math.cos(((-orgCount[h]+4)*2*Math.PI)/6))
             orgCount[h] += 1
 
             curvePosX = (startingPosX+endingPosX)/2
