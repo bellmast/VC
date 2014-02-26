@@ -83,9 +83,9 @@ function drawNetwork(data) {
                 endingPiMod = (-orgCountBot[h2]+1)
             }
             if(i2==1) {
-                startingPiMod = (-orgCountBot[i2]+1)
-            } else {
                 startingPiMod = orgCount[i2]-1
+            } else {
+                startingPiMod = (-orgCountBot[i2]+1)
             }
 
             if(i2==3) {
