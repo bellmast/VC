@@ -79,7 +79,7 @@ function drawNetwork(data) {
         if(i!=3) {
         masterxArray = []
         masteryArray = []
-        masterCirclePackingArray = []
+        masterCirclePacking = 0
         layerArray = []
         ourArray = []
         ourArray2 = []
@@ -95,19 +95,19 @@ function drawNetwork(data) {
                 for (x = 0; x < masterLength; x++) {
                     if (originX == masterxArray[x] && originY == masteryArray[x]) {
                         
-                        masterCirclePackingArray[x] += 1
+                        masterCirclePacking += 1
 
-                        radiusModifier = Math.floor((masterCirclePackingArray[x]-1)/6)*.5+1
-                        layer = Math.floor((masterCirclePackingArray[x]-1)/6)+1
+                        radiusModifier = Math.floor((masterCirclePacking-1)/6)*.5+1
+                        layer = Math.floor((masterCirclePacking-1)/6)+1
                         layerArray.push(layer)
                         if (layer%2 == 1) {
-                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6))))
-                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6))))
+                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePacking%6))))
+                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePacking%6))))
                             ourArray.push(0)
                         }
                         else if (layer%2 == 0) {
-                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+30)))
-                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+30)))
+                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePacking%6)+30)))
+                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePacking%6)+30)))
                             ourArray2.push(0)
                         }
                         
@@ -115,7 +115,7 @@ function drawNetwork(data) {
                 }
                 masterxArray.push(originX)
                 masteryArray.push(originY)
-                masterCirclePackingArray.push(0)
+                
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
             }
         }
