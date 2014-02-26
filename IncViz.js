@@ -136,11 +136,11 @@ function drawNetwork(data) {
                 startingPosX = orgXcoords[i]
                 startingPosY = midY-orgRadii[i]
             } else {
-                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin(((startingPiMod)*2*Math.PI)/6))
-                startingPosY = midY+((orgRadii[i])*Math.cos(((startingPiMod)*2*Math.PI)/6))
+                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.cos(((startingPiMod)*Math.PI)/6))
+                startingPosY = midY+((orgRadii[i])*Math.sin(((startingPiMod)*Math.PI)/6))
             }
-            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin(((endingPiMod)*2*Math.PI)/6))
-            endingPosY = midY+((orgRadii[h])*Math.cos(((endingPiMod)*2*Math.PI)/6))
+            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.cos(((endingPiMod)*Math.PI)/6))
+            endingPosY = midY+((orgRadii[h])*Math.sin(((endingPiMod)*Math.PI)/6))
             orgCount[h] += 1
 
             curvePosX = (startingPosX+endingPosX)/2
