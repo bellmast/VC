@@ -95,7 +95,7 @@ function drawNetwork(data) {
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
 
-            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i]})
+            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i], stroke:"none"})
 
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
