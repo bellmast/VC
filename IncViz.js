@@ -26,10 +26,7 @@ Raphael.fn.arrow = function(x1, y1, x2, y2, size) {
   var y2b = y2 + Math.sin(a45m) * size;
   return this.path(
     "M"+x1+" "+y1+"L"+x1a+" "+y1a+
-    "M"+x1+" "+y1+"L"+x1b+" "+y1b+
-    "M"+x1+" "+y1+"L"+x2+" "+y2+
-    "M"+x2+" "+y2+"L"+x2a+" "+y2a+
-    "M"+x2+" "+y2+"L"+x2b+" "+y2b
+    "M"+x1+" "+y1+"L"+x1b+" "+y1b
   );
 };
 
