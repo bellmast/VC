@@ -40,41 +40,28 @@ function drawNetwork(data) {
         textSet.push(paper.text(xPos, midY+radius+10, orgNames[i-1]))
     }
     posConcatArray = []
-    posConcatCount = [0, 0, 0, 0]
+    orgCount = [0, 0, 0, 0]
     startingPosConcat = undefined
     testArray = []
     for(i=0; i < orgNumber; i++) {
         for(h=i+1; h < orgNumber; h++) {
 
-            startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin(((-posConcatCount[i]+4)*Math.PI)/6))
-            startingPosY = midY+((orgRadii[i])*Math.cos(((-posConcatCount[i]+4)*Math.PI)/6))
-            if(i>0) {
-                startingPosConcat = startingPosX+startingPosY
+            if(i==0) {
+                startingPosX = orgXcoords[i]+orgRadii[i]
+                startingPosY = midY+orgRadii[i]
+            } else {
+                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin(((-orgCount[i]+4)*Math.PI)/6))
+                startingPosY = midY+((orgRadii[i])*Math.cos(((-orgCount[i]+4)*Math.PI)/6))
+                orgCount[i] += 1
             }
-            if($.inArray(startingPosConcat, posConcatArray) != -1) {
-                posConcatCount[i] += 1
-                startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin(((-posConcatCount[i]+4)*Math.PI)/6)) //radius modified
-                startingPosY = midY+((orgRadii[i])*Math.cos(((-posConcatCount[i]+4)*Math.PI)/6)) //radius modified
-            }
-            
-            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin(((-posConcatCount[h]+4)*Math.PI)/6))
-            endingPosY = midY+((orgRadii[h])*Math.cos(((-posConcatCount[h]+4)*Math.PI)/6))
-            endingPosConcat = endingPosX+endingPosY
-            
-            if($.inArray(endingPosConcat, posConcatArray) != -1) {
-                posConcatCount[h] += 1
-                endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin(((-posConcatCount[h]+4)*Math.PI)/6)) //radius modified
-                endingPosY = midY+((orgRadii[h])*Math.cos(((-posConcatCount[h]+4)*Math.PI)/6)) //radius modified
-            }
-            posConcatArray.push(endingPosConcat)
-            if(startingPosConcat != undefined) {
-                posConcatArray.push(startingPosConcat)
-            }
-            testArray.push((-posConcatCount[i]+4))
+            endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin(((-orgCount[h]+4)*Math.PI)/6))
+            endingPosY = midY+((orgRadii[h])*Math.cos(((-orgCount[h]+4)*Math.PI)/6))
+            orgCount[h] += 1
+
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
-            
+
             startingPosX = orgXcoords[i] //radius modified
             startingPosY = midY+orgRadii[i] //radius modified
             endingPosX = orgXcoords[h]
