@@ -69,6 +69,7 @@ function drawNetwork(data) {
             if(i2==4) {
                 startingPosX = orgXcoords[i2]
                 startingPosY = midY+orgRadii[i2]
+                ourDude = 'yeahhhhh'
             } else {
                 startingPosX = orgXcoords[i2]+((orgRadii[i2])*Math.sin(((-orgCountBot[i2]+4)*Math.PI)/6))
                 startingPosY = midY+((orgRadii[i2])*Math.cos(((-orgCountBot[i2]+4)*Math.PI)/6))
