@@ -52,7 +52,7 @@ function drawNetwork(data) {
                 endingPiMod = orgCount[h]+2
             } else {
                 startingPiMod = (-orgCount[i]+4)
-                endingPiMod = (-orgCount[h+4)
+                endingPiMod = (-orgCount[h]+4)
             }
             if(i==0) {
                 startingPosX = orgXcoords[i]
