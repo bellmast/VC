@@ -41,6 +41,7 @@ function drawNetwork(data) {
     }
     posConcatArray = []
     orgCount = [0, 0, 0, 0]
+    orgCountBot = [0, 0, 0, 0]
     startingPosConcat = undefined
     testArray = []
     for(i=0; i < orgNumber; i++) {
@@ -61,12 +62,24 @@ function drawNetwork(data) {
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
 
-            startingPosX = orgXcoords[i] //radius modified
-            startingPosY = midY+orgRadii[i] //radius modified
-            endingPosX = orgXcoords[h]
+
+            i2 = Math.abs(i)+orgNumber
+            h2 = Math.abs(h)+orgNumber
+
+            if(i2==4) {
+                startingPosX = orgXcoords[i2]
+                startingPosY = orgXcoords[i2]
+            } else {
+                startingPosX = orgXcoords[i2]+((orgRadii[i2])*Math.sin(((-orgCountBot[i2]+4)*2*Math.PI)/6))
+                startingPosY = midY+((orgRadii[i2])*Math.cos(((-orgCountBot[i2]+4)*2*Math.PI)/6))
+            }
+            endingPosX = orgXcoords[h2]+((orgRadii[h2])*Math.sin(((-orgCountBot[h2]+4)*2*Math.PI)/6))
+            endingPosY = midY+((orgRadii[h2])*Math.cos(((-orgCountBot[h2]+4)*2*Math.PI)/6)) //gotta make this backwards
+            orgCountBot[h2] += 1
+            
             curvePosX = (startingPosX+endingPosX)/2
-            endingPosY = midY+orgRadii[h]
-            curvePosY = Math.abs(((midY-(midY/5/h))/((h/(i+1)))-(10*h))-canvasHeight)
+            curvePosY = Math.abs(((midY-(midY/5/h2))/((h2/(i2+1)))-(10*h2))-canvasHeight) //may need to alter to h2s and i2s
+
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[h]}))    
 
 
