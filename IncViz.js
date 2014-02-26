@@ -52,23 +52,12 @@ function drawNetwork(data) {
             } else {
                 endingPiMod = (-orgCount[h]+4)
             }
-
             if(i==orgNumber-2) {
                 startingPiMod = (-orgCount[i]+4)
             } else {
                 startingPiMod = orgCount[i]+2
             }
 
-            // if(h==orgNumber-1 && i!=orgNumber-2){
-            //     startingPiMod = orgCount[i]+2
-            //     endingPiMod = orgCount[h]+2
-            // } else if(h==orgNumber-1 && i==orgNumber-2) {
-            //     startingPiMod = (-orgCount[i]+4)
-            //     endingPiMod = orgCount[h]+2
-            // } else {
-            //     startingPiMod = (-orgCount[i]+4)
-            //     endingPiMod = (-orgCount[h]+4)
-            // }
             if(i==0) {
                 startingPosX = orgXcoords[i]
                 startingPosY = midY-orgRadii[i]
@@ -88,15 +77,26 @@ function drawNetwork(data) {
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
 
+            if(h2==0) {
+                endingPiMod = orgCount[h2]-1
+            } else {
+                endingPiMod = (-orgCountBot[h2]+1)
+            }
+            if(i2==1) {
+                startingPiMod = (-orgCountBot[i2]+1)
+            } else {
+                startingPiMod = orgCount[i2]-1
+            }
+
             if(i2==3) {
                 startingPosX = orgXcoords[i2]
                 startingPosY = midY+orgRadii[i2]
             } else {
-                startingPosX = orgXcoords[i2]+((orgRadii[i2])*Math.sin(((-orgCountBot[i2]+1)*2*Math.PI)/6))
-                startingPosY = midY+((orgRadii[i2])*Math.cos(((-orgCountBot[i2]+1)*2*Math.PI)/6))
+                startingPosX = orgXcoords[i2]+((orgRadii[i2])*Math.sin(((startingPiMod)*2*Math.PI)/6))
+                startingPosY = midY+((orgRadii[i2])*Math.cos(((startingPiMod)*2*Math.PI)/6))
             }
-            endingPosX = orgXcoords[h2]+((orgRadii[h2])*Math.sin(((-orgCountBot[h2]+1)*2*Math.PI)/6))
-            endingPosY = midY+((orgRadii[h2])*Math.cos(((-orgCountBot[h2]+1)*2*Math.PI)/6)) //gotta make this backwards
+            endingPosX = orgXcoords[h2]+((orgRadii[h2])*Math.sin(((endingPiMod)*2*Math.PI)/6))
+            endingPosY = midY+((orgRadii[h2])*Math.cos(((endingPiMod)*2*Math.PI)/6)) //gotta make this backwards
             orgCountBot[h2] += 1
             
             curvePosX = (startingPosX+endingPosX)/2
