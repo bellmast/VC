@@ -10,6 +10,29 @@ var FTcount = 0;
 var oneMCcount = 0;
 var arrowRadius = 5;
 
+Raphael.fn.arrow = function(x1, y1, x2, y2, size) {
+  var angle = Raphael.angle(x1, y1, x2, y2);
+  var a45   = Raphael.rad(angle-45);
+  var a45m  = Raphael.rad(angle+45);
+  var a135  = Raphael.rad(angle-135);
+  var a135m = Raphael.rad(angle+135);
+  var x1a = x1 + Math.cos(a135) * size;
+  var y1a = y1 + Math.sin(a135) * size;
+  var x1b = x1 + Math.cos(a135m) * size;
+  var y1b = y1 + Math.sin(a135m) * size;
+  var x2a = x2 + Math.cos(a45) * size;
+  var y2a = y2 + Math.sin(a45) * size;
+  var x2b = x2 + Math.cos(a45m) * size;
+  var y2b = y2 + Math.sin(a45m) * size;
+  return this.path(
+    "M"+x1+" "+y1+"L"+x1a+" "+y1a+
+    "M"+x1+" "+y1+"L"+x1b+" "+y1b+
+    "M"+x1+" "+y1+"L"+x2+" "+y2+
+    "M"+x2+" "+y2+"L"+x2a+" "+y2a+
+    "M"+x2+" "+y2+"L"+x2b+" "+y2b
+  );
+};
+
 $(document).ready(function () {runProgram()});
 
 function runProgram() {
@@ -74,12 +97,14 @@ function drawNetwork(data) {
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
-            theta = Math.atan2((endingPosX-curvePosX), (endingPosY-curvePosY))
-            arrowCorner1x = endingPosX+(arrowRadius*Math.sin((180/Math.PI)*(theta)))
-            arrowCorner1y = endingPosY+(arrowRadius*Math.cos((180/Math.PI)*(theta)))
-            arrowCorner2x = endingPosX+(arrowRadius*Math.sin((180/Math.PI)*(theta)))
-            arrowCorner2y = endingPosY+(arrowRadius*Math.cos((180/Math.PI)*(theta)))
-            arrowSet.push(paper.path("M"+endingPosX+" "+endingPosX+"L"+arrowCorner1x+" "+arrowCorner1y+"L"+arrowCorner2x+" "+arrowCorner2y+"Z"))
+            // theta = Math.atan2((endingPosX-curvePosX), (endingPosY-curvePosY))
+            // arrowCorner1x = endingPosX+(arrowRadius*Math.sin((180/Math.PI)*(theta)))
+            // arrowCorner1y = endingPosY+(arrowRadius*Math.cos((180/Math.PI)*(theta)))
+            // arrowCorner2x = endingPosX+(arrowRadius*Math.sin((180/Math.PI)*(theta)))
+            // arrowCorner2y = endingPosY+(arrowRadius*Math.cos((180/Math.PI)*(theta)))
+            // arrowSet.push(paper.path("M"+endingPosX+" "+endingPosX+"L"+arrowCorner1x+" "+arrowCorner1y+"L"+arrowCorner2x+" "+arrowCorner2y+"Z"))
+
+            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius)
 
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
