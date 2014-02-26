@@ -105,8 +105,8 @@ function drawNetwork(data) {
                         circlesInLayer = layer*6
                         degreesInLayer = 360/circlesInLayer
 
-                        originX += ((ourRadius*radiusModifier*2)*Math.cos((Math.PI/180)*(degreesInLayer*circlesInLayer))
-                        originY += ((ourRadius*radiusModifier*2)*Math.sin((Math.PI/180)*(degreesInLayer*circlesInLayer))
+                        originX += ((ourRadius*radiusModifier*2)*Math.cos((Math.PI/180)*(degreesInLayer*circlesInLayer)))
+                        originY += ((ourRadius*radiusModifier*2)*Math.sin((Math.PI/180)*(degreesInLayer*circlesInLayer)))
 
                         
                         
