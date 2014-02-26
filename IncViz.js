@@ -112,7 +112,7 @@ function drawNetwork(data) {
                 masterxArray.push(originX)
                 masteryArray.push(originY)
                 masterCirclePackingArray.push(0)
-                circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], stroke:"none"})).toBack()
+                circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], stroke:.1})).toBack()
             }
         }
         for(h=i+1; h < orgNumber; h++) {
