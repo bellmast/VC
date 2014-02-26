@@ -76,10 +76,12 @@ function drawNetwork(data) {
     startingPosConcat = undefined
     testArray = []
     for(i=0; i < orgNumber; i++) {
+        if(i!=3) {
         masterxArray = []
         masteryArray = []
         masterCirclePackingArray = []
         layerArray = []
+    }   }
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
