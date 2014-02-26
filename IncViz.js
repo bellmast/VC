@@ -69,7 +69,7 @@ function drawNetwork(data) {
 
 
     dataLength = data.length
-    originY = midY
+    
     posConcatArray = []
     orgCount = [0, 0, 0, 0]
     orgCountBot = [0, 0, 0, 0]
@@ -85,7 +85,7 @@ function drawNetwork(data) {
             change = data[u][1]
             if(change=="No" && origin == i) {
                 originX = orgXcoords[i]
-
+                originY = midY
                 masterLength = masterxArray.length
 
                 for (x = 0; x < masterLength; x++) {
