@@ -52,7 +52,6 @@ function drawNetwork(data) {
             } else {
                 startingPosX = orgXcoords[i]+((orgRadii[i])*Math.sin(((-orgCount[i]+4)*2*Math.PI)/6))
                 startingPosY = midY+((orgRadii[i])*Math.cos(((-orgCount[i]+4)*2*Math.PI)/6))
-                orgCount[i] += 1
             }
             endingPosX = orgXcoords[h]+((orgRadii[h])*Math.sin(((-orgCount[h]+4)*2*Math.PI)/6))
             endingPosY = midY+((orgRadii[h])*Math.cos(((-orgCount[h]+4)*2*Math.PI)/6))
