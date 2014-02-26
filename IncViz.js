@@ -83,7 +83,7 @@ function drawNetwork(data) {
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
-            if(change=="No" && origin == i) {
+            if(change=="No" && origin == i && origin!=3) {
                 originX = orgXcoords[i]
                 originY = midY
                 masterLength = masterxArray.length
