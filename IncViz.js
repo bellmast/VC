@@ -103,8 +103,8 @@ function drawNetwork(data) {
                             originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6+(30*(layer-1))))))
                         }
                         else if (layer%2 == 0) {
-                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+(30*(layer-1))))))
-                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+(30*(layer-1))))))
+                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+(30*(layer-1)))))
+                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+(30*(layer-1)))))
                         }
                         
                     }
