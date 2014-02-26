@@ -81,6 +81,8 @@ function drawNetwork(data) {
         masteryArray = []
         masterCirclePackingArray = []
         layerArray = []
+        ourArray = []
+        ourArray2 = []
         }
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
@@ -101,10 +103,12 @@ function drawNetwork(data) {
                         if (layer%2 == 1) {
                             originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6))))
                             originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6))))
+                            ourArray.push(0)
                         }
                         else if (layer%2 == 0) {
                             originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+30)))
                             originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+30)))
+                            ourArray2.push(0)
                         }
                         
                     }
