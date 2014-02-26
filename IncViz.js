@@ -83,6 +83,7 @@ function drawNetwork(data) {
         layerArray = []
         ourArray = []
         ourArray2 = []
+        radiiArray = []
         }
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
@@ -98,6 +99,7 @@ function drawNetwork(data) {
                         masterCirclePacking += 1
 
                         radiusModifier = Math.floor((masterCirclePacking-1)/6)*.5+1
+                        radiiArray.push(radiusModifier)
                         layer = Math.floor((masterCirclePacking-1)/6)+1
                         layerArray.push(layer)
                         if (layer%2 == 1) {
