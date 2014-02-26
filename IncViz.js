@@ -10,6 +10,7 @@ var FTcount = 0;
 var oneMCcount = 0;
 var arrowRadius = 5;
 
+//Credit for arrow function [this version slightly adapted]: https://gist.github.com/viking/1043360
 Raphael.fn.arrow = function(x1, y1, x2, y2, size) {
   var angle = Raphael.angle(x1, y1, x2, y2);
   var a45   = Raphael.rad(angle-45);
@@ -47,8 +48,10 @@ function drawNetwork(data) {
     sCorpLineSet = paper.set();
     arrowSet = paper.set();
     lineSet = paper.set();
+    circlesSet = paper.set();
     orgColors = ["#03899C", "#1240AB", "#FFAA00", "#FF7A00"]
-    orgNames = ["S-corp", "C-corp", "LLC", "Other"]
+    orgNames = ["S-corp", "LLC", "C-Corp", "Other"]
+    orgTotals = [238, 149, 74, 6]
     
     slots = canvasWidth/(orgNumber+1)
     midY = canvasHeight/2
@@ -56,17 +59,60 @@ function drawNetwork(data) {
     for(i = 1; i < orgNumber+1; i++) {
         xPos = slots*i
         orgXcoords.push(xPos)
-        radius = data[0][i-1]*2.75
+        radius = Math.log(orgTotals[i-1])*10
         orgRadii.push(radius)
         orgSet.push(paper.circle(xPos, midY, radius).attr({stroke:0}).glow({width:3, color:orgColors[i-1]}))
         textSet.push(paper.text(xPos, midY+radius+10, orgNames[i-1]))
     }
+
+
+
+
+    dataLength = data.length
+    originY = midY
     posConcatArray = []
     orgCount = [0, 0, 0, 0]
     orgCountBot = [0, 0, 0, 0]
     startingPosConcat = undefined
     testArray = []
     for(i=0; i < orgNumber; i++) {
+        masterxArray = []
+        masteryArray = []
+        masterCirclePackingArray = []
+        layerArray = []
+        for(u=0; u < data.length; u++) {
+            origin = data[u][0]
+            change = data[u][1]
+            if(change=="No" && origin == i) {
+                originX = orgXcoords[i]
+
+                masterLength = masterxArray.length
+
+                for (x = 0; x < masterLength; x++) {
+                    if (originX == masterxArray[x] && originY == masteryArray[x]) {
+                        
+                        masterCirclePackingArray[x] += 1
+
+                        radiusModifier = Math.floor((masterCirclePackingArray[x]-1)/6)*.5+1
+                        layer = Math.floor((masterCirclePackingArray[x]-1)/6)+1
+                        layerArray.push(layer)
+                        if (layer%2 == 1) {
+                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6))))
+                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6))))
+                        }
+                        else if (layer%2 == 0) {
+                            originX += ((ourRadius*radiusModifier*1.5)*Math.cos((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+30)))
+                            originY += ((ourRadius*radiusModifier*1.5)*Math.sin((Math.PI/180)*(60*(masterCirclePackingArray[x]%6)+30)))
+                        }
+                        
+                    }
+                }
+                masterxArray.push(originX)
+                masteryArray.push(originY)
+                masterCirclePackingArray.push(0)
+                circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i]})).toBack()
+            }
+        }
         for(h=i+1; h < orgNumber; h++) {
 
             if(h==orgNumber-1) {
@@ -131,4 +177,5 @@ function drawNetwork(data) {
 
         }        
     }
+
 }
