@@ -94,14 +94,8 @@ function drawNetwork(data) {
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
             lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
-            // theta = Math.atan2((endingPosX-curvePosX), (endingPosY-curvePosY))
-            // arrowCorner1x = endingPosX+(arrowRadius*Math.sin((180/Math.PI)*(theta)))
-            // arrowCorner1y = endingPosY+(arrowRadius*Math.cos((180/Math.PI)*(theta)))
-            // arrowCorner2x = endingPosX+(arrowRadius*Math.sin((180/Math.PI)*(theta)))
-            // arrowCorner2y = endingPosY+(arrowRadius*Math.cos((180/Math.PI)*(theta)))
-            // arrowSet.push(paper.path("M"+endingPosX+" "+endingPosX+"L"+arrowCorner1x+" "+arrowCorner1y+"L"+arrowCorner2x+" "+arrowCorner2y+"Z"))
 
-            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius)
+            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i]})
 
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
