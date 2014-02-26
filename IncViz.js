@@ -81,7 +81,7 @@ function drawNetwork(data) {
         masteryArray = []
         masterCirclePackingArray = []
         layerArray = []
-    }   }
+        }
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
