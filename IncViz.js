@@ -10,6 +10,7 @@ var FTcount = 0;
 var oneMCcount = 0;
 var arrowRadius = 5;
 
+
 //Credit for arrow function [this version slightly adapted]: https://gist.github.com/viking/1043360
 Raphael.fn.arrow = function(x1, y1, x2, y2, size) {
   var angle = Raphael.angle(x1, y1, x2, y2);
@@ -40,6 +41,9 @@ function runProgram() {
 }  
 
 function drawNetwork(data) {
+
+    ourArray = []
+    ourArray2 = []
 
     orgXcoords = []
     orgRadii = []
@@ -88,8 +92,7 @@ function drawNetwork(data) {
         layerArray = []
         counterArray = []
         circlesInLayerArray = []
-        ourArray = []
-        ourArray2 = []
+        
         radiiArray = []
         
         for(u=0; u < data.length; u++) {
@@ -168,29 +171,45 @@ function drawNetwork(data) {
             // if y == midy, fixed
             // else, fixed anyway....         
 
-            // reverseLayer = 1
-            // outerLayer = orgRadii[h]/(ourRadius*2)
-            // circlesInOuterLayer = outerLayer*6
-            // degreesInOuterLayer = 360/circlesInOuterLayer
 
-            // for(u=0; u < dataLength; u++) {
-            //     origin = data[u][0]
-            //     change = data[u][1]
-            //     end = data[u][2]
-            //     if(change=="Yes" && origin == i && end == h) {
-            //         edgeCount += 1
-            //         if(edgeCount%2==1) {
-            //             edgeMod = 1
-            //         } else if(edgeCount%2==0){
-            //             edgeMod = -1
-            //         }
-            //         //some condition, reverseLayer += 1, outerLayer-1
-            //         circleX = orgXcoords[h]+((orgRadii[h]-(5*layer))*Math.cos((Math.PI/180)*(degreesInOuterLayer*(something%circlesOuterInLayer))))
-            //         circleY = midY+((orgRadii[h]-(5*layer))*Math.sin((Math.PI/180)*(degreesInOuterLayer*(something%circlesInOuterLayer))))
-            //         circlesSet.push(paper.circle(circleX, circleY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()    
+            outerLayer = Math.floor(orgRadii[h]/(ourRadius*2))
+            circlesInOuterLayer = outerLayer*6
+            degreesInOuterLayer = 360/circlesInOuterLayer
+            maxCirclesInThisSlice = 30*degreesInOuterLayer
+            startingPointAngle = (180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY)
+
+            startingPoint = startingPointAngle/degreesInOuterLayer
+            edgeCount = 0
+            for(u=0; u < dataLength; u++) {
+                origin = data[u][0]
+                change = data[u][1]
+                end = data[u][2]
+                if(change=="Yes" && origin == i && end == h) {
                     
-            //     }
-            // }
+                    if(edgeCount==0) {
+                        edgeMod = 0
+                    } else if(edgeCount%2==1) {
+                        edgeMod1 += 1
+                        edgeMod = edgeMod1
+                    } else if(edgeCount%2==0){
+                        edgeMod2 -= 1
+                        edgeMod = edgeMod2
+                    }
+                    if(edgeCount==maxCirclesInThisSlice) {
+
+                        outerLayer -= 1
+                        circlesInOuterLayer = outerLayer*6
+                        degreesInOuterLayer = 360/circlesInOuterLayer
+                        maxCirclesInThisSlice -= 2
+                    }
+                    
+                    circleX = orgXcoords[h]+((ourRadius*2*outerLayer)*Math.cos((Math.PI/180)*(degreesInOuterLayer*(startingPoint+edgeMod))))
+                    circleY = midY+((ourRadius*2*outerLayer)*Math.sin((Math.PI/180)*(degreesInOuterLayer*(startingPoint+edgeMod))))
+                    circlesSet.push(paper.circle(circleX, circleY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack() 
+                    edgeCount += 1   
+                    
+                }
+            }
 
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
