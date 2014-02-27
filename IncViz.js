@@ -83,7 +83,7 @@ function drawNetwork(data) {
         masterCirclePackingArray = []
         circlesInLayer = 6
         totalCircles = 6
-        layer = 1
+
         layerArray = []
         counterArray = []
         circlesInLayerArray = []
