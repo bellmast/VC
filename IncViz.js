@@ -80,6 +80,7 @@ function drawNetwork(data) {
         masterxArray = []
         masteryArray = []
         masterCirclePacking = 0
+        masterCirclePackingArray = []
         layerArray = []
         ourArray = []
         ourArray2 = []
@@ -107,6 +108,8 @@ function drawNetwork(data) {
 
                         originX += ((ourRadius*radiusModifier*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
                         originY += ((ourRadius*radiusModifier*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+
+                        masterCirclePackingArray.push(masterCirclePacking%circlesInLayer)
 
                         
                         
