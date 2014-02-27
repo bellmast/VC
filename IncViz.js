@@ -82,6 +82,7 @@ function drawNetwork(data) {
         masterCirclePacking = 0
         masterCirclePackingArray = []
         circlesInLayer = 6
+        totalCircles = 6
         layerArray = []
         counterArray = []
         circlesInLayerArray = []
@@ -105,10 +106,12 @@ function drawNetwork(data) {
                         counter = Math.floor((masterCirclePacking-1)/circlesInLayer)+1
 
                         if(counter == 2) {
-                            circlesInLayer += 6+masterCirclePacking-1
+                            circlesInLayer +=6
+                            totalCircles += 6+masterCirclePacking-1
+                            layer = circlesInLayer/6
                         }
                         
-                        layer = circlesInLayer/6
+                        
 
                         
 
