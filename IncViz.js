@@ -120,6 +120,8 @@ function drawNetwork(data) {
 
                 originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
                 originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                
+                
 
                 masterCirclePackingArray.push(masterCirclePacking)       
                 
@@ -164,8 +166,13 @@ function drawNetwork(data) {
             edgeCount = 0
             // calc angle between this and next (previous?), halve it
             // if y == midy, fixed
-            // else, fixed anyway....
-            //layer = 1
+            // else, fixed anyway....         
+
+            // reverseLayer = 1
+            // outerLayer = orgRadii[h]/(ourRadius*2)
+            // circlesInOuterLayer = outerLayer*6
+            // degreesInOuterLayer = 360/circlesInOuterLayer
+
             // for(u=0; u < dataLength; u++) {
             //     origin = data[u][0]
             //     change = data[u][1]
@@ -177,11 +184,11 @@ function drawNetwork(data) {
             //         } else if(edgeCount%2==0){
             //             edgeMod = -1
             //         }
-            //         //some condition, layer += 1
-            //         circleX = orgXcoords[h]+((orgRadii[h]-(5*layer))*Math.cos((Math.PI/180)*
-            //         circleY = midY+((orgRadii[h]-(5*layer))*Math.sin((Math.PI/180)*
+            //         //some condition, reverseLayer += 1, outerLayer-1
+            //         circleX = orgXcoords[h]+((orgRadii[h]-(5*layer))*Math.cos((Math.PI/180)*(degreesInOuterLayer*(something%circlesOuterInLayer))))
+            //         circleY = midY+((orgRadii[h]-(5*layer))*Math.sin((Math.PI/180)*(degreesInOuterLayer*(something%circlesInOuterLayer))))
             //         circlesSet.push(paper.circle(circleX, circleY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()    
-            //             originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                    
             //     }
             // }
 
