@@ -210,7 +210,7 @@ function drawNetwork(data) {
                     
                     circleX = orgXcoords[h]+((ourRadius*2*outerLayer)*Math.cos((Math.PI/180)*(degreesInOuterLayer*(startingPoint+edgeMod))))
                     circleY = midY+((ourRadius*2*outerLayer)*Math.sin((Math.PI/180)*(degreesInOuterLayer*(startingPoint+edgeMod))))
-                    circlesSet.push(paper.circle(circleX, circleY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack() 
+                    circlesSet.push(paper.circle(circleX, circleY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05}))//.toBack() 
                     edgeCount += 1   
                     
                 }
