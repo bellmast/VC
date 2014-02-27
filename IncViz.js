@@ -166,18 +166,14 @@ function drawNetwork(data) {
             lineSet.push(newCurve)
 
             newArrow = paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i], stroke:orgColors[i]})
-            edgeCount = 0
-            // calc angle between this and next (previous?), halve it
-            // if y == midy, fixed
-            // else, fixed anyway....         
-
+                
 
             outerLayer = Math.floor((orgRadii[h]-2)/(ourRadius*2))
             circlesInOuterLayer = outerLayer*6
             degreesInOuterLayer = 360/circlesInOuterLayer
             maxCirclesInThisSlice = circlesInOuterLayer/(360/45)
-            startingPointAngle = (180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY)
-
+            startingPointAngle = (endingPiMod*2*Math.PI)/6
+            //startingPointAngle = (180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY)
             startingPoint = startingPointAngle/degreesInOuterLayer
             edgeCount = 0
             edgeMod1 = 0
