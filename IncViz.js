@@ -94,7 +94,7 @@ function drawNetwork(data) {
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
-            if(change=="No" && origin == i && origin!=3) {
+            if(change=="No" && origin == i) {
                 originX = orgXcoords[i]
                 originY = midY
                         
