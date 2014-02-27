@@ -84,6 +84,7 @@ function drawNetwork(data) {
         circlesInLayer = 6
         layerArray = []
         counterArray = []
+        circlesInLayerArray = []
         ourArray = []
         ourArray2 = []
         radiiArray = []
@@ -114,7 +115,7 @@ function drawNetwork(data) {
 
                         counterArray.push(counter)
                         layerArray.push(layer)
-                        circlesInLayer.push(circlesInLayer)
+                        circlesInLayerArray.push(circlesInLayer)
 
                         degreesInLayer = 360/circlesInLayer
 
