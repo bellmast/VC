@@ -120,8 +120,8 @@ function drawNetwork(data) {
 
                         degreesInLayer = 360/circlesInLayer
 
-                        originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
-                        originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                        originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*((masterCirclePacking-1)%circlesInLayer))))
+                        originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*((masterCirclePacking-1)%circlesInLayer))))
 
                         masterCirclePackingArray.push(masterCirclePacking)
 
