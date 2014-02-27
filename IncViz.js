@@ -129,7 +129,7 @@ function drawNetwork(data) {
 
                 
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
-            } else {
+            } else if(change=="No" && origin == i && masterCirclePacking == 1) {
                 originX = orgXcoords[i]
                 originY = midY
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
