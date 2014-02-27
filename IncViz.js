@@ -251,10 +251,66 @@ function drawNetwork(data) {
             
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = Math.abs(((midY-(midY/5/h))/((h/(i+1)))-(10*h))-canvasHeight) //may need to alter to h2s and i2s
+            newCurve2 = paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i2]})
+            lineSet.push(newCurve2)    
 
-            lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i2]}))    
+            newArrow2 = paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i2], stroke:orgColors[i2]})
 
-            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i2], stroke:orgColors[i2]})
+            outerLayer = Math.floor((orgRadii[h2]-2)/(ourRadius*2))
+            circlesInOuterLayer = outerLayer*6
+            degreesInOuterLayer = 360/circlesInOuterLayer
+            maxCirclesInThisSlice = circlesInOuterLayer/(360/45)
+            if(i2==0){
+                if(h2==3){
+                    hackyMod = 150
+                } else {
+                    hackyMod = 30
+                }
+            } else if (i2==1){
+                hackyMod = -90
+            } else {
+                hackyMod = 30
+            }
+            startingPointAngle = ((180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY))-hackyMod
+            startingPoint = startingPointAngle/degreesInOuterLayer
+            edgeCount = 0
+            edgeMod1 = 0
+            edgeMod2 = 0
+            for(u=0; u < dataLength; u++) {
+                origin = data[u][0]
+                change = data[u][1]
+                end = data[u][2]
+                if(change=="Yes" && origin == i2 && end == h2) {
+                    
+                    if(edgeCount==0) {
+                        edgeMod = 0
+                    } else if(edgeCount%2==1) {
+                        edgeMod1 += 1
+                        edgeMod = edgeMod1
+                    } else if(edgeCount%2==0){
+                        edgeMod2 -= 1
+                        edgeMod = edgeMod2
+                    }
+                    if(edgeCount==maxCirclesInThisSlice) {
+
+                        outerLayer -= 1
+                        circlesInOuterLayer = outerLayer*6
+                        degreesInOuterLayer = 360/circlesInOuterLayer
+                        startingPoint = startingPointAngle/degreesInOuterLayer
+                        maxCirclesInThisSlice -= 2
+                        edgeCount = 0
+                        edgeMod = 0
+                        edgeMod1 = 0
+                        edgeMod2 = 0
+                    }
+                    
+                    circleX = orgXcoords[h2]+((ourRadius*2*outerLayer)*Math.cos((Math.PI/180)*(degreesInOuterLayer*(startingPoint+edgeMod))))
+                    circleY = midY+((ourRadius*2*outerLayer)*Math.sin((Math.PI/180)*(degreesInOuterLayer*(startingPoint+edgeMod))))
+                    circlesSet.push(paper.circle(circleX, circleY, ourRadius).attr({fill:orgColors[i2], "stroke-width":.05})).toFront() 
+                    edgeCount += 1   
+                    
+                }
+            }
 
         }        
     }
