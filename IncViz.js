@@ -81,6 +81,7 @@ function drawNetwork(data) {
         masteryArray = []
         masterCirclePacking = 0
         masterCirclePackingArray = []
+        circlesInLayer = 6
         layerArray = []
         ourArray = []
         ourArray2 = []
@@ -101,7 +102,7 @@ function drawNetwork(data) {
 
                         radiusModifier = Math.floor((masterCirclePacking-1)/6)*.5+1
                         radiiArray.push(radiusModifier)
-                        layer = Math.floor((masterCirclePacking-1)/6)+1
+                        layer = Math.floor((masterCirclePacking-1)/circlesInLayer)+1
                         layerArray.push(layer)
                         circlesInLayer = layer*6
                         degreesInLayer = 360/circlesInLayer
