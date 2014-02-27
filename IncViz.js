@@ -84,6 +84,7 @@ function drawNetwork(data) {
         circlesInLayer = 6
         totalCircles = 6
         layer = 1
+        check = 0
         layerArray = []
         counterArray = []
         circlesInLayerArray = []
@@ -94,7 +95,7 @@ function drawNetwork(data) {
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
-            if(change=="No" && origin == i && masterCirclePacking != 1) {
+            if(change=="No" && origin == i && check !=0) {
                 originX = orgXcoords[i]
                 originY = midY
                         
@@ -129,11 +130,11 @@ function drawNetwork(data) {
 
                 
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
-            } else if(change=="No" && origin == i && masterCirclePacking == 1) {
+            } else if(change=="No" && origin == i && check == 0) {
                 originX = orgXcoords[i]
                 originY = midY
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
-                masterCirclePacking += 1
+                check = 1
             }
         }
         for(h=i+1; h < orgNumber; h++) {
