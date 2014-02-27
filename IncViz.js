@@ -97,18 +97,19 @@ function drawNetwork(data) {
             if(change=="No" && origin == i && origin!=3) {
                 originX = orgXcoords[i]
                 originY = midY
-                masterLength = masterxArray.length
                         
                 masterCirclePacking += 1
 
                 counter = Math.floor((masterCirclePacking-1)/totalCircles)+1
 
                 if(counter == 2) {
-                    circlesInLayer +=6
-                    totalCircles += (6+masterCirclePacking-1)
+                    circlesInLayer += 6
+                    totalCircles += (masterCirclePacking-1)
                     
                 }
-                layer = circlesInLayer/6                                       
+                layer = circlesInLayer/6                        
+
+                
 
                 counterArray.push(counter)
                 layerArray.push(layer)
@@ -116,8 +117,8 @@ function drawNetwork(data) {
 
                 degreesInLayer = 360/circlesInLayer
 
-                originX += ((ourRadius*layer*1.5)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
-                originY += ((ourRadius*layer*1.5)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
 
                 masterCirclePackingArray.push(masterCirclePacking)
 
