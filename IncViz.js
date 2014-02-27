@@ -104,7 +104,7 @@ function drawNetwork(data) {
 
                 if(counter == 2) {
                     circlesInLayer += 6
-                    totalCircles += (masterCirclePacking-1)
+                    totalCircles += (6+masterCirclePacking-1)
                     
                 }
                 layer = circlesInLayer/6                        
