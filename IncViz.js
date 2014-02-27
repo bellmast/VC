@@ -105,7 +105,7 @@ function drawNetwork(data) {
                         counter = Math.floor((masterCirclePacking-1)/circlesInLayer)+1
 
                         if(counter == 2) {
-                            circlesInLayer += 6+masterCirclePacking
+                            circlesInLayer += 6+masterCirclePacking-1
                         }
                         
                         layer = circlesInLayer/6
