@@ -172,7 +172,7 @@ function drawNetwork(data) {
             // else, fixed anyway....         
 
 
-            outerLayer = Math.floor(orgRadii[h]/(ourRadius*2))
+            outerLayer = Math.floor((orgRadii[h]-5)/(ourRadius*2))
             circlesInOuterLayer = outerLayer*6
             degreesInOuterLayer = 360/circlesInOuterLayer
             maxCirclesInThisSlice = 30*degreesInOuterLayer
@@ -180,6 +180,8 @@ function drawNetwork(data) {
 
             startingPoint = startingPointAngle/degreesInOuterLayer
             edgeCount = 0
+            edgeMod1 = 0
+            edgeMod2 = 0
             for(u=0; u < dataLength; u++) {
                 origin = data[u][0]
                 change = data[u][1]
