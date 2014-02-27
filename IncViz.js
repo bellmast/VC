@@ -76,7 +76,7 @@ function drawNetwork(data) {
     startingPosConcat = undefined
     testArray = []
     for(i=0; i < orgNumber; i++) {
-        if(i!=3 ) {
+
         masterxArray = []
         masteryArray = []
         masterCirclePacking = 0
@@ -90,7 +90,7 @@ function drawNetwork(data) {
         ourArray = []
         ourArray2 = []
         radiiArray = []
-        }
+        
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
@@ -117,8 +117,8 @@ function drawNetwork(data) {
 
                 degreesInLayer = 360/circlesInLayer
 
-                originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
-                originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                originX += ((ourRadius*layer*1.5)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                originY += ((ourRadius*layer*1.5)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
 
                 masterCirclePackingArray.push(masterCirclePacking)
 
