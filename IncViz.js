@@ -174,12 +174,12 @@ function drawNetwork(data) {
             maxCirclesInThisSlice = circlesInOuterLayer/(360/45)
             if(i==0){
                 if(h==3){
-                    hackyMod = 120
+                    hackyMod = 150
                 } else {
                     hackyMod = 30
                 }
             } else if (i==1){
-                hackyMod = -120
+                hackyMod = -150
             } else {
                 hackyMod = 30
             }
