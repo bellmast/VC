@@ -203,6 +203,9 @@ function drawNetwork(data) {
                         circlesInOuterLayer = outerLayer*6
                         degreesInOuterLayer = 360/circlesInOuterLayer
                         maxCirclesInThisSlice -= 2
+                        edgeCount = 0
+                        edgeMod1 = 0
+                        edgeMod2 = 0
                     }
                     
                     circleX = orgXcoords[h]+((ourRadius*2*outerLayer)*Math.cos((Math.PI/180)*(degreesInOuterLayer*(startingPoint+edgeMod))))
