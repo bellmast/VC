@@ -111,7 +111,6 @@ function drawNetwork(data) {
                         layer = circlesInLayer/6
 
                         
-                        radiiArray.push(radiusModifier)
 
                         counterArray.push(counter)
                         layerArray.push(layer)
