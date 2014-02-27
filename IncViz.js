@@ -267,9 +267,9 @@ function drawNetwork(data) {
                     hackyMod = 30
                 }
             } else if (i2==2){
-                hackyMod = 160
+                hackyMod = -160
             } else {
-                hackyMod = -120
+                hackyMod = -140
             }
             startingPointAngle = ((180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY))-hackyMod
             startingPoint = startingPointAngle/degreesInOuterLayer
