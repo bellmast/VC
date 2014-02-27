@@ -83,7 +83,7 @@ function drawNetwork(data) {
         masterCirclePackingArray = []
         circlesInLayer = 6
         totalCircles = 6
-
+        layer = 1
         layerArray = []
         counterArray = []
         circlesInLayerArray = []
@@ -99,39 +99,38 @@ function drawNetwork(data) {
                 originY = midY
                 masterLength = masterxArray.length
 
-                for (x = 0; x < masterLength; x++) {
-                    if (originX == masterxArray[x] && originY == masteryArray[x]) {
-                        
-                        masterCirclePacking += 1
 
-                        counter = Math.floor((masterCirclePacking-1)/totalCircles)+1
-
-                        if(counter == 2) {
-                            circlesInLayer +=6
-                            totalCircles += 6+masterCirclePacking-1
-                            
-                        }
-                        layer = circlesInLayer/6                        
 
                         
+                masterCirclePacking += 1
 
-                        counterArray.push(counter)
-                        layerArray.push(layer)
-                        circlesInLayerArray.push(circlesInLayer)
+                counter = Math.floor((masterCirclePacking-1)/totalCircles)+1
 
-                        degreesInLayer = 360/circlesInLayer
-
-                        originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
-                        originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
-
-                        masterCirclePackingArray.push(masterCirclePacking)
-
-                        
-                        
-                    }
+                if(counter == 2) {
+                    circlesInLayer +=6
+                    totalCircles += (6+masterCirclePacking-1)
+                    
                 }
-                masterxArray.push(originX)
-                masteryArray.push(originY)
+                layer = circlesInLayer/6                        
+
+                
+
+                counterArray.push(counter)
+                layerArray.push(layer)
+                circlesInLayerArray.push(circlesInLayer)
+
+                degreesInLayer = 360/circlesInLayer
+
+                originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+
+                masterCirclePackingArray.push(masterCirclePacking)
+
+                
+                
+            
+                
+
                 
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
             }
