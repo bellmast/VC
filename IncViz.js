@@ -76,7 +76,7 @@ function drawNetwork(data) {
     startingPosConcat = undefined
     testArray = []
     for(i=0; i < orgNumber; i++) {
-        if(i!=3) {
+        if(i!=3 && i!=2) {
         masterxArray = []
         masteryArray = []
         masterCirclePacking = 0
@@ -93,7 +93,7 @@ function drawNetwork(data) {
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
-            if(change=="No" && origin == i && origin!=3) {
+            if(change=="No" && origin == i && origin!=3 && origin!=2) {
                 originX = orgXcoords[i]
                 originY = midY
                 masterLength = masterxArray.length
@@ -120,8 +120,8 @@ function drawNetwork(data) {
 
                         degreesInLayer = 360/circlesInLayer
 
-                        originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*((masterCirclePacking-1)%circlesInLayer))))
-                        originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*((masterCirclePacking-1)%circlesInLayer))))
+                        originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                        originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
 
                         masterCirclePackingArray.push(masterCirclePacking)
 
