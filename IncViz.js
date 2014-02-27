@@ -94,7 +94,7 @@ function drawNetwork(data) {
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
-            if(change=="No" && origin == i) {
+            if(change=="No" && origin == i && masterCirclePacking != 1) {
                 originX = orgXcoords[i]
                 originY = midY
                         
@@ -117,8 +117,8 @@ function drawNetwork(data) {
 
                 degreesInLayer = 360/circlesInLayer
 
-                originX += ((ourRadius*layer*1.5)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
-                originY += ((ourRadius*layer*1.5)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+                originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
 
                 masterCirclePackingArray.push(masterCirclePacking)
 
@@ -129,6 +129,11 @@ function drawNetwork(data) {
 
                 
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
+            } else {
+                originX = orgXcoords[i]
+                originY = midY
+                circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
+                masterCirclePacking += 1
             }
         }
         for(h=i+1; h < orgNumber; h++) {
