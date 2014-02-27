@@ -121,13 +121,7 @@ function drawNetwork(data) {
                 originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
                 originY += ((ourRadius*layer*2)*Math.sin((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
 
-                masterCirclePackingArray.push(masterCirclePacking)
-
-                
-                
-            
-                
-
+                masterCirclePackingArray.push(masterCirclePacking)       
                 
                 circlesSet.push(paper.circle(originX, originY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()
             } else if(change=="No" && origin == i && check == 0) {
@@ -163,9 +157,33 @@ function drawNetwork(data) {
 
             curvePosX = (startingPosX+endingPosX)/2
             curvePosY = (midY-(midY/5/h))/((h/(i+1)))-(10*h)
-            lineSet.push(paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]}))
+            newCurve = paper.path("M"+startingPosX+" "+startingPosY+"Q"+curvePosX+" "+curvePosY+" "+endingPosX+" "+endingPosY).attr({"stroke-width": ".5", "stroke":orgColors[i]})
+            lineSet.push(newCurve)
 
-            paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i], stroke:orgColors[i]})
+            newArrow = paper.arrow(endingPosX, endingPosY, curvePosX, curvePosY, arrowRadius).attr({fill:orgColors[i], stroke:orgColors[i]})
+            edgeCount = 0
+            // calc angle between this and next (previous?), halve it
+            // if y == midy, fixed
+            // else, fixed anyway....
+            //layer = 1
+            // for(u=0; u < dataLength; u++) {
+            //     origin = data[u][0]
+            //     change = data[u][1]
+            //     end = data[u][2]
+            //     if(change=="Yes" && origin == i && end == h) {
+            //         edgeCount += 1
+            //         if(edgeCount%2==1) {
+            //             edgeMod = 1
+            //         } else if(edgeCount%2==0){
+            //             edgeMod = -1
+            //         }
+            //         //some condition, layer += 1
+            //         circleX = orgXcoords[h]+((orgRadii[h]-(5*layer))*Math.cos((Math.PI/180)*
+            //         circleY = midY+((orgRadii[h]-(5*layer))*Math.sin((Math.PI/180)*
+            //         circlesSet.push(paper.circle(circleX, circleY, ourRadius).attr({fill:orgColors[i], "stroke-width":.05})).toBack()    
+            //             originX += ((ourRadius*layer*2)*Math.cos((Math.PI/180)*(degreesInLayer*(masterCirclePacking%circlesInLayer))))
+            //     }
+            // }
 
             i2 = -i+orgNumber-1
             h2 = -h+orgNumber-1
