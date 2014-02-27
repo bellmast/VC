@@ -205,6 +205,7 @@ function drawNetwork(data) {
                         startingPoint = startingPointAngle/degreesInOuterLayer
                         maxCirclesInThisSlice -= 2
                         edgeCount = 0
+                        edgeMod = 0
                         edgeMod1 = 0
                         edgeMod2 = 0
                     }
