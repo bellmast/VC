@@ -76,13 +76,14 @@ function drawNetwork(data) {
     startingPosConcat = undefined
     testArray = []
     for(i=0; i < orgNumber; i++) {
-        if(i!=3 && i!=2) {
+        if(i!=3 ) {
         masterxArray = []
         masteryArray = []
         masterCirclePacking = 0
         masterCirclePackingArray = []
         circlesInLayer = 6
         totalCircles = 6
+        layer = 1
         layerArray = []
         counterArray = []
         circlesInLayerArray = []
@@ -93,7 +94,7 @@ function drawNetwork(data) {
         for(u=0; u < data.length; u++) {
             origin = data[u][0]
             change = data[u][1]
-            if(change=="No" && origin == i && origin!=3 && origin!=2) {
+            if(change=="No" && origin == i && origin!=3) {
                 originX = orgXcoords[i]
                 originY = midY
                 masterLength = masterxArray.length
