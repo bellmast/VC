@@ -175,7 +175,7 @@ function drawNetwork(data) {
             outerLayer = Math.floor((orgRadii[h]-5)/(ourRadius*2))
             circlesInOuterLayer = outerLayer*6
             degreesInOuterLayer = 360/circlesInOuterLayer
-            maxCirclesInThisSlice = 30*degreesInOuterLayer
+            maxCirclesInThisSlice = circlesInOuterLayer/(360/30)
             startingPointAngle = (180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY)
 
             startingPoint = startingPointAngle/degreesInOuterLayer
