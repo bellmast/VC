@@ -172,8 +172,7 @@ function drawNetwork(data) {
             circlesInOuterLayer = outerLayer*6
             degreesInOuterLayer = 360/circlesInOuterLayer
             maxCirclesInThisSlice = circlesInOuterLayer/(360/45)
-            startingPointAngle = (endingPiMod*2*Math.PI)/6
-            //startingPointAngle = (180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY)
+            startingPointAngle = (Math.PI/180)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY)
             startingPoint = startingPointAngle/degreesInOuterLayer
             edgeCount = 0
             edgeMod1 = 0
