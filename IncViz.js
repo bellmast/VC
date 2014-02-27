@@ -262,7 +262,7 @@ function drawNetwork(data) {
             maxCirclesInThisSlice = circlesInOuterLayer/(360/45)
             if(i2==3){
                 if(h2==0){
-                    hackyMod = 145
+                    hackyMod = 135
                 } else {
                     hackyMod = 30
                 }
@@ -273,7 +273,7 @@ function drawNetwork(data) {
                     hackyMod = -160
                 }
             } else {
-                hackyMod = -120
+                hackyMod = -130
             }
             startingPointAngle = ((180/Math.PI)*Math.atan2(endingPosX - orgXcoords[h], endingPosY - midY))-hackyMod
             startingPoint = startingPointAngle/degreesInOuterLayer
