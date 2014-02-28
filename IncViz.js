@@ -228,7 +228,7 @@ function drawNetwork(data) {
                 newCurve.hide()
                 newArrow.hide()
             } else {
-                isExist = Math.log(isExist)*4+1
+                isExist = Math.log(isExist)*4+2
                 newCurve.attr({"stroke-width":(isExist/10)})
                 newArrow.attr({"stroke-width":(isExist/10)})
             }
@@ -332,7 +332,7 @@ function drawNetwork(data) {
                 newCurve2.hide()
                 newArrow2.hide()
             } else {
-                isExist2 = Math.log(isExist2)*4+1
+                isExist2 = Math.log(isExist2)*4+2
                 newCurve2.attr({"stroke-width":(isExist2/10)})
                 newArrow2.attr({"stroke-width":(isExist2/10)})
             }
