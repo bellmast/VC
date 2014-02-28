@@ -190,9 +190,9 @@ function drawNetwork(data) {
             edgeMod2 = 0
             isExist = 0
             for(u=0; u < dataLength; u++) {
-                origin = data[u][0]
+                origin = data[u][2]
                 change = data[u][1]
-                end = data[u][2]
+                end = data[u][0]
                 if(change=="Yes" && origin == i && end == h) {
                     isExist += 1
                     if(edgeCount==0) {
@@ -291,9 +291,9 @@ function drawNetwork(data) {
             edgeMod2 = 0
             isExist2 = 0
             for(u=0; u < dataLength; u++) {
-                origin = data[u][0]
+                origin = data[u][2]
                 change = data[u][1]
-                end = data[u][2]
+                end = data[u][0]
                 if(change=="Yes" && origin == i2 && end == h2) {
                     isExist2 += 1
                     
