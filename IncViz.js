@@ -321,8 +321,8 @@ function drawNetwork(data) {
                 newCurve2.hide()
                 newArrow2.hidE()
             } else {
-                newCurve2.attr({"stroke-width":(isExist/10)})
-                newArrow2.attr({"stroke-width":(isExist/10)})
+                newCurve2.attr({"stroke-width":(isExist2/10)})
+                newArrow2.attr({"stroke-width":(isExist2/10)})
             }
 
         }        
