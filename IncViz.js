@@ -272,8 +272,8 @@ function drawNetwork(data) {
             if(i2==3){
                 if(h2==0){
                     hackyMod = 138
-                } else {
-                    hackyMod = -138
+                } else if(h2==1) {
+                    hackyMod = -118
                 }
             } else if (i2==2){
                 if(h2==0){
