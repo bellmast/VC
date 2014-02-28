@@ -280,11 +280,13 @@ function drawNetwork(data) {
             edgeCount = 0
             edgeMod1 = 0
             edgeMod2 = 0
+            isExist2 = 0
             for(u=0; u < dataLength; u++) {
                 origin = data[u][0]
                 change = data[u][1]
                 end = data[u][2]
                 if(change=="Yes" && origin == i2 && end == h2) {
+                    isExist2 += 1
                     
                     if(edgeCount==0) {
                         edgeMod = 0
@@ -314,6 +316,13 @@ function drawNetwork(data) {
                     edgeCount += 1   
                     
                 }
+            }
+            if(isExist2 = 0) {
+                newCurve2.hide()
+                newArrow2.hidE()
+            } else {
+                newCurve2.attr({"stroke-width":(isExist/10)})
+                newArrow2.attr({"stroke-width":(isExist/10)})
             }
 
         }        
