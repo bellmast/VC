@@ -268,12 +268,12 @@ function drawNetwork(data) {
             outerLayer = Math.floor((orgRadii[h2]-2)/(ourRadius*2))
             circlesInOuterLayer = outerLayer*6
             degreesInOuterLayer = 360/circlesInOuterLayer
-            maxCirclesInThisSlice = circlesInOuterLayer/(360/45)
+            maxCirclesInThisSlice = circlesInOuterLayer/(360/30)
             if(i2==3){
                 if(h2==0){
                     hackyMod = 138
                 } else {
-                    hackyMod = 30
+                    hackyMod = -138
                 }
             } else if (i2==2){
                 if(h2==0){
