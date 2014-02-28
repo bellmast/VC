@@ -228,8 +228,9 @@ function drawNetwork(data) {
                 newCurve.hide()
                 newArrow.hide()
             } else {
+                isExist = Math.log(isExist)
                 newCurve.attr({"stroke-width":(isExist/10)})
-                newArrow.attr({"stroke-width":(isExist/25)})
+                newArrow.attr({"stroke-width":(isExist/10)})
             }
 
             i2 = -i+orgNumber-1
@@ -329,6 +330,7 @@ function drawNetwork(data) {
                 newCurve2.hide()
                 newArrow2.hide()
             } else {
+                isExist2 = Math.log(isExist2)
                 newCurve2.attr({"stroke-width":(isExist2/10)})
                 newArrow2.attr({"stroke-width":(isExist2/10)})
             }
