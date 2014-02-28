@@ -317,7 +317,7 @@ function drawNetwork(data) {
                     
                 }
             }
-            if(isExist2 = 0) {
+            if(isExist2 == 0) {
                 newCurve2.hide()
                 newArrow2.hidE()
             } else {
