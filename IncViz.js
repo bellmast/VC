@@ -229,7 +229,7 @@ function drawNetwork(data) {
                 newArrow.hide()
             } else {
                 newCurve.attr({"stroke-width":(isExist/10)})
-                newArrow.attr({"stroke-width":(isExist/10)})
+                newArrow.attr({"stroke-width":(isExist/15)})
             }
 
             i2 = -i+orgNumber-1
