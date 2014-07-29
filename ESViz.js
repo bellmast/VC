@@ -64,8 +64,8 @@ function drawNetwork(data) {
     for(i=0; i < data.length; i++) {
     	if(data[i][1] != '') {
     		areWeHeres += 1
-    		newDict.push(data[i][0])
-    		newDict2.push(data[i][1])
+    		newDict.push(data[i])
+    		
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
     		KJFFcounts[currentYear - earliestYear] += 1
