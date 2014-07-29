@@ -1,4 +1,4 @@
-var earliestYear = 2008
+var earliestYear = 2003
 var latestYear = 2013 //or lastrow if the data are organized
 var yearAxis = latestYear - earliestYear
 var programAxis = 3 //KDFP, KJFF, KPrize
