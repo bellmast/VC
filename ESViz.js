@@ -106,11 +106,12 @@ function drawNetwork(data) {
 
 
 
-
-    	var radiix = 3*Math.cos(2*Math.PI/qMax*q)
-    	var radiiy = 3*Math.sin(2*Math.PI/qMax*q)
-    	xPos += raddix
-    	yPos += raddiy  	
+    	if(currentProgram != "KPrize") {
+    		var radiix = 3*Math.cos(2*Math.PI/qMax*q)
+    		var radiiy = 3*Math.sin(2*Math.PI/qMax*q)
+    		xPos += raddix
+    		yPos += raddiy  	
+    	}
 
     	scholarSet.push(paper.circle(xPos, yPos, scale))
 
