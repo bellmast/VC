@@ -1,6 +1,6 @@
 var earliestYear = 2008
 var latestYear = 2013 //or lastrow if the data are organized
-var yearAxis = earliestYear - latestYear
+var yearAxis = latestYear - earliestYear
 var programAxis = 3 //KDFP, KJFF, KPrize
 //this gives us the dimensions of the "graph"
 var canvasWidth = 800;
