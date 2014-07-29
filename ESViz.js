@@ -128,7 +128,7 @@ function drawNetwork(data) {
     			break
     		} else if (cName in scholarDict) {
     			targetYear = scholarDict[cName][2]
-    			targetProgram = scholarDict[cname][3]
+    			targetProgram = scholarDict[cName][3]
     			// if (targetYear == currentYear && targetProgram == currentProgram) {
 	    			xTarget = scholarDict[cName][0]
 	    			yTarget = scholardict[cName][1]
