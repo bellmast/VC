@@ -3,7 +3,7 @@ var latestYear = 2014 //or lastrow if the data are organized
 var yearAxis = latestYear - earliestYear
 var programAxis = 3 //KDFP, KJFF, KPrize
 //this gives us the dimensions of the "graph"
-var canvasWidth = 800;
+var canvasWidth = 1370;
 var canvasHeight= 700;
 //beforehand, please organize data by year, then by impact score
 //it will also save computing power to pre-calculate 
