@@ -131,7 +131,7 @@ function drawNetwork(data) {
     			targetProgram = scholarDict[cName][3]
     			// if (targetYear == currentYear && targetProgram == currentProgram) {
 	    			xTarget = scholarDict[cName][0]
-	    			yTarget = scholardict[cName][1]
+	    			yTarget = scholarDict[cName][1]
 	    			linesSet.push(
 	    			paper.path("M"+xPos+" "+yPos+"L"+xTarget+" "+yTarget).attr({"stroke-width": ".2"})
 	    			)	
