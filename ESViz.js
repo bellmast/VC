@@ -21,8 +21,8 @@ function drawNetwork(data) {
 	textSet = paper.set()
 
 	KJFFheight = canvasHeight/2
-	KPrizeheight = KJFFheight+(1/2)KJFFheight
-	KDFPheight = KJFFheight-(1/2)KJFFheight
+	KPrizeheight = KJFFheight+((1/2)*KJFFheight)
+	KDFPheight = KJFFheight-((1/2)*KJFFheight)
 
 	textSet.push(paper.text(50, KJFFheight, "KJFF"))
 	textSet.push(paper.text(50, KPrizeheight, "KPrize"))
