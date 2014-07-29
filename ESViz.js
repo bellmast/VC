@@ -60,15 +60,16 @@ function drawNetwork(data) {
 
     for(i=0; i < data.length; i++) {
     	if(data[i][1] != '') {
-    		areWeHere = "yesssss"
+
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
     		KJFFcounts[currentYear - earliestYear] += 1
+    		areWeHere = "yesssss"
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		KDFPcounts[currentYear - earliestYear] += 1
     	}
-    	
+
     }
     KJFFcountsMobile = KJFFcounts
     KDFPcountsMobile = KDFPcounts
