@@ -58,10 +58,14 @@ function drawNetwork(data) {
 
     scholarDict = {}
     areWeHeres = 0
+    newDict = []
+    newDict2 = []
 
     for(i=0; i < data.length; i++) {
     	if(data[i][1] != '') {
     		areWeHeres += 1
+    		newDict.push(data[i][0])
+    		newDict2.push(data[i][1])
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
     		KJFFcounts[currentYear - earliestYear] += 1
