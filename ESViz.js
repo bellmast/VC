@@ -68,6 +68,7 @@ function drawNetwork(data) {
     		currentYear = data[i][3]
     		KDFPcounts[currentYear - earliestYear] += 1
     	}
+    	areWeHere = "yesssss"
     }
     KJFFcountsMobile = KJFFcounts
     KDFPcountsMobile = KDFPcounts
