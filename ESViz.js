@@ -216,7 +216,7 @@ function drawNetwork(data) {
 	  	}
 		);
 	textSet.push(paper.text(50, KDFPheight, "KDFP"))
-	lineSet.hide()
+	linesSet.hide()
   
 }
 
