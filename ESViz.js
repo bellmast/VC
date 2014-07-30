@@ -26,6 +26,9 @@ function drawNetwork(data) {
 	KPrizelineSet = paper.set()
 	KJFFlineSet = paper.set()
 	KDFPlineSet = paper.set()
+	KPrizelineSet2 = paper.set()
+	KJFFlineSet2 = paper.set()
+	KDFPlineSet2 = paper.set()
 
 	KJFFheight = canvasHeight/2
 	KPrizeheight = KJFFheight-((1/2)*KJFFheight)
@@ -154,12 +157,21 @@ function drawNetwork(data) {
 	    		if(targetProgram == "KPrize" || currentProgram == "KPrize") {
 	    			KPrizelineSet.push(newL)
 	    		}
-	    		if(targetProgram == "KJFF" && currentProgram == "KJFF") {
+	    		if(targetProgram == "KPrize" && currentProgram == "KPrize") {
+	    			KPrizelineSet2.push(newL)
+	    		}
+	    		if(targetProgram == "KJFF" || currentProgram == "KJFF") {
 	    			KJFFlineSet.push(newL)
+	    		}
+	    		if(targetProgram == "KJFF" && currentProgram == "KJFF") {
+	    			KJFFlineSet2.push(newL)
 	    		}
 	    		if(targetProgram == "KDFP" || currentProgram == "KDFP") {
 	    			KDFPlineSet.push(newL)
-	    		}		
+	    		}
+	    		if(targetProgram == "KDFP" && currentProgram == "KDFP") {
+	    			KDFPlineSet2.push(newL)
+	    		}	
     		// 	} else {
     		// 		baseYear = Math.min(currentYear, targetYear)
     		// 		if (baseYear == currentYear) {
@@ -217,6 +229,15 @@ function drawNetwork(data) {
 	  	}
 		);
     textSet.push(KJFFtext)
+    KJFFtext2 = paper.text(50, KJFFheight+10, "(within)").hover(function() {
+			linesSet.hide()
+			KJFFlineSet2.show()
+		},
+		function () {
+	    	linesSet.hide()
+	  	}
+		);
+    textSet.push(KJFFtext2)
 	KPrizetext = paper.text(50, KPrizeheight, "KPrize").hover(function() {
 			linesSet.hide()
 			KPrizelineSet.show()
@@ -226,6 +247,15 @@ function drawNetwork(data) {
 	  	}
 		);
 	textSet.push(KPrizetext)
+	KPrizetext2 = paper.text(50, KPrizeheight+10, "(within)").hover(function() {
+			linesSet.hide()
+			KPrizelineSet2.show()
+		},
+		function () {
+	    	linesSet.hide()
+	  	}
+		);
+	textSet.push(KPrizetext2)
 	KDFPtext = paper.text(50, KDFPheight, "KDFP").hover(function() {
 			linesSet.hide()
 			KDFPlineSet.show()
@@ -235,6 +265,15 @@ function drawNetwork(data) {
 	  	}
 		);
 	textSet.push(KDFPtext)
+	KDFPtext = paper.text(50, KDFPheight+10, "(within)").hover(function() {
+			linesSet.hide()
+			KDFPlineSet2.show()
+		},
+		function () {
+	    	linesSet.hide()
+	  	}
+		);
+	textSet.push(KDFPtext2)
 	linesSet.hide()
   
 }
