@@ -131,7 +131,7 @@ function drawNetwork(data) {
 
     	scholarSet.push(paper.circle(xPos, yPos, scale)).attr({"fill":"#FFFFFF", "fill-opacity":0})
     	if(scale == 3.955350957) {
-    		what += 1
+    		what = currentName
     	}
 
     	for(u=5; u < dataRowLength; u++) {
