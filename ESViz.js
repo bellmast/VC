@@ -265,7 +265,7 @@ function drawNetwork(data) {
 	  	}
 		);
 	textSet.push(KDFPtext)
-	KDFPtext = paper.text(50, KDFPheight+10, "(within)").hover(function() {
+	KDFPtext2 = paper.text(50, KDFPheight+10, "(within)").hover(function() {
 			linesSet.hide()
 			KDFPlineSet2.show()
 		},
