@@ -130,7 +130,7 @@ function drawNetwork(data) {
     	}
 
     	scholarSet.push(paper.circle(xPos, yPos, scale)).attr({"fill":"#FFFFFF", "fill-opacity":0})
-    	if(xPos == 0) {
+    	if(scale == 3.955350957) {
     		what += 1
     	}
 
