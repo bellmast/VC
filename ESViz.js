@@ -82,7 +82,7 @@ function drawNetwork(data) {
     for(i=0; i < data.length; i++) {
     	
     	currentName = data[i][0]
-    	scale = data[i][4]
+    	scale = parseFloat(data[i][4])
 
     	if(data[i][1] != '') {
     		currentYear = data[i][1]
