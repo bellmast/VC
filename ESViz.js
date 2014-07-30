@@ -21,6 +21,9 @@ function drawNetwork(data) {
 	textSet = paper.set()
 	scholarSet = paper.set()
 	linesSet = paper.set()
+	KJFFlines = []
+	KJFFlinesSet2009 = paper.set()
+	KJFFlinesSet2010 = paper.set()
 
 	KJFFheight = canvasHeight/2
 	KPrizeheight = KJFFheight-((1/2)*KJFFheight)
@@ -52,6 +55,7 @@ function drawNetwork(data) {
         KDFPcounts.push(0)
         KDFPcountsMobile.push(0)
         KDFPscaleTracker.push(0)
+        KJFFlines.push(paper.set())
     }
 
     ////
@@ -61,6 +65,7 @@ function drawNetwork(data) {
 
 
     scholarDict = {}
+
 
     for(i=0; i < data.length; i++) {
     	scale = parseFloat(data[i][4])
@@ -118,8 +123,8 @@ function drawNetwork(data) {
 
 
     	if(currentProgram != "KPrize") {
-    		radiix = (scalar)*Math.cos(2*Math.PI/qMax*q)
-    		radiiy = (scalar)*Math.sin(2*Math.PI/qMax*q)
+    		radiix = (scalar/1.3)*Math.cos(2*Math.PI/qMax*q)
+    		radiiy = (scalar/1.3)*Math.sin(2*Math.PI/qMax*q)
     		xPos += radiix
     		yPos += radiiy  	
     	}
@@ -136,9 +141,12 @@ function drawNetwork(data) {
     			// if (targetYear == currentYear && targetProgram == currentProgram) {
 	    			xTarget = scholarDict[cName][0]
 	    			yTarget = scholarDict[cName][1]
-	    			linesSet.push(
-	    			paper.path("M"+xPos+" "+yPos+"L"+xTarget+" "+yTarget).attr({"stroke-width": ".2"})
-	    			)	
+	    			newL = paper.path("M"+xPos+" "+yPos+"L"+xTarget+" "+yTarget).attr({"stroke-width": ".2"})
+	    			linesSet.push(newL)  			
+	    			
+	    		if(currentProgram == "KJFF" && currentYear = 2009) {
+	    			KJFFlines[marker].push(newL)
+	    		}	
     		// 	} else {
     		// 		baseYear = Math.min(currentYear, targetYear)
     		// 		if (baseYear == currentYear) {
@@ -168,7 +176,12 @@ function drawNetwork(data) {
     }
 
     for(i=0; i < yearAxis+1; i++) {
-    	paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7)
+    	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7)
+    	newC.hover(function() {
+			allSet.hide()
+			noSet.show()
+			linesSet.hide()
+		}
     	// q=0
     	// for(u=years[i]; u < latestYear+1; u++) {
     	// 	cWidth = eCircleConnects[years[i]+"KJFF"+u+"KJFF"]
