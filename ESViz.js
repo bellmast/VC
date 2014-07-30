@@ -177,17 +177,10 @@ function drawNetwork(data) {
     	scholarDict[currentName] = [xPos, yPos, currentYear, currentProgram]
 
     }
-
+    KJFFcircles = []
     for(i=0; i < yearAxis+1; i++) {
     	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7)
-    	newC.hover(function() {
-			linesSet.hide()
-			KJFFlines[i].show()
-		},
-		function () {
-	    	linesSet.show()
-	  	}
-		);
+    	KJFFcircles.push(newC)
     	// q=0
     	// for(u=years[i]; u < latestYear+1; u++) {
     	// 	cWidth = eCircleConnects[years[i]+"KJFF"+u+"KJFF"]
@@ -195,7 +188,16 @@ function drawNetwork(data) {
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.7)
     }
-    linesSet.toBack
+    for(i=0; i < yearAxis+1; i++) {
+    	KJFFcircles[i].hover(function() {
+			linesSet.hide()
+			KJFFlines[i].show()
+		},
+		function () {
+	    	linesSet.show()
+	  	}
+		);
+    }
 
   
 }
