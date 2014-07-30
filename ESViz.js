@@ -69,7 +69,7 @@ function drawNetwork(data) {
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
     		stationary = currentYear - earliestYear
-    		KJFFcounts[stationary] += 1
+    		KJFFcounts[stationary] = 1
     		newDict.push(KJFFcounts)
     		newDict2.push(stationary)
     	} else if(data[i][3] != '') {
