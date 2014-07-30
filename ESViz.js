@@ -7,7 +7,7 @@ var canvasWidth = 1370;
 var canvasHeight= 700;
 //beforehand, please organize data by year, then by impact score
 //it will also save computing power to pre-calculate 
-var heres = 0
+what = []
 
 $(document).ready(function () {runProgram()});
 
@@ -143,13 +143,10 @@ function drawNetwork(data) {
 	    			yTarget = scholarDict[cName][1]
 	    			newL = paper.path("M"+xPos+" "+yPos+"L"+xTarget+" "+yTarget).attr({"stroke-width": ".2"})
 	    			linesSet.push(newL)  			
-	    			if(xPos==",0,0") {
-	    				silly = currentName
-	    			}
+	    			what.push(xPos)
+	   
 	    		if(currentProgram == "KJFF" && currentYear == 2009) {
 	    			KJFFlines[marker].push(newL)
-	    			here = "yes"
-	    			heres +=1
 	    		}
 	    		if(targetProgram == "KPrize" || currentProgram == "KPrize") {
 	    			KPrizelineSet.push(newL)
