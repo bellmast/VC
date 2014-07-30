@@ -206,7 +206,14 @@ function drawNetwork(data) {
 	  	}
 		);
     }
-    textSet.push(paper.text(50, KJFFheight, "KJFF"))
+    textSet.push(paper.text(50, KJFFheight, "KJFF")).hover(function() {
+			linesSet.hide()
+			KJFFlineSet.show()
+		},
+		function () {
+	    	linesSet.hide()
+	  	}
+		);
 	textSet.push(paper.text(50, KPrizeheight, "KPrize")).hover(function() {
 			linesSet.hide()
 			KPrizelineSet.show()
@@ -215,7 +222,14 @@ function drawNetwork(data) {
 	    	linesSet.hide()
 	  	}
 		);
-	textSet.push(paper.text(50, KDFPheight, "KDFP"))
+	textSet.push(paper.text(50, KDFPheight, "KDFP")).hover(function() {
+			linesSet.hide()
+			KDFPlineSet.show()
+		},
+		function () {
+	    	linesSet.hide()
+	  	}
+		);
 	linesSet.hide()
   
 }
