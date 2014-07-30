@@ -1,5 +1,5 @@
 var earliestYear = 2003
-var latestYear = 2014 //or lastrow if the data are organized
+var latestYear = 2015 //or lastrow if the data are organized
 var yearAxis = latestYear - earliestYear
 var programAxis = 3 //KDFP, KJFF, KPrize
 //this gives us the dimensions of the "graph"
