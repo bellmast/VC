@@ -129,7 +129,7 @@ function drawNetwork(data) {
     		yPos += radiiy  	
     	}
 
-    	scholarSet.push(paper.circle(xPos, yPos, scale))
+    	scholarSet.push(paper.circle(xPos, yPos, scale)).attr({"fill":"#FFFFFF", "fill-opacity":0})
 
     	for(u=5; u < dataRowLength; u++) {
     		cName = data[i][u]
