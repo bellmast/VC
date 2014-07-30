@@ -33,7 +33,7 @@ function drawNetwork(data) {
 
 
 
-	slots = canvasWidth/(yearAxis)
+	slots = canvasWidth/(yearAxis+1)
 	yearXcoords = []
 	KJFFcounts = []
 	KJFFcountsMobile = []
@@ -189,14 +189,14 @@ function drawNetwork(data) {
     }
     KJFFcircles = []
     for(i=0; i < yearAxis+1; i++) {
-    	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7).attr({"fill":"#FFFFFF", "fill-opacity":0})
+    	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5).attr({"fill":"#FFFFFF", "fill-opacity":0})
     	KJFFcircles.push(newC)
     	// q=0
     	// for(u=years[i]; u < latestYear+1; u++) {
     	// 	cWidth = eCircleConnects[years[i]+"KJFF"+u+"KJFF"]
     	// 	paper.path("M"+yearXcoords[i]+" "+KJFFheight+"L"++" "+yTarget).attr({"stroke-width": ".2"})
     	// }
-    	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.7)
+    	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5)
     }
     for(i=0; i < yearAxis; i++) {
     	KJFFcircles[i].hover(function() {
