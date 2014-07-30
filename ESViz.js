@@ -72,6 +72,7 @@ function drawNetwork(data) {
     		areWeHere = "yesssss"
     		areWeHeres += 1
     		newDict.push(KJFFcounts)
+    		newDict2.push(currentYear-earliestYear)
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		KDFPcounts[currentYear - earliestYear] += 1
