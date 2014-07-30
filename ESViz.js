@@ -179,7 +179,7 @@ function drawNetwork(data) {
     }
     KJFFcircles = []
     for(i=0; i < yearAxis+1; i++) {
-    	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7)
+    	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7).attr({"fill":"#FFFFFF", "fill-opacity":0})
     	KJFFcircles.push(newC)
     	// q=0
     	// for(u=years[i]; u < latestYear+1; u++) {
