@@ -77,7 +77,8 @@ function drawNetwork(data) {
     	}
 
     }
-
+    newDict = []
+    newDict2 = []
     for(i=0; i < data.length; i++) {
     	
     	currentName = data[i][0]
@@ -106,6 +107,10 @@ function drawNetwork(data) {
     		q = qMax - KDFPcountsMobile[marker]
     		KDFPcountsMobile[marker] -= 1
     		KDFPscaleTracker[marker] += scale
+    		if(currentYear == 2007) {
+    			newDict.push(scale)
+    			newDict2.push(currentName)
+    		}
     	}
     	
     	xPos = yearXcoords[marker]
