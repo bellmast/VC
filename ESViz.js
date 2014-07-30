@@ -178,10 +178,12 @@ function drawNetwork(data) {
     for(i=0; i < yearAxis+1; i++) {
     	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7)
     	newC.hover(function() {
-			allSet.hide()
-			noSet.show()
 			linesSet.hide()
-		}
+		},
+		function () {
+	    	linesSet.show()
+	  	}
+		);
     	// q=0
     	// for(u=years[i]; u < latestYear+1; u++) {
     	// 	cWidth = eCircleConnects[years[i]+"KJFF"+u+"KJFF"]
