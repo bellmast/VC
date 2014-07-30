@@ -164,13 +164,13 @@ function drawNetwork(data) {
     }
 
     for(i=0; i < yearAxis+1; i++) {
-    	paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i])
+    	paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*2)
     	// q=0
     	// for(u=years[i]; u < latestYear+1; u++) {
     	// 	cWidth = eCircleConnects[years[i]+"KJFF"+u+"KJFF"]
     	// 	paper.path("M"+yearXcoords[i]+" "+KJFFheight+"L"++" "+yTarget).attr({"stroke-width": ".2"})
     	// }
-    	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i])
+    	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*2)
     }
 
   
