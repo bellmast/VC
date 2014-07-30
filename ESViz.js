@@ -33,12 +33,13 @@ function drawNetwork(data) {
 	slots = canvasWidth/(yearAxis+1)
 	yearXcoords = []
 	KJFFcounts = []
+	KJFFcountsMobile = []
 	KJFFscaleTracker = []
 	KDFPcounts = []
+	KDFPcountsMobile = []
 	KDFPscaleTracker = []
 
 	years = []
-	what = []
 
 	for(i = 1; i < yearAxis+1; i++) {
         xPos = slots*i
@@ -46,10 +47,11 @@ function drawNetwork(data) {
         textSet.push(paper.text(xPos, canvasHeight-50, earliestYear+i-1))
         years.push(earliestYear+i-1)
         KJFFcounts.push(0)
+        KJFFcountsMobile.push(0)
         KJFFscaleTracker.push(0)
         KDFPcounts.push(0)
+        KDFPcountsMobile.push(0)
         KDFPscaleTracker.push(0)
-        what.push(0)
     }
 
     ////
@@ -59,30 +61,22 @@ function drawNetwork(data) {
 
 
     scholarDict = {}
-    areWeHeres = 0
-    newDict = []
-    newDict2 = []
 
     for(i=0; i < data.length; i++) {
     	if(data[i][1] != '') {
     		
-    		
+
     		
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
-    		stationary = currentYear - earliestYear
-    		
-    		newDict.push(KJFFcounts)
-    		newDict2.push(stationary)
+    		KJFFcounts[currentYear - earliestYear] += 1
+
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		KDFPcounts[currentYear - earliestYear] += 1
     	}
 
     }
-    KJFFcountsMobile = KJFFcounts
-    
-    KDFPcountsMobile = KDFPcounts
 
     for(i=0; i < data.length; i++) {
     	
