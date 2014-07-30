@@ -63,17 +63,21 @@ function drawNetwork(data) {
     scholarDict = {}
 
     for(i=0; i < data.length; i++) {
+    	scale = parseFloat(data[i][4])
     	if(data[i][1] != '') {
     		
 
     		
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
-    		KJFFcounts[currentYear - earliestYear] += 1
-
+    		marker = currentYear - earliestYear
+    		KJFFcounts[marker] += 1
+    		KJFFscaleTracker[marker] += scale
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
-    		KDFPcounts[currentYear - earliestYear] += 1
+    		marker = currentYear - earliestYear
+    		KDFPcounts[marker] += 1
+    		KDFPscaleTracker[marker] += scale
     	}
 
     }
@@ -81,7 +85,7 @@ function drawNetwork(data) {
     for(i=0; i < data.length; i++) {
     	
     	currentName = data[i][0]
-    	scale = parseFloat(data[i][4])
+    	
 
     	if(data[i][1] != '') {
     		currentYear = data[i][1]
@@ -96,7 +100,7 @@ function drawNetwork(data) {
     		qMax = KJFFcounts[marker]
     		q = qMax - KJFFcountsMobile[marker]
     		KJFFcountsMobile[marker] -= 1
-    		KJFFscaleTracker[marker] += scale
+    		scalar = KJFFscaleTracker[marker]
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		currentProgram = "KDFP"
@@ -105,7 +109,8 @@ function drawNetwork(data) {
     		qMax = KDFPcounts[marker]
     		q = qMax - KDFPcountsMobile[marker]
     		KDFPcountsMobile[marker] -= 1
-    		KDFPscaleTracker[marker] += scale
+    		scalar = KDFPscaleTracker[marker]
+
     	}
     	
     	xPos = yearXcoords[marker]
@@ -113,8 +118,8 @@ function drawNetwork(data) {
 
 
     	if(currentProgram != "KPrize") {
-    		radiix = 10*scale*Math.cos(2*Math.PI/qMax*q)
-    		radiiy = 10*scale*Math.sin(2*Math.PI/qMax*q)
+    		radiix = (scalar/1.7)*Math.cos(2*Math.PI/qMax*q)
+    		radiiy = (scalar/1.7)*Math.sin(2*Math.PI/qMax*q)
     		xPos += radiix
     		yPos += radiiy  	
     	}
