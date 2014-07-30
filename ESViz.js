@@ -25,14 +25,13 @@ function drawNetwork(data) {
 	KJFFlines = []
 	KJFFlinesSet2009 = paper.set()
 	KJFFlinesSet2010 = paper.set()
+	KPrizelineSet = paper.set()
 
 	KJFFheight = canvasHeight/2
 	KPrizeheight = KJFFheight-((1/2)*KJFFheight)
 	KDFPheight = KJFFheight+((1/2)*KJFFheight)
 
-	textSet.push(paper.text(50, KJFFheight, "KJFF"))
-	textSet.push(paper.text(50, KPrizeheight, "KPrize"))
-	textSet.push(paper.text(50, KDFPheight, "KDFP"))
+
 
 	slots = canvasWidth/(yearAxis+1)
 	yearXcoords = []
@@ -149,6 +148,9 @@ function drawNetwork(data) {
 	    			KJFFlines[marker].push(newL)
 	    			here = "yes"
 	    			heres +=1
+	    		}
+	    		if(targetProgram == "KPrize" or currentProgram == "KPrize") {
+	    			KPrizelineSet.push(newL)
 	    		}	
     		// 	} else {
     		// 		baseYear = Math.min(currentYear, targetYear)
@@ -198,6 +200,16 @@ function drawNetwork(data) {
 	  	}
 		);
     }
+    textSet.push(paper.text(50, KJFFheight, "KJFF"))
+	textSet.push(paper.text(50, KPrizeheight, "KPrize")).hover(function() {
+			linesSet.hide()
+			KPrizelineSet.show()
+		},
+		function () {
+	    	linesSet.show()
+	  	}
+		);
+	textSet.push(paper.text(50, KDFPheight, "KDFP"))
 
   
 }
