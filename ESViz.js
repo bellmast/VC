@@ -276,11 +276,11 @@ function drawNetwork(data) {
 	textSet.push(KDFPtext2)
 	showAllText = paper.text(50, 50, "show all").hover(function() {
 			linesSet.show()
-		},
+		}
 		);
 	hideAllText = paper.text(50, 60, "hide all").hover(function() {
 			linesSet.hide()
-		},
+		}
 		);
 	textSet.push(showAllText, hideAllText)
 	linesSet.hide()
