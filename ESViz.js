@@ -144,7 +144,7 @@ function drawNetwork(data) {
 	    			newL = paper.path("M"+xPos+" "+yPos+"L"+xTarget+" "+yTarget).attr({"stroke-width": ".2"})
 	    			linesSet.push(newL)  			
 	    			
-	    		if(currentProgram == "KJFF" && currentYear = 2009) {
+	    		if(currentProgram == "KJFF" && currentYear == 2009) {
 	    			KJFFlines[marker].push(newL)
 	    		}	
     		// 	} else {
