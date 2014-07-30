@@ -38,6 +38,7 @@ function drawNetwork(data) {
 	KDFPscaleTracker = []
 
 	years = []
+	what = []
 
 	for(i = 1; i < yearAxis+1; i++) {
         xPos = slots*i
@@ -48,6 +49,7 @@ function drawNetwork(data) {
         KJFFscaleTracker.push(0)
         KDFPcounts.push(0)
         KDFPscaleTracker.push(0)
+        what.push(KJFFcounts)
     }
 
     ////
