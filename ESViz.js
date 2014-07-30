@@ -225,7 +225,7 @@ function drawNetwork(data) {
 			KJFFlineSet.show()
 		},
 		function () {
-	    	linesSet.hide()
+	    	
 	  	}
 		);
     textSet.push(KJFFtext)
@@ -234,7 +234,7 @@ function drawNetwork(data) {
 			KJFFlineSet2.show()
 		},
 		function () {
-	    	linesSet.hide()
+	    	
 	  	}
 		);
     textSet.push(KJFFtext2)
@@ -243,7 +243,7 @@ function drawNetwork(data) {
 			KPrizelineSet.show()
 		},
 		function () {
-	    	linesSet.hide()
+	    	
 	  	}
 		);
 	textSet.push(KPrizetext)
@@ -252,7 +252,7 @@ function drawNetwork(data) {
 			KPrizelineSet2.show()
 		},
 		function () {
-	    	linesSet.hide()
+	    	
 	  	}
 		);
 	textSet.push(KPrizetext2)
@@ -261,7 +261,7 @@ function drawNetwork(data) {
 			KDFPlineSet.show()
 		},
 		function () {
-	    	linesSet.hide()
+	    	
 	  	}
 		);
 	textSet.push(KDFPtext)
@@ -270,7 +270,7 @@ function drawNetwork(data) {
 			KDFPlineSet2.show()
 		},
 		function () {
-	    	linesSet.hide()
+	    	
 	  	}
 		);
 	textSet.push(KDFPtext2)
