@@ -63,13 +63,14 @@ function drawNetwork(data) {
 
     for(i=0; i < data.length; i++) {
     	if(data[i][1] != '') {
-    		areWeHeres += 1
+    		
     		newDict.push(data[i])
     		
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
     		KJFFcounts[currentYear - earliestYear] += 1
     		areWeHere = "yesssss"
+    		areWeHeres += 1
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		KDFPcounts[currentYear - earliestYear] += 1
@@ -114,8 +115,8 @@ function drawNetwork(data) {
 
 
     	if(currentProgram != "KPrize") {
-    		var radiix = 3*Math.cos(2*Math.PI/qMax*q)
-    		var radiiy = 3*Math.sin(2*Math.PI/qMax*q)
+    		radiix = 3*Math.cos(2*Math.PI/qMax*q)
+    		radiiy = 3*Math.sin(2*Math.PI/qMax*q)
     		xPos += radiix
     		yPos += radiiy  	
     	}
