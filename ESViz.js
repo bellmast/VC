@@ -21,6 +21,7 @@ function drawNetwork(data) {
 
 	textSet = paper.set()
 	scholarSet = paper.set()
+	scholarTextSet = paper.set()
 	linesSet = paper.set()
 	KJFFlines = []
 	KPrizelineSet = paper.set()
@@ -132,10 +133,18 @@ function drawNetwork(data) {
     		yPos += radiiy  	
     	}
 
-    	scholarSet.push(paper.circle(xPos, yPos, scale)).attr({"fill":"#FFFFFF", "fill-opacity":0})
-    	if(scale == 3.955350957) {
-    		what = currentName
-    	}
+    	scholarText = paper.text(xPos+scale, yPos+scale, currentName)
+    	scholarTextSet.push(scholarText)
+
+    	scholarCircle = paper.circle(xPos, yPos, scale).attr({"fill":"#FFFFFF", "fill-opacity":0}).hover(function() {
+			scholarText.show()
+		},
+		function () {
+	    	scholarText.hide()
+	  	}
+		);
+		scholarSet.push(scholarCircle)
+    	
 
     	for(u=5; u < dataRowLength; u++) {
     		cName = data[i][u]
