@@ -33,7 +33,7 @@ function drawNetwork(data) {
 
 
 
-	slots = canvasWidth/(yearAxis+1)
+	slots = canvasWidth/(yearAxis)
 	yearXcoords = []
 	KJFFcounts = []
 	KJFFcountsMobile = []
