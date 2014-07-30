@@ -172,6 +172,7 @@ function drawNetwork(data) {
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.7)
     }
+    scholarSet.insertBefore(linesSet)
 
   
 }
