@@ -182,6 +182,7 @@ function drawNetwork(data) {
     	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.7)
     	newC.hover(function() {
 			linesSet.hide()
+			KJFFlines[i].show()
 		},
 		function () {
 	    	linesSet.show()
