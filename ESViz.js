@@ -118,8 +118,8 @@ function drawNetwork(data) {
 
 
     	if(currentProgram != "KPrize") {
-    		radiix = (scalar/1.7)*Math.cos(2*Math.PI/qMax*q)
-    		radiiy = (scalar/1.7)*Math.sin(2*Math.PI/qMax*q)
+    		radiix = (scalar/1.3)*Math.cos(2*Math.PI/qMax*q)
+    		radiiy = (scalar/1.3)*Math.sin(2*Math.PI/qMax*q)
     		xPos += radiix
     		yPos += radiiy  	
     	}
