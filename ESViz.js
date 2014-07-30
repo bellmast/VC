@@ -172,7 +172,7 @@ function drawNetwork(data) {
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.7)
     }
-    linesSet.toBack()
+    linesSet.toBack
 
   
 }
