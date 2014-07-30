@@ -143,8 +143,8 @@ function drawNetwork(data) {
 	    			yTarget = scholarDict[cName][1]
 	    			newL = paper.path("M"+xPos+" "+yPos+"L"+xTarget+" "+yTarget).attr({"stroke-width": ".2"})
 	    			linesSet.push(newL)  			
-	    			what.push(xPos)
-	   
+	    			what.push(yPos)
+
 	    		if(currentProgram == "KJFF" && currentYear == 2009) {
 	    			KJFFlines[marker].push(newL)
 	    		}
