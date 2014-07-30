@@ -64,13 +64,14 @@ function drawNetwork(data) {
     for(i=0; i < data.length; i++) {
     	if(data[i][1] != '') {
     		
-    		newDict.push(data[i])
+    		
     		
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
     		KJFFcounts[currentYear - earliestYear] += 1
     		areWeHere = "yesssss"
     		areWeHeres += 1
+    		newDict.push(KJFFcounts)
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		KDFPcounts[currentYear - earliestYear] += 1
@@ -78,6 +79,7 @@ function drawNetwork(data) {
 
     }
     KJFFcountsMobile = KJFFcounts
+    stationary = KJFFcounts
     KDFPcountsMobile = KDFPcounts
 
     for(i=0; i < data.length; i++) {
