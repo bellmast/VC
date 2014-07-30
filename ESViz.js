@@ -206,7 +206,7 @@ function drawNetwork(data) {
 	  	}
 		);
     }
-    textSet.push(paper.text(50, KJFFheight, "KJFF")).hover(function() {
+    KJFFtext = paper.text(50, KJFFheight, "KJFF").hover(function() {
 			linesSet.hide()
 			KJFFlineSet.show()
 		},
@@ -214,7 +214,8 @@ function drawNetwork(data) {
 	    	linesSet.hide()
 	  	}
 		);
-	textSet.push(paper.text(50, KPrizeheight, "KPrize")).hover(function() {
+    textSet.push(KJFFtext)
+	KPrizetext = paper.text(50, KPrizeheight, "KPrize").hover(function() {
 			linesSet.hide()
 			KPrizelineSet.show()
 		},
@@ -222,7 +223,8 @@ function drawNetwork(data) {
 	    	linesSet.hide()
 	  	}
 		);
-	textSet.push(paper.text(50, KDFPheight, "KDFP")).hover(function() {
+	textSet.push(KPrizetext)
+	KDFPtext = paper.text(50, KDFPheight, "KDFP").hover(function() {
 			linesSet.hide()
 			KDFPlineSet.show()
 		},
@@ -230,6 +232,7 @@ function drawNetwork(data) {
 	    	linesSet.hide()
 	  	}
 		);
+	textSet.push(KDFPtext)
 	linesSet.hide()
   
 }
