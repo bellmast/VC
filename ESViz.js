@@ -77,8 +77,7 @@ function drawNetwork(data) {
     	}
 
     }
-    newDict = []
-    newDict2 = []
+
     for(i=0; i < data.length; i++) {
     	
     	currentName = data[i][0]
@@ -107,10 +106,6 @@ function drawNetwork(data) {
     		q = qMax - KDFPcountsMobile[marker]
     		KDFPcountsMobile[marker] -= 1
     		KDFPscaleTracker[marker] += scale
-    		if(currentYear == 2007) {
-    			newDict.push(scale)
-    			newDict2.push(currentName)
-    		}
     	}
     	
     	xPos = yearXcoords[marker]
@@ -118,8 +113,8 @@ function drawNetwork(data) {
 
 
     	if(currentProgram != "KPrize") {
-    		radiix = 3*Math.cos(2*Math.PI/qMax*q)
-    		radiiy = 3*Math.sin(2*Math.PI/qMax*q)
+    		radiix = 7*Math.cos(2*Math.PI/qMax*q)
+    		radiiy = 7*Math.sin(2*Math.PI/qMax*q)
     		xPos += radiix
     		yPos += radiiy  	
     	}
