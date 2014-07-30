@@ -7,6 +7,7 @@ var canvasWidth = 1370;
 var canvasHeight= 700;
 //beforehand, please organize data by year, then by impact score
 //it will also save computing power to pre-calculate 
+var heres = 0
 
 $(document).ready(function () {runProgram()});
 
@@ -146,6 +147,8 @@ function drawNetwork(data) {
 	    			
 	    		if(currentProgram == "KJFF" && currentYear == 2009) {
 	    			KJFFlines[marker].push(newL)
+	    			here = "yes"
+	    			heres +=1
 	    		}	
     		// 	} else {
     		// 		baseYear = Math.min(currentYear, targetYear)
