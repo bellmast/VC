@@ -210,16 +210,6 @@ function drawNetwork(data) {
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5)
     }
-    for(i=0; i < yearAxis; i++) {
-    	KJFFcircles[i].hover(function() {
-			linesSet.hide()
-			KJFFlines[i].show()
-		},
-		function () {
-	    	linesSet.show()
-	  	}
-		);
-    }
     KJFFtext = paper.text(50, KJFFheight, "KJFF").hover(function() {
 			linesSet.hide()
 			KJFFlineSet.show()
