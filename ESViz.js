@@ -134,6 +134,7 @@ function drawNetwork(data) {
     	}
 
     	scholarText = paper.text(xPos+scale, yPos+scale, currentName)
+    	scholarText.hide()
     	scholarTextSet.push(scholarText)
 
     	scholarCircle = paper.circle(xPos, yPos, scale).attr({"fill":"#FFFFFF", "fill-opacity":0}).hover(function() {
