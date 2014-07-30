@@ -149,7 +149,7 @@ function drawNetwork(data) {
 	    			here = "yes"
 	    			heres +=1
 	    		}
-	    		if(targetProgram == "KPrize" or currentProgram == "KPrize") {
+	    		if(targetProgram == "KPrize" || currentProgram == "KPrize") {
 	    			KPrizelineSet.push(newL)
 	    		}	
     		// 	} else {
