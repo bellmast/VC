@@ -155,7 +155,7 @@ function drawNetwork(data) {
 	    		if(targetProgram == "KJFF" || currentProgram == "KJFF") {
 	    			KJFFlineSet.push(newL)
 	    		}
-	    		if(targetProgram == "KJFF" || currentProgram == "KJFF") {
+	    		if(targetProgram == "KDFP" || currentProgram == "KDFP") {
 	    			KDFPlineSet.push(newL)
 	    		}		
     		// 	} else {
