@@ -49,7 +49,7 @@ function drawNetwork(data) {
         KJFFscaleTracker.push(0)
         KDFPcounts.push(0)
         KDFPscaleTracker.push(0)
-        what.push(1)
+        what.push(0)
     }
 
     ////
