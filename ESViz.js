@@ -23,9 +23,9 @@ function drawNetwork(data) {
 	scholarSet = paper.set()
 	linesSet = paper.set()
 	KJFFlines = []
-	KJFFlinesSet2009 = paper.set()
-	KJFFlinesSet2010 = paper.set()
 	KPrizelineSet = paper.set()
+	KJFFlineSet = paper.set()
+	KDFPlineSet = paper.set()
 
 	KJFFheight = canvasHeight/2
 	KPrizeheight = KJFFheight-((1/2)*KJFFheight)
@@ -151,7 +151,13 @@ function drawNetwork(data) {
 	    		}
 	    		if(targetProgram == "KPrize" || currentProgram == "KPrize") {
 	    			KPrizelineSet.push(newL)
-	    		}	
+	    		}
+	    		if(targetProgram == "KJFF" || currentProgram == "KJFF") {
+	    			KJFFlineSet.push(newL)
+	    		}
+	    		if(targetProgram == "KJFF" || currentProgram == "KJFF") {
+	    			KDFPlineSet.push(newL)
+	    		}		
     		// 	} else {
     		// 		baseYear = Math.min(currentYear, targetYear)
     		// 		if (baseYear == currentYear) {
@@ -206,11 +212,11 @@ function drawNetwork(data) {
 			KPrizelineSet.show()
 		},
 		function () {
-	    	linesSet.show()
+	    	linesSet.hide()
 	  	}
 		);
 	textSet.push(paper.text(50, KDFPheight, "KDFP"))
-
+	lineSet.hide()
   
 }
 
