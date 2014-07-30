@@ -68,11 +68,10 @@ function drawNetwork(data) {
     		
     	} else if(data[i][2] != '') {
     		currentYear = data[i][2]
-    		KJFFcounts[currentYear - earliestYear] += 1
-    		areWeHere = "yesssss"
-    		areWeHeres += 1
+    		stationary = currentYear - earliestYear
+    		KJFFcounts[stationary] += 1
     		newDict.push(KJFFcounts)
-    		newDict2.push(currentYear-earliestYear)
+    		newDict2.push(stationary)
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		KDFPcounts[currentYear - earliestYear] += 1
@@ -80,7 +79,7 @@ function drawNetwork(data) {
 
     }
     KJFFcountsMobile = KJFFcounts
-    stationary = KJFFcounts
+    
     KDFPcountsMobile = KDFPcounts
 
     for(i=0; i < data.length; i++) {
