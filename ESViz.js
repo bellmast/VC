@@ -188,7 +188,7 @@ function drawNetwork(data) {
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.7)
     }
-    for(i=0; i < yearAxis+1; i++) {
+    for(i=0; i < yearAxis; i++) {
     	KJFFcircles[i].hover(function() {
 			linesSet.hide()
 			KJFFlines[i].show()
