@@ -273,7 +273,7 @@ function drawNetwork(data) {
     		KDFPcarnegie2[i] += .000001
     	}
     	if(KDFPcarnegiex[i] == 0){
-    		KJDPcarnegiex[i] += .000001
+    		KDFPcarnegiex[i] += .000001
     	}
     	if(i==11){
     		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, [KDFPcarnegie1[i], KDFPcarnegie2[i], KDFPcarnegiex[i]], {legend:["Research I", "Research II", "Other"]})
