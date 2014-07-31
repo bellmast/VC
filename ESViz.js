@@ -244,15 +244,7 @@ function drawNetwork(data) {
     for(i=0; i < yearAxis+1; i++) {
     	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5).attr({"fill":"#FFFFFF", "fill-opacity":0})
     	KJFFcircles.push(newC)
-    	if(KJFFcarnegie1[i] == 0){
-    		KJFFcarnegie1[i] += .000001
-    	}
-    	if(KJFFcarnegie2[i] == 0){
-    		KJFFcarnegie2[i] += .000001
-    	}
-    	if(KJFFcarnegiex[i] == 0){
-    		KJFFcarnegiex[i] += .000001
-    	}
+
     	if(i==11){
     		pie = paper.piechart(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5, [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]], {legend:["Research I", "Research II", "Other"]})
     	} else {
@@ -266,15 +258,7 @@ function drawNetwork(data) {
     	// 	paper.path("M"+yearXcoords[i]+" "+KJFFheight+"L"++" "+yTarget).attr({"stroke-width": ".2"})
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5)
-    	if(KDFPcarnegie1[i] == 0){
-    		KDFPcarnegie1[i] += .000001
-    	}
-    	if(KDFPcarnegie2[i] == 0){
-    		KDFPcarnegie2[i] += .000001
-    	}
-    	if(KDFPcarnegiex[i] == 0){
-    		KDFPcarnegiex[i] += .000001
-    	}
+
     	if(i==11){
     		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, [KDFPcarnegie1[i], KDFPcarnegie2[i], KDFPcarnegiex[i]], {legend:["Research I", "Research II", "Other"]})
     	} else {
