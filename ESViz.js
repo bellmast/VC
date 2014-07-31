@@ -16,7 +16,7 @@ function removal(arr, val) {
     indices = []
     while (i--) {
         if (arr[i] === val) {
-        	indices.push(arr.indexOf(val))
+        	indices.push(i)
         }
     }
     var i = arr.length;
