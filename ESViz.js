@@ -12,9 +12,9 @@ what = 0
 $(document).ready(function () {runProgram()});
 
 function removal(arr, val) {
-    var i = arr.length;
+    
     indices = []
-    while (i--) {
+    for (i = 0; i < arr.length; i++) {
         if (arr[i] === val) {
         	indices.push(i)
         }
