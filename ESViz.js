@@ -263,8 +263,9 @@ function drawNetwork(data) {
     	newLen = indices.length
     	console.log(indices)
     	for(u=0;u<newLen;u++){
-
+    		cArray.splice(indices[u],1)
     	}
+    	console.log(cArray)
     	if(i==11){
     		pie = paper.piechart(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5, [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]], {legend:["Research I", "Research II", "Other"]})
     	} else {
