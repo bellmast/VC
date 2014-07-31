@@ -120,9 +120,9 @@ function drawNetwork(data) {
     		KJFFcountsMobile[marker] -= 1
     		scalar = KJFFscaleTracker[marker]
     		if(currentCarnegie == "1") {
-	    		KJFFcarnegie1 += 1
+	    		KJFFcarnegie1[marker] += 1
 	    	} else if (currentCarnegie == "2") {
-	    		KJFFcarnegie2 += 1
+	    		KJFFcarnegie2[marker] += 1
 	    	}
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
@@ -134,9 +134,9 @@ function drawNetwork(data) {
     		KDFPcountsMobile[marker] -= 1
     		scalar = KDFPscaleTracker[marker]
     		if(currentCarnegie == "1") {
-	    		KDFPcarnegie1 += 1
+	    		KDFPcarnegie1[marker] += 1
 	    	} else if (currentCarnegie == "2") {
-	    		KDFPcarnegie2 += 1
+	    		KDFPcarnegie2[marker] += 1
 	    	}
     	}
     	
