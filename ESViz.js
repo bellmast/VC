@@ -260,7 +260,7 @@ function drawNetwork(data) {
     	vArray = [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]]
     	cArray = ["blue", "green", "brown"]
     	removal(vArray, 0)
-    	newLen = indices.length()
+    	newLen = indices.length
     	console.log(indices)
     	for(u=0;u<newLen;u++){
 
