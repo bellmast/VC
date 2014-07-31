@@ -287,9 +287,16 @@ function drawNetwork(data) {
 	  	}
 		);
     textSet.push(KJFFtext2)
+    KJFFpieCheck = "no"
     KJFFpieText = paper.text(50, KJFFheight+20, "Carnegie").hover(function() {
 			linesSet.hide()
-			KJFFpieSet.show()
+			if(KJFFpieCheck == "yes") {
+				KJFFpieSet.hide()
+				KJFFpieCheck = "no"
+			} else if (KJFFpieCheck == "no") {
+				KJFFpieSet.show()
+				KJFFpieCheck = "yes"
+			}
 		},
 		function () {
 
@@ -340,9 +347,17 @@ function drawNetwork(data) {
 	  	}
 		);
 	textSet.push(KDFPtext2)
+	KDFPpieCheck = "no"
 	KDFPpieText = paper.text(50, KDFPheight+20, "Carnegie").hover(function() {
 			linesSet.hide()
-			KDFPpieSet.show()
+			if(KDFPpieCheck == "yes") {
+				KDFPpieSet.hide()
+				KDFPpieCheck = "no"
+			} else if (KDFPpieCheck == "no") {
+				KDFPpieSet.show()
+				KDFPpieCheck = "yes"
+			}
+			
 		},
 		function () {
 	    	
@@ -357,6 +372,8 @@ function drawNetwork(data) {
 		);
 	hideAllText = paper.text(50, 60, "hide all").hover(function() {
 			linesSet.hide()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 		}
 		);
 	textSet.push(showAllText, hideAllText)
