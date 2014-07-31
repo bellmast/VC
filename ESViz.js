@@ -258,7 +258,7 @@ function drawNetwork(data) {
     	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5).attr({"fill":"#FFFFFF", "fill-opacity":0})
     	KJFFcircles.push(newC)
     	vArray = [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]]
-    	cArray = ["blue", "green", "brown"]
+    	cArray = ["#2F69BF", "#A2BF2F", "#BF5A2F"]
     	removal(vArray, 0)
     	newLen = indices.length
     	for(u=0;u<newLen;u++){
@@ -280,7 +280,7 @@ function drawNetwork(data) {
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5)
 
     	vArray2 = [KDFPcarnegie1[i], KDFPcarnegie2[i], KDFPcarnegiex[i]]
-    	cArray = ["blue", "green", "brown"]
+    	cArray = ["#2F69BF", "#A2BF2F", "#BF5A2F"]
     	removal(vArray2, 0)
     	newLen = indices.length
     	for(u=0;u<newLen;u++){
