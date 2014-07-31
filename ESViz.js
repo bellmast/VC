@@ -261,11 +261,10 @@ function drawNetwork(data) {
     	cArray = ["blue", "green", "brown"]
     	removal(vArray, 0)
     	newLen = indices.length
-    	console.log(indices)
     	for(u=0;u<newLen;u++){
     		cArray.splice(indices[u],1)
     	}
-    	console.log(cArray)
+    	
     	if(i==11){
     		pie = paper.piechart(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5, [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]], {legend:["Research I", "Research II", "Other"]})
     	} else {
@@ -280,10 +279,18 @@ function drawNetwork(data) {
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5)
 
+    	vArray2 = [KDFPcarnegie1[i], KDFPcarnegie2[i], KDFPcarnegiex[i]]
+    	cArray = ["blue", "green", "brown"]
+    	removal(vArray2, 0)
+    	newLen = indices.length
+    	for(u=0;u<newLen;u++){
+    		cArray.splice(indices[u],1)
+    	}
+
     	if(i==11){
-    		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, [KDFPcarnegie1[i], KDFPcarnegie2[i], KDFPcarnegiex[i]], {legend:["Research I", "Research II", "Other"]})
+    		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, vArray2, {colors: cArray, legend:["Research I", "Research II", "Other"]})
     	} else {
-    		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, [KDFPcarnegie1[i], KDFPcarnegie2[i], KDFPcarnegiex[i]])
+    		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, vArray2, {colors: cArray})
     	}
     	
     	KDFPpieSet.push(pie2)
