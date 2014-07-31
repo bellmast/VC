@@ -288,7 +288,7 @@ function drawNetwork(data) {
     	}
 
     	if(i==11){
-    		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, vArray2, {colors: cArray, legend:["Research I", "Research II", "Other"]})
+    		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, vArray2, {legend:["Research I", "Research II", "Other"]})
     	} else {
     		pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, vArray2, {colors: cArray})
     	}
