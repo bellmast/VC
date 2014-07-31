@@ -270,7 +270,7 @@ function drawNetwork(data) {
     		KDFPcarnegie1[i] += .000001
     	}
     	if(KDFPcarnegie2[i] == 0){
-    		KDFPcarnegie2[i] += .000001
+    		KDFPcarnegie2[i] += 1
     	}
     	if(KDFPcarnegiex[i] == 0){
     		KDFPcarnegiex[i] += .000001
