@@ -146,8 +146,9 @@ function drawNetwork(data) {
 		);
 		scholarSet.push(scholarCircle)
     	
+    	currentCarnegie = data[i][5]
 
-    	for(u=5; u < dataRowLength; u++) {
+    	for(u=6; u < dataRowLength; u++) {
     		cName = data[i][u]
     		if (cName == '') {
     			break
