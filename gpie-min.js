@@ -1,9 +1,46 @@
-/*
- * g.Raphael 0.5 - Charting library, based on Raphaël
+/*!
+ * g.Raphael 0.51 - Charting library, based on Raphaël
  *
- * Copyright (c) 2009 Dmitry Baranovskiy (http://g.raphaeljs.com)
+ * Copyright (c) 2009-2012 Dmitry Baranovskiy (http://g.raphaeljs.com)
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
+
+ /*
+ * piechart method on paper
+ */
+/*\
+ * Paper.piechart
+ [ method ]
+ **
+ * Creates a pie chart
+ **
+ > Parameters
+ **
+ - cx (number) x coordinate of the chart
+ - cy (number) y coordinate of the chart
+ - r (integer) radius of the chart
+ - values (array) values used to plot
+ - opts (object) options for the chart
+ o {
+ o minPercent (number) minimal percent threshold which will have a slice rendered. Sliced corresponding to data points below this threshold will be collapsed into 1 additional slice. [default `1`]
+ o maxSlices (number) a threshold for how many slices should be rendered before collapsing all remaining slices into 1 additional slice (to focus on most important data points). [default `100`]
+ o stroke (string) color of the circle stroke in HTML color format [default `"#FFF"`]
+ o strokewidth (integer) width of the chart stroke [default `1`]
+ o init (boolean) whether or not to show animation when the chart is ready [default `false`]
+ o colors (array) colors be used to plot the chart
+ o href (array) urls to to set up clicks on chart slices
+ o legend (array) array containing strings that will be used in a legend. Other label options work if legend is defined.
+ o legendcolor (string) color of text in legend [default `"#000"`]
+ o legendothers (string) text that will be used in legend to describe options that are collapsed into 1 slice, because they are too small to render [default `"Others"`]
+ o legendmark (string) symbol used as a bullet point in legend that has the same colour as the chart slice [default `"circle"`]
+ o legendpos (string) position of the legend on the chart [default `"east"`]. Other options are `"north"`, `"south"`, `"west"`
+ o }
+ **
+ = (object) path element of the popup
+ > Usage
+ | r.piechart(cx, cy, r, values, opts)
+ \*/
+ 
 (function () {
 
     function Piechart(paper, cx, cy, r, values, opts) {
@@ -16,15 +53,12 @@
             series = paper.set(),
             order = [],
             len = values.length,
-            //taken from https://github.com/cederlof/g.raphael/commit/f532cd5d4233f8a4c02d07adcd39da1e5de81198
-            angle = opts.startFromFixedAngle || 0,
+            angle = 0,
             total = 0,
             others = 0,
-            cut = 9,
-            defcut = true;
-
-        //taken from https://github.com/gorillatron/g.raphael/commit/9627e1ff8bb3f9ebfa14efe70ddc0d3d481d9285
-        if(typeof opts.defcut != 'undefined') defcut = opts.defcut;
+            cut = opts.maxSlices || 100,
+            minPercent = parseFloat(opts.minPercent) || 1,
+            defcut = Boolean( minPercent );
 
         function sector(cx, cy, r, startAngle, endAngle, fill) {
             var rad = Math.PI / 180,
@@ -48,11 +82,11 @@
         chart.covers = covers;
 
         if (len == 1) {
-            //use color from options if available
             series.push(paper.circle(cx, cy, r).attr({ fill: opts.colors && opts.colors[0] || chartinst.colors[0], stroke: opts.stroke || "#fff", "stroke-width": opts.strokewidth == null ? 1 : opts.strokewidth }));
             covers.push(paper.circle(cx, cy, r).attr(chartinst.shim));
             total = values[0];
             values[0] = { value: values[0], order: 0, valueOf: function () { return this.value; } };
+            opts.href && opts.href[0] && covers[0].attr({ href: opts.href[0] });
             series[0].middle = {x: cx, y: cy};
             series[0].mangle = 180;
         } else {
@@ -60,13 +94,14 @@
                 total += values[i];
                 values[i] = { value: values[i], order: i, valueOf: function () { return this.value; } };
             }
-
+            
+            //values are sorted numerically
             values.sort(function (a, b) {
                 return b.value - a.value;
             });
-
+            
             for (i = 0; i < len; i++) {
-                if (defcut && values[i] * 360 / total <= 1.5) {
+                if (defcut && values[i] * 100 / total < minPercent) {
                     cut = i;
                     defcut = false;
                 }
@@ -83,68 +118,33 @@
             others && values.splice(len) && (values[cut].others = true);
 
             for (i = 0; i < len; i++) {
-              	var mangle;
-            	if (opts.startFromFixedAngle)
-	        	mangle = angle + 360 * values[i] / total / 2;
-            	else {
-                	mangle = angle - 360 * values[i] / total / 2;
-                	if (!i) {
-                   		angle = 90 - mangle;
-                    		mangle = angle - 360 * values[i] / total / 2;
-                	}
+                var mangle = angle - 360 * values[i] / total / 2;
+
+                if (!i) {
+                    angle = 90 - mangle;
+                    mangle = angle - 360 * values[i] / total / 2;
                 }
 
                 if (opts.init) {
                     var ipath = sector(cx, cy, 1, angle, angle - 360 * values[i] / total).join(",");
                 }
 
-                var p, path = sector(cx, cy, r, angle, angle -= 360 * values[i] / total);
-                
-                //edits below taken from https://github.com/blackwatertepes/g.raphael/commit/93d9728732dfd417e609809b8df67f8e2645bc93
-                //and from https://github.com/gorillatron/g.raphael/commit/9627e1ff8bb3f9ebfa14efe70ddc0d3d481d9285
-                if (values[i].value < total) {
-                    var strokewidth = 0;
-                    //If sector value < 0, remove stroke to hide sector
-                    if (values[i].value > 0) {
-                        strokewidth = (opts.strokewidth == null ? 1 : opts.strokewidth);
-                    }
-                    p = paper.path(opts.init ? ipath : path).attr({ fill: opts.colors && opts.colors[values[i].order] || chartinst.colors[i] || "#666", stroke: opts.stroke || "#fff", "stroke-width": strokewidth, "stroke-linejoin": "round" });
-                   
-                    p.value = values[i];
-                    p.middle = path.middle;
-                    p.mangle = mangle;
-                    sectors.push(p);
-                    series.push(p);
-                    opts.init && p.animate({ path: path.join(",") }, (+opts.init - 1) || 1000, ">");
-                    
-                } else {
-                    //If the sector value >= total, render circle, not path
-                    p = paper.circle(cx, cy, r).attr({ fill: opts.colors && opts.colors[values[i].order] || chartinst.colors[0], stroke: opts.stroke || "#fff", "stroke-width": opts.strokewidth == null ? 1 : opts.strokewidth })
-                    
-                    //based on if (len == 1) { from line 49 I applied the same here - creating the p2 that later on will
-                    //be pushed into covers
-                    
-                    p2 = paper.circle(cx, cy, r).attr(chartinst.shim);
-                    
-                    p.customP2 = p2;
-                    p.value = values[i];
-                    p.middle = {x: cx, y: cy};
-                    p.mangle = 180;
-                    sectors.push(p);
-                    series.push(p);
-                    opts.init && p.animate({ path: path.join(",") }, (+opts.init - 1) || 1000, ">");
-                }
+                var path = sector(cx, cy, r, angle, angle -= 360 * values[i] / total);
+                var j = (opts.matchColors && opts.matchColors == true) ? values[i].order : i;
+                var p = paper.path(opts.init ? ipath : path).attr({ fill: opts.colors && opts.colors[j] || chartinst.colors[j] || "#666", stroke: opts.stroke || "#fff", "stroke-width": (opts.strokewidth == null ? 1 : opts.strokewidth), "stroke-linejoin": "round" });
+
+                p.value = values[i];
+                p.middle = path.middle;
+                p.mangle = mangle;
+                sectors.push(p);
+                series.push(p);
+                opts.init && p.animate({ path: path.join(",") }, (+opts.init - 1) || 1000, ">");
             }
 
             for (i = 0; i < len; i++) {
-            	if(sectors[i].customP2 === undefined){
-                	p = paper.path(sectors[i].attr("path")).attr(chartinst.shim);
-            	}
-            	else{
-            		p = sectors[i].customP2;
-            	}
-		opts.href && opts.href[i] && p.attr({ href: opts.href[i] });
-		p.attr = function () {};
+                p = paper.path(sectors[i].attr("path")).attr(chartinst.shim);
+                opts.href && opts.href[i] && p.attr({ href: opts.href[i] });
+                p.attr = function () {};
                 covers.push(p);
                 series.push(p);
             }
@@ -170,33 +170,11 @@
                         total: total,
                         label: that.labels && that.labels[j]
                     };
-                    
-                //taken from https://github.com/dakotareier/g.raphael/blob/3f7517b049c8945ab378072c739bb958f2150b3e/g.pie.js   
-            	// Hover modes:
-        	// 0 : Callbacks NOT triggered on hover
-                // 1 : Callbacks triggered on hover over SECTOR ONLY
-                // 2 : Callbacks triggered on hover over BOTH LABEL AND SECTOR
-                // 3 : Callbacks triggered on hover over LABEL ONLY
-                if (typeof(opts.hovermode) === 'undefined') 
-                	opts.hovermode = 1; // for backwards compatibility
-                
-                if (opts.hovermode && opts.hovermode < 3) {
                     cover.mouseover(function () {
                         fin.call(o);
                     }).mouseout(function () {
                         fout.call(o);
                     });
-                }
-                    
-                if (opts.hovermode && opts.hovermode > 1) {
-                    that.labels[j].mouseover(function () {
-                        fin.call(o);
-                    }).mouseout(function () {
-                        fout.call(o);
-                    });
-                }
-			                   
-                   
                 })(series[i], covers[i], i);
             }
             return this;
@@ -276,18 +254,8 @@
                 values[i].others && (labels[j] = otherslabel || "Others");
                 labels[j] = chartinst.labelise(labels[j], values[i], total);
                 chart.labels.push(paper.set());
-                
-                //used when a tolltip used (and its source is the legend data) and there 
-                //is not enough place to display the legend
-                if(opts.show_legend === false){
-                    chart.labels[i].push(paper[mark](x + 5, h, 5).attr({ fill: clr, stroke: "none" ,r:0}));
-    	            chart.labels[i].push(txt = paper.text(x + 20, h, labels[j] || values[j]).attr(chartinst.txtattr).attr({ fill: opts.legendcolor || "#000", "text-anchor": "start","font-size" : 0}));
-		}
-                else{
-                    //reduced the area between the legend and the little circles
-                    chart.labels[i].push(paper[mark](x - 7, h, 5).attr({ fill: clr, stroke: "none" }));
-		    chart.labels[i].push(txt = paper.text(x + 3, h, labels[j] || values[j]).attr(chartinst.txtattr).attr({ fill: opts.legendcolor || "#000", "text-anchor": "start"}));
-		}
+                chart.labels[i].push(paper[mark](x + 5, h, 5).attr({ fill: clr, stroke: "none" }));
+                chart.labels[i].push(txt = paper.text(x + 20, h, labels[j] || values[j]).attr(chartinst.txtattr).attr({ fill: opts.legendcolor || "#000", "text-anchor": "start"}));
                 covers[i].label = chart.labels[i];
                 h += txt.getBBox().height * 1.2;
             }
