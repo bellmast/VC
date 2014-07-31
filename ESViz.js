@@ -42,9 +42,13 @@ function drawNetwork(data) {
 	KJFFcounts = []
 	KJFFcountsMobile = []
 	KJFFscaleTracker = []
+	KJFFcarnegie1 = []
+	KJFFcarnegie2 = []
 	KDFPcounts = []
 	KDFPcountsMobile = []
 	KDFPscaleTracker = []
+	KDFPcarnegie1 = []
+	KDFPcarnegie2 = []
 
 	years = []
 
@@ -56,9 +60,13 @@ function drawNetwork(data) {
         KJFFcounts.push(0)
         KJFFcountsMobile.push(0)
         KJFFscaleTracker.push(0)
+        KJFFcarnegie1.push()
+        KJFFcarnegie2.push()
         KDFPcounts.push(0)
         KDFPcountsMobile.push(0)
         KDFPscaleTracker.push(0)
+        KDFPcarnegie1.push()
+        KDFPcarnegie2.push()
         KJFFlines.push(paper.set())
     }
 
@@ -94,6 +102,7 @@ function drawNetwork(data) {
     for(i=0; i < data.length; i++) {
     	
     	currentName = data[i][0]
+    	currentCarnegie = data[i][5]
     	scale = parseFloat(data[i][4])
 
     	if(data[i][1] != '') {
@@ -110,6 +119,11 @@ function drawNetwork(data) {
     		q = qMax - KJFFcountsMobile[marker]
     		KJFFcountsMobile[marker] -= 1
     		scalar = KJFFscaleTracker[marker]
+    		if(currentCarnegie == "1") {
+	    		KJFFcarnegie1 += 1
+	    	} else if (currentCarnegie == "2") {
+	    		KJFFcarnegie2 += 1
+	    	}
     	} else if(data[i][3] != '') {
     		currentYear = data[i][3]
     		currentProgram = "KDFP"
@@ -119,7 +133,11 @@ function drawNetwork(data) {
     		q = qMax - KDFPcountsMobile[marker]
     		KDFPcountsMobile[marker] -= 1
     		scalar = KDFPscaleTracker[marker]
-
+    		if(currentCarnegie == "1") {
+	    		KDFPcarnegie1 += 1
+	    	} else if (currentCarnegie == "2") {
+	    		KDFPcarnegie2 += 1
+	    	}
     	}
     	
     	xPos = yearXcoords[marker]
@@ -146,7 +164,9 @@ function drawNetwork(data) {
 		);
 		scholarSet.push(scholarCircle)
     	
-    	currentCarnegie = data[i][5]
+    	
+
+    	
 
     	for(u=6; u < dataRowLength; u++) {
     		cName = data[i][u]
@@ -211,18 +231,26 @@ function drawNetwork(data) {
 
     }
     KJFFcircles = []
+    KJFFpieSet = paper.set()
+    KDFPpieSet = paper.set()
     for(i=0; i < yearAxis+1; i++) {
     	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5).attr({"fill":"#FFFFFF", "fill-opacity":0})
     	KJFFcircles.push(newC)
+    	pie = paper.piechart(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5, [KJFFcarnegie1[i], KJFFcarnegie2[i]], {legend: ["Carnegie 1", "Carnegie 2"]})
+    	KJFFpieSet.push(pie)
     	// q=0
     	// for(u=years[i]; u < latestYear+1; u++) {
     	// 	cWidth = eCircleConnects[years[i]+"KJFF"+u+"KJFF"]
     	// 	paper.path("M"+yearXcoords[i]+" "+KJFFheight+"L"++" "+yTarget).attr({"stroke-width": ".2"})
     	// }
     	paper.circle(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5)
+    	pie2 = paper.piechart(yearXcoords[i], KDFPheight, KDFPscaleTracker[i]*1.5, [KDFPcarnegie1[i], KDFPcarnegie2[i]], {legend: ["Carnegie 1", "Carnegie 2"]})
+    	KDFPpieSet.push(pie2)
     }
     KJFFtext = paper.text(50, KJFFheight, "KJFF").hover(function() {
 			linesSet.hide()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 			KJFFlineSet.show()
 		},
 		function () {
@@ -232,6 +260,8 @@ function drawNetwork(data) {
     textSet.push(KJFFtext)
     KJFFtext2 = paper.text(50, KJFFheight+10, "(within)").hover(function() {
 			linesSet.hide()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 			KJFFlineSet2.show()
 		},
 		function () {
@@ -239,8 +269,19 @@ function drawNetwork(data) {
 	  	}
 		);
     textSet.push(KJFFtext2)
+    KJFFpieText = paper.text(50, KJFFheight+20, "Carnegie pie charts").hover(function() {
+			linesSet.hide()
+			KJFFpieSet.show()
+		},
+		function () {
+	    	KJFFpieSet.hide()
+	  	}
+		);
+    textSet.push(KJFFpieText)
 	KPrizetext = paper.text(50, KPrizeheight, "KPrize").hover(function() {
 			linesSet.hide()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 			KPrizelineSet.show()
 		},
 		function () {
@@ -250,6 +291,8 @@ function drawNetwork(data) {
 	textSet.push(KPrizetext)
 	KPrizetext2 = paper.text(50, KPrizeheight+10, "(within)").hover(function() {
 			linesSet.hide()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 			KPrizelineSet2.show()
 		},
 		function () {
@@ -259,6 +302,8 @@ function drawNetwork(data) {
 	textSet.push(KPrizetext2)
 	KDFPtext = paper.text(50, KDFPheight, "KDFP").hover(function() {
 			linesSet.hide()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 			KDFPlineSet.show()
 		},
 		function () {
@@ -268,6 +313,8 @@ function drawNetwork(data) {
 	textSet.push(KDFPtext)
 	KDFPtext2 = paper.text(50, KDFPheight+10, "(within)").hover(function() {
 			linesSet.hide()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 			KDFPlineSet2.show()
 		},
 		function () {
@@ -275,8 +322,19 @@ function drawNetwork(data) {
 	  	}
 		);
 	textSet.push(KDFPtext2)
+	KDFPpieText = paper.text(50, KDFPheight+20, "Carnegie pie charts").hover(function() {
+			linesSet.hide()
+			KDFPpieSet.show()
+		},
+		function () {
+	    	
+	  	}
+		);
+    textSet.push(KDFPpieText)
 	showAllText = paper.text(50, 50, "show all").hover(function() {
 			linesSet.show()
+			KDFPpieSet.hide()
+			KJFFpieSet.hide()
 		}
 		);
 	hideAllText = paper.text(50, 60, "hide all").hover(function() {
