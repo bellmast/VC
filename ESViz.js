@@ -16,12 +16,7 @@ function removal(arr, val) {
     indices = []
     for (i = 0; i < arr.length; i++) {
         if (arr[i] === val) {
-        	indices.push(i)
-        }
-    }
-    var i = arr.length;
-    while (i--) {
-        if (arr[i] === val) {
+        	indices.push(i);
         	arr.splice(i, 1);
         }
     }
@@ -262,12 +257,18 @@ function drawNetwork(data) {
     	newC = paper.circle(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5).attr({"fill":"#FFFFFF", "fill-opacity":0})
     	KJFFcircles.push(newC)
     	vArray = [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]]
+    	cArray = [blue, green, brown]
     	removal(vArray, 0)
-    	console.log(indices)
+    	newLen = indices.length()
+    	for(u=0;u<newLen;u++){
+    		cArray.splice(indices[0], 1)
+    	}
+    	console.log(vArray)
+    	console.log(cArraY)
     	if(i==11){
     		pie = paper.piechart(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5, [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]], {legend:["Research I", "Research II", "Other"]})
     	} else {
-    		pie = paper.piechart(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5, [KJFFcarnegie1[i], KJFFcarnegie2[i], KJFFcarnegiex[i]])
+    		pie = paper.piechart(yearXcoords[i], KJFFheight, KJFFscaleTracker[i]*1.5, vArray)
     	}
     	
     	KJFFpieSet.push(pie)
