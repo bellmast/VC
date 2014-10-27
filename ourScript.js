@@ -30,15 +30,15 @@ function drawList(data) {
         continue;
       }
       widgetThickness = 0
-      textStream = paper.text(30, streamY+(widgetThickness*10), stream).attr({"font-size":14, "text-anchor":"start"})
+      textStream = paper.text(30, streamY+(widgetThickness*10), stream).attr({"font-size":16, "text-anchor":"start"})
       sBbox = textStream.getBBox()
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        paper.path("M"+(sBbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength})
+        paper.path("M"+(sBbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
       }
       textStream.remove()
-      textStream = paper.text(30, streamY+5+(widgetThickness*5), stream).attr({"font-size":14, "text-anchor":"start"})
+      textStream = paper.text(30, streamY+5+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
       
       streamY += 20+(widgetThickness*10)
     }
