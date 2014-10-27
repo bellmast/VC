@@ -20,6 +20,6 @@ function drawList(data) {
     if (!data.hasOwnProperty(question)) {
         continue;
     }
-    paper.text(canvasWidth/2, canvasHeight/2, question)
+    paper.text(10, 10, question).attr({"font-size":16})
   }
 }
