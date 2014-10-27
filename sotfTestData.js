@@ -1,4 +1,4 @@
-{
+[
   "How does venture capital affect companies?": {
     "Positive Effects": {
       "VCs actively help their portfolio companies professionalize earlier": [
@@ -40,4 +40,4 @@
         ]
     }
   }
-}
+]
