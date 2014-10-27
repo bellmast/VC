@@ -36,8 +36,8 @@ function drawList(data) {
         widgetThickness += 1
         paper.path("M"+(sBbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10)))
       }
-      
-      textStream = paper.text(30, streamY+(widgetThickness*10), stream).attr({"font-size":16, "text-anchor":"start"})
+      textStream.remove()
+      textStream = paper.text(30, streamY+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
       
       streamY += 20
     }
