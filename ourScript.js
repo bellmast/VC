@@ -86,7 +86,7 @@ function drawList(data) {
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.3})
+        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "fill-opacity":0.3, "stroke-opacity":0.3})
         factSet.push(newFact)
       }
       arrayOfSets.push(factSet)
