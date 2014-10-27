@@ -1,7 +1,7 @@
 var canvasWidth = 800;
 var canvasHeight= 700;
 
-function makeCurlyBrace(x1,y1,x2,y2,w,q)
+function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
     {
       //Calculate unit vector
       var dx = x1-x2;
@@ -46,7 +46,7 @@ function runProgram() {
 function drawList(data) {
   dataLength = data.length
   questionY = 10
-  ourPath = makeCurlyBrace(300, 300, 250, 400, 30, .5)
+  ourPath = makeCurlyBrace(300, 250, 300, 400, 30, .5)
   paper.path(ourPath)
 
   for (question in data) {
