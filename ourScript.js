@@ -27,7 +27,7 @@ function prepareList() {
         $('.collapsed').children().hide('medium');
     })
     paper = new Raphael(document.getElementById('canvas_container'), canvasWidth+60, canvasHeight);  
-    jQuery.getJSON("ESData.js", function (data)
+    jQuery.getJSON("sotfTestData.js", function (data)
     {drawNetwork(data)});
 };
 
