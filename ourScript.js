@@ -66,7 +66,7 @@ function drawList(data) {
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        paper.path("M"+(indent+maxWidth)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
+        paper.path("M"+(indent+maxWidth+10)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
       }
       var words = stream.split(" ");
       var tempText = "";
@@ -81,7 +81,7 @@ function drawList(data) {
       }
       t.attr("text", tempText.substring(1));
       if (widgetThickness > 1) {
-        ourPath = makeCurlyBrace((indent+maxWidth), streamY+4, (indent+maxWidth), (streamY+5+(widgetThickness*10)), 30, .5)
+        ourPath = makeCurlyBrace((indent+maxWidth+10), streamY+4, (indent+maxWidth+10), (streamY+5+(widgetThickness*10)), 25, .5)
         streamBrace = paper.path(ourPath)
       }
       
