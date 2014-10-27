@@ -34,7 +34,8 @@ function drawList(data) {
       sBbox = textStream.getBBox()
       for (fact in data[question][stream]) {
         widgetThickness += 1
-        paper.path("M"+(sBbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":6})
+        factLength = data[question][stream][fact].length
+        paper.path("M"+(sBbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength})
       }
       textStream.remove()
       textStream = paper.text(30, streamY+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
