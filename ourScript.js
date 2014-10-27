@@ -118,6 +118,7 @@ function drawList(data) {
         },
         function () {
           factSet.attr({"fill":"black"})
+        }
       );
       streamY += 20+(widgetThickness*10)
     }
