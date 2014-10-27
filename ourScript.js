@@ -43,7 +43,7 @@ function drawList(data) {
         factLength = data[question][stream][fact].length
         paper.path("M"+(max_of_array+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
       }
-      textStream = paper.text(30, streamY+5+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
+      textStream = paper.text(30, streamY+3+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
       
       streamY += 20+(widgetThickness*10)
     }
