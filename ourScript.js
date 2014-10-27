@@ -27,11 +27,12 @@ function drawList(data) {
     q = question
     testSet = []
     for (streamTest in data[question]) {
-      testText = paper.text(10,10,streamTest)
+      testText = paper.text(10,10,streamTest).attr({"font-size":16})
       tBbox = testText.getBBox()
       testSet.push(tBbox["width"])
+      testText.remove()
     }
-    var max_of_array = Math.max.apply(Math, testSet)
+    max_of_array = Math.max.apply(Math, testSet)
     for (stream in data[question]) {
       if (!data[question].hasOwnProperty(stream)) {
         continue;
