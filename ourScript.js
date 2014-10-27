@@ -14,7 +14,7 @@ function runProgram() {
     {drawList(data)});
 };
 
-function drawList() {
+function drawList(data) {
   dataLength = data.length
     
 }
