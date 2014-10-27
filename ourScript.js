@@ -20,6 +20,6 @@ function drawList(data) {
     if (!data.hasOwnProperty(question)) {
         continue;
     }
-    paper.text(10, 10, question).attr({"font-size":22, "text-anchor":"start"})
+    paper.text(10, 10, question).attr({"font-size":18, "text-anchor":"start"})
   }
 }
