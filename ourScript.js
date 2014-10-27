@@ -28,7 +28,7 @@ function drawList(data) {
     testSet = []
     for (streamTest in data[question]) {
       testText = paper.text(10,10,streamTest)
-      tBbox = testTex.getBBox()
+      tBbox = testText.getBBox()
       testSet.push(tBbox["width"])
     }
     var max_of_array = Math.max.apply(Math, testSet)
