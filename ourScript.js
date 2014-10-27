@@ -17,6 +17,9 @@ function runProgram() {
 function drawList(data) {
   dataLength = data.length
   questionY = 10
+
+  paper.path("M600 500C600 350 900 650 900 500")
+
   for (question in data) {
     if (!data.hasOwnProperty(question)) {
         continue;
