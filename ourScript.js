@@ -75,7 +75,7 @@ function drawList(data) {
       }
       textStream = paper.text(30, streamY+3+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
       if (widgetThickness > 1) {
-        ourPath = makeCurlyBrace((max_of_array+60), streamY+5, (max_of_array+60), (streamY+5+(widgetThickness*10)), 20, .5)
+        ourPath = makeCurlyBrace((max_of_array+60), streamY+5, (max_of_array+60), (streamY+5+(widgetThickness*10)), 30, .5)
         streamBrace = paper.path(ourPath)
       }
       
