@@ -23,6 +23,7 @@ function drawList(data) {
     }
     paper.text(10, questionY, question).attr({"font-size":16, "text-anchor":"start"})
     streamY = questionY + 7
+    q = question
     for (stream in question) {
       if (!question.hasOwnProperty(stream)) {
         continue;
