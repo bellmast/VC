@@ -47,7 +47,7 @@ function drawList(data) {
   dataLength = data.length
   questionY = 10
   ourPath = makeCurlyBrace(300, 300, 250, 400, 30, .5)
-  paper.path("M400 500C400 350 700 650 700 500")
+  paper.path(ourPath)
 
   for (question in data) {
     if (!data.hasOwnProperty(question)) {
