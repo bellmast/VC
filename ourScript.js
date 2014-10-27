@@ -16,5 +16,10 @@ function runProgram() {
 
 function drawList(data) {
   dataLength = data.length
-    
+  for (question in data) {
+    if (!data.hasOwnProperty(question)) {
+        continue;
+    }
+    paper.text(canvasWidth/2, canvasHeight/2, question)
+  }
 }
