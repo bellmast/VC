@@ -3,8 +3,7 @@ var canvasHeight= 700;
 var maxWidth = 80;
 var indent = 50;
 var arrayOfSets = [];
-var controllers = [];
-var setOfFactSets = [];
+
 
 
 function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
@@ -50,7 +49,8 @@ function runProgram() {
 };
 
 function drawList(data) {
-
+  controllers = paper.set();
+  setOfFactSets = paper.set();
   var clickedCheck = false
   var clickToggle = function () {
     if (clickedCheck == false) {
