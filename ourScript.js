@@ -2,6 +2,7 @@ var canvasWidth = 800;
 var canvasHeight= 700;
 var maxWidth = 80;
 var indent = 50;
+var arrayOfSets = [];
 
 function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
     {
@@ -62,6 +63,7 @@ function drawList(data) {
       if (!data[question].hasOwnProperty(stream)) {
         continue;
       }
+      braceSet = paper.set()
       widgetThickness = 0
       for (fact in data[question][stream]) {
         widgetThickness += 1
@@ -82,7 +84,7 @@ function drawList(data) {
       t.attr("text", tempText.substring(1));
       if (widgetThickness > 1) {
         ourPath = makeCurlyBrace((indent+maxWidth+6), streamY+4, (indent+maxWidth+6), (streamY+5+(widgetThickness*10)), 25, .5)
-        streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3})
+        streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness})
       }
       
       
