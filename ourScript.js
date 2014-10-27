@@ -82,12 +82,16 @@ function drawList(data) {
         continue;
       }
       factSet = paper.set()
+      factSet2 = paper.set()
       widgetThickness = 0
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "fill-opacity":0.3, "stroke-opacity":0.3})
+        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.3})
         factSet.push(newFact)
+        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":1})
+        newFact.hide()
+        factSet2.push(newFact)
       }
       arrayOfSets.push(factSet)
       var words = stream.split(" ");
@@ -114,10 +118,10 @@ function drawList(data) {
       controllerBox = paper.rect((indent+maxWidth+6-25), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       controllerBox.hover(function() {
-          factSet.attr({"fill":"red"})
+          factSet2.show()
         },
         function () {
-          factSet.attr({"fill":"black"})
+          factSet2.hide()
         }
       );
       streamY += 20+(widgetThickness*10)
