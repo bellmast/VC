@@ -28,7 +28,13 @@ function drawList(data) {
       if (!data[question].hasOwnProperty(stream)) {
         continue;
       }
-      paper.text(30, streamY, stream).attr({"font-size":16, "text-anchor":"start"})
+
+      for (fact in data[question][stream]) {
+        widgetThickness += 1
+        paper.path("M60"+(streamY+(widgetThickness*10))+"L200"+(streamY+(widgetThickness*10)))
+      }
+      paper.text(30, streamY+(widgetThickness*10), stream).attr({"font-size":16, "text-anchor":"start"})
+      widgetThickness = 0
       streamY += 20
     }
   }
