@@ -22,14 +22,14 @@ function drawList(data) {
         continue;
     }
     paper.text(10, questionY, question).attr({"font-size":16, "text-anchor":"start"})
-    streamY = questionY + 7
+    streamY = questionY + 12
     q = question
     for (stream in data[question]) {
       if (!data[question].hasOwnProperty(stream)) {
         continue;
       }
-      paper.text(17, streamY, stream).attr({"font-size":16, "text-anchor":"start"})
-      streamY += 7
+      paper.text(22, streamY, stream).attr({"font-size":16, "text-anchor":"start"})
+      streamY += 12
     }
   }
 }
