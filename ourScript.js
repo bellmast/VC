@@ -1,7 +1,14 @@
+var canvasWidth = 800;
+var canvasHeight= 700;
+
+$(document).ready( function() {
+    runProgram()
+});
+
 /**************************************************************/
 /* Prepares the cv to be dynamically expandable/collapsible   */
 /**************************************************************/
-function prepareList() {
+function runProgram() {
     $('#expList').find('li:has(ul)')
     .click( function(event) {
         if (this == event.target) {
@@ -28,13 +35,9 @@ function prepareList() {
     })
     paper = new Raphael(document.getElementById('canvas_container'), canvasWidth+60, canvasHeight);  
     jQuery.getJSON("sotfTestData.js", function (data)
-    {drawNetwork(data)});
+    {drawList(data)});
 };
 
-
-/**************************************************************/
-/* Functions to execute on loading the document               */
-/**************************************************************/
-$(document).ready( function() {
-    prepareList()
-});
+function drawList() {
+    
+}
