@@ -33,7 +33,7 @@ function drawList(data) {
       bbox = textStream.getBBox()
       for (fact in data[question][stream]) {
         widgetThickness += 1
-        paper.path("M"+(bbox["width"]+10)+" "+(streamY+(widgetThickness*10))+"L200 "+(streamY+(widgetThickness*10)))
+        paper.path("M"+(bbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L200 "+(streamY+(widgetThickness*10)))
       }
       
       streamY += 20
