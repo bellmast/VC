@@ -39,5 +39,8 @@ function runProgram() {
 };
 
 function drawList() {
+    for(var question in data){
+      paper.text(canvasWidth/2, canvasHeight/2, question)
+    }
     
 }
