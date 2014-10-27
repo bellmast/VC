@@ -21,7 +21,8 @@ function drawList(data) {
     if (!data.hasOwnProperty(question)) {
         continue;
     }
-    paper.text(10, questionY, question).attr({"font-size":16, "text-anchor":"start"})
+    textQuestion = paper.text(10, questionY, question).attr({"font-size":16, "text-anchor":"start"})
+    qBbox = textQuestion.getBBox()
     streamY = questionY + 20
     q = question
     for (stream in data[question]) {
@@ -30,10 +31,10 @@ function drawList(data) {
       }
       widgetThickness = 0
       textStream = paper.text(30, streamY+(widgetThickness*10), stream).attr({"font-size":16, "text-anchor":"start"})
-      bbox = textStream.getBBox()
+      sBbox = textStream.getBBox()
       for (fact in data[question][stream]) {
         widgetThickness += 1
-        paper.path("M"+(bbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L200 "+(streamY+(widgetThickness*10)))
+        paper.path("M"+(sBbox["width"]+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10)))
       }
       
       streamY += 20
