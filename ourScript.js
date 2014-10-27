@@ -3,7 +3,8 @@ var canvasHeight= 700;
 var maxWidth = 80;
 var indent = 50;
 var arrayOfSets = [];
-
+var controllers = [];
+var setOfFactSets = [];
 
 
 function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
@@ -94,6 +95,7 @@ function drawList(data) {
         factSet2.push(newFact)
       }
       arrayOfSets.push(factSet)
+      setOfFactSets.push(factSet2)
       var words = stream.split(" ");
       var tempText = "";
       var t = paper.text(indent, streamY+3+(widgetThickness*5)).attr({"font-size":16, "text-anchor":"start"})
@@ -117,14 +119,17 @@ function drawList(data) {
       }
       controllerBox = paper.rect((indent+maxWidth+6-25), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
-      controllerBox.hover(function() {
-          factSet2.show()
-        },
-        function () {
-          factSet2.hide()
-        }
-      );
+      controllers.push(controllerBox)
       streamY += 20+(widgetThickness*10)
     }
+  }
+  for(var i=0; i<controllers.length; i++) {
+    controllers[i].hover(function() {
+          setOfFactSets[i].show()
+        },
+        function () {
+          setOfFactSets[i].hide()
+        }
+      );
   }
 }
