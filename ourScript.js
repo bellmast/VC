@@ -81,7 +81,7 @@ function drawList(data) {
       }
       t.attr("text", tempText.substring(1));
       if (widgetThickness > 1) {
-        ourPath = makeCurlyBrace((indent+maxWidth+10), streamY+4, (indent+maxWidth+10), (streamY+5+(widgetThickness*10)), 25, .5)
+        ourPath = makeCurlyBrace((indent+maxWidth+10), streamY+4, (indent+maxWidth+10), (streamY+5+(widgetThickness*10)), 30, .5)
         streamBrace = paper.path(ourPath)
       }
       
