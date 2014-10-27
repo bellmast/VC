@@ -1,6 +1,7 @@
 var canvasWidth = 800;
 var canvasHeight= 700;
 var maxWidth = 80;
+var indent = 50;
 
 function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
     {
@@ -56,14 +57,7 @@ function drawList(data) {
     qBbox = textQuestion.getBBox()
     streamY = questionY + 20
     q = question
-    testSet = []
-    for (streamTest in data[question]) {
-      testText = paper.text(10,10,streamTest).attr({"font-size":16})
-      tBbox = testText.getBBox()
-      testSet.push(tBbox["width"])
-      testText.remove()
-    }
-    max_of_array = Math.max.apply(Math, testSet)
+
     for (stream in data[question]) {
       if (!data[question].hasOwnProperty(stream)) {
         continue;
@@ -72,11 +66,11 @@ function drawList(data) {
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        paper.path("M"+(max_of_array+60)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
+        paper.path("M"+(indent+maxWidth)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
       }
       var words = stream.split(" ");
       var tempText = "";
-      var t = paper.text(30, streamY+3+(widgetThickness*5)).attr({"font-size":16, "text-anchor":"start"})
+      var t = paper.text(indent, streamY+3+(widgetThickness*5)).attr({"font-size":16, "text-anchor":"start"})
       for (var i=0; i<words.length; i++) {
         t.attr("text", tempText + " " + words[i]);
         if (t.getBBox().width > maxWidth) {
@@ -86,9 +80,8 @@ function drawList(data) {
         }
       }
       t.attr("text", tempText.substring(1));
-      textStream = paper.text(30, streamY+3+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
       if (widgetThickness > 1) {
-        ourPath = makeCurlyBrace((max_of_array+60), streamY+4, (max_of_array+60), (streamY+5+(widgetThickness*10)), 30, .5)
+        ourPath = makeCurlyBrace((indent+maxWidth), streamY+4, (indent+maxWidth), (streamY+5+(widgetThickness*10)), 30, .5)
         streamBrace = paper.path(ourPath)
       }
       
