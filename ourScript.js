@@ -4,6 +4,8 @@ var maxWidth = 80;
 var indent = 50;
 var arrayOfSets = [];
 
+
+
 function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
     {
       //Calculate unit vector
@@ -47,6 +49,22 @@ function runProgram() {
 };
 
 function drawList(data) {
+
+  var clickedCheck = false
+  var clickToggle = function () {
+    if (clickedCheck == false) {
+      clickedCheck = true
+
+      wingLeftSet.animate({transform: "r5,"+masterNodeCenterX+","+rotationAxisY}, 1500, "bounce");
+      wingRightSet.animate({transform: "r-5,"+masterNodeCenterX+","+rotationAxisY}, 1500, "bounce");
+    } else if (clickedCheck == true) {
+      clickedCheck = false
+      wingLeftSet.animate({transform: "r0,"+masterNodeCenterX+","+rotationAxisY}, 1000, "<>");
+      wingRightSet.animate({transform: "r0,"+masterNodeCenterX+","+rotationAxisY}, 1000, "<>");
+    }
+    
+  }
+
   dataLength = data.length
   questionY = 10
 
@@ -93,6 +111,7 @@ function drawList(data) {
       else {
         arrayOfSets.push("")
       }
+      controllerBox = paper.rect((indent+maxWidth+6), streamY+4, (qBbox["width"]-(indent+maxWidth+6)), ((streamY+5+(widgetThickness*10))-streamY+4))
       
       
       streamY += 20+(widgetThickness*10)
