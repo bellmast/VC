@@ -39,7 +39,7 @@ function drawList(data) {
       textStream.remove()
       textStream = paper.text(30, streamY+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
       
-      streamY += 20
+      streamY += 20+(widgetThickness*10)
     }
   }
 }
