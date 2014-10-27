@@ -112,7 +112,14 @@ function drawList(data) {
         arrayOfSets.push("")
       }
       controllerBox = paper.rect((indent+maxWidth+6-25), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
-      
+      controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
+      controllerBox.hover(function() {
+          factSet.attr({"fill-opacity":1});
+        },
+        function () {
+          factSet.attr({"fill-opacity":0.3})
+        }
+      );
       streamY += 20+(widgetThickness*10)
     }
   }
