@@ -63,7 +63,7 @@ function drawList(data) {
       if (!data[question].hasOwnProperty(stream)) {
         continue;
       }
-      factSetSet = paper.set()
+      factSet = paper.set()
       widgetThickness = 0
       for (fact in data[question][stream]) {
         widgetThickness += 1
