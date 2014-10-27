@@ -71,10 +71,10 @@ function drawList(data) {
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        paper.path("M"+(max_of_array+40)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
+        paper.path("M"+(max_of_array+100)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":0.5})
       }
       textStream = paper.text(30, streamY+3+(widgetThickness*5), stream).attr({"font-size":16, "text-anchor":"start"})
-      ourPath = makeCurlyBrace((max_of_array+40), streamY, (max_of_array+40), (streamY+(widgetThickness*10)), 30, .5)
+      ourPath = makeCurlyBrace((max_of_array+60), streamY+5, (max_of_array+60), (streamY+5+(widgetThickness*10)), 30, .5)
       streamBrace = paper.path(ourPath)
       
       streamY += 20+(widgetThickness*10)
