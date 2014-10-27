@@ -39,6 +39,19 @@ $(document).ready( function() {
     runProgram()
 });
 
+function setObj(inSet)
+{
+    var that=this;
+    that.set = inSet;
+    that.set.hover(function(){
+              that.set.animate({fill: '#000'}, 300);
+          }, function(){
+              that.set.animate({fill: '#FFF'}, 300);
+          }
+    );
+
+}
+
 /**************************************************************/
 /* Prepares the cv to be dynamically expandable/collapsible   */
 /**************************************************************/
@@ -119,17 +132,9 @@ function drawList(data) {
       }
       controllerBox = paper.rect((indent+maxWidth+6-25), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
-      controllers.push(controllerBox)
+      factSet.push(controllerBox)
+      new setObj(factSet)
       streamY += 20+(widgetThickness*10)
     }
-  }
-  for(var i=0; i<controllers.length; i++) {
-    controllers[i].hover(function() {
-          setOfFactSets[i].show()
-        },
-        function () {
-          setOfFactSets[i].hide()
-        }
-      );
   }
 }
