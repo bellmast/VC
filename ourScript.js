@@ -18,7 +18,7 @@ function drawList(data) {
   dataLength = data.length
   questionY = 10
 
-  paper.path("M600 500C600 350 900 650 900 500")
+  paper.path("M400 500C400 350 700 650 700 500")
 
   for (question in data) {
     if (!data.hasOwnProperty(question)) {
