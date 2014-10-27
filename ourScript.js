@@ -16,10 +16,16 @@ function runProgram() {
 
 function drawList(data) {
   dataLength = data.length
+  questionY = 10
   for (question in data) {
     if (!data.hasOwnProperty(question)) {
         continue;
     }
-    paper.text(10, 10, question).attr({"font-size":18, "text-anchor":"start"})
+    paper.text(10, questionY, question).attr({"font-size":16, "text-anchor":"start"})
+    streamY = questionY + 7
+    for (stream in question) {
+      paper.text(17, streamY, stream).attr({"font-size":16, "text-anchor":"start"})
+      streamY += 7
+    }
   }
 }
