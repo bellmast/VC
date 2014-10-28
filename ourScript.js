@@ -71,8 +71,8 @@ function clickHandler(ourSet, ourBrace, ourText) {
               e.animate({transform:"t1 "+k}, 500, "<>")
               k += 17
             })
-            newDistance = (streamTopY - streamBottomY + k) / 2
-            oldDistance = (streamTopY - streamBottomY) / 2
+            newDistance = (streamBottomY - streamTopY + k) / 2
+            oldDistance = (streamBottomY - streamTopY) / 2
             sTransform = newDistance/oldDistance
             newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
