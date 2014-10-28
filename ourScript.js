@@ -52,11 +52,10 @@ function textHoverHandler(fontWeight, ourText, speed) {
     }
 
 function clickHandler(ourSet, ourBrace, ourText) {
-         var newSet = ourSet.slice(1)
+         newSet = factSet.items.splice(1, factSet.length)
          var newBrace = ourBrace
          var newText = ourText
-
-         newSet.splice(0, 1)
+    
 
          return function(){
           newBrace.animate({transform:"s1 1.5"}, 500, "<>");
