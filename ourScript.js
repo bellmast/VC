@@ -35,14 +35,24 @@ function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https:/
               " T " + tx1 + " " + ty1 );
     }
 
-function getHoverHandler(fillColor, ourSet) {
+function getHoverHandler(strokeOpacity, ourSet) {
          var cSet = ourSet;
          
          return function(){
-              cSet.animate({"stroke-opacity": fillColor}, 300);
-              cSet.animate({"font-weight": "bold"}, 300);
+              cSet.animate({"stroke-opacity": strokeOpacity}, 300);
           };
     }
+
+function textHoverHandler(fontWeight, ourSet) {
+         var cText = ourText;
+         
+         return function(){
+              cText.animate({"font-weight": fontWeight}, 300);
+          };
+    }
+
+
+
 
 $(document).ready( function() {
     runProgram()
@@ -121,7 +131,6 @@ function drawList(data) {
       }
       t.attr("text", tempText.substring(1));
       arrayOfSets.push(t)
-      factSet.push(t)
       if (widgetThickness > 1) {
         ourPath = makeCurlyBrace((indent+maxWidth+6), streamY+4, (indent+maxWidth+6), (streamY+5+(widgetThickness*10)), 25, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
@@ -134,6 +143,8 @@ function drawList(data) {
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
+      controllerBox.hover(textHoverHandler("bold", t),
+                          textHoverHandler("normal", t));
 
       streamY += 20+(widgetThickness*10)
     }
