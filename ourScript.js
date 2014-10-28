@@ -52,7 +52,7 @@ function textHoverHandler(fontWeight, ourText, speed) {
     }
 
 function clickHandler(ourSet, ourBrace, ourText) {
-         var newSet = ourSet
+         var newSet = ourSet.slice(1)
          var newBrace = ourBrace
          var newText = ourText
 
@@ -138,6 +138,7 @@ function drawList(data) {
       else {
         ourPath = makeCurlyBrace((indent+maxWidth+6), streamY+4, (indent+maxWidth+6), (streamY+5+(widgetThickness*10)), 0, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
+        streamBrace.hide()
         factSet.push(streamBrace)
       }
       controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
