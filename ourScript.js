@@ -65,19 +65,19 @@ function clickHandler(ourSet, ourBrace, ourText) {
          var isClicked = false
          return function(){
           if (isClicked == false) {
-            newBrace.animate({transform:"t1 "+yTransform+"s1 1.5"}, 500, "<>")
+            newBrace.animate({transform:"s1 1.5"}, 500, "<>")
             newSet.forEach(function(e) {
               e.animate({transform:"t1 17s1.5 1"}, 500, "<>")
             })
-            
+            var textMove = 50
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
           }
           else if (isClicked == true) {
-            newBrace.animate({transform:""}, 500, "<>")
+            newBrace.animate({transform:"s1 1"}, 500, "<>")
             newSet.forEach(function(e) {
-              e.animate({transform:""}, 500, "<>")
+              e.animate({transform:"t1 1s1 1"}, 500, "<>")
             })
-            newText.animate({transform:""}, 500, "<>")
+            newText.animate({transform:"t1 1"}, 500, "<>")
           }
           isClicked = isClicked == false ? true : false
          }
