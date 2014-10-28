@@ -61,9 +61,13 @@ function clickHandler(ourSet, ourBrace, ourText) {
     
          var isClicked = false
          return function(){
-          newBrace.cy == newBrace.cy;
-          newBrace.animate({transform:"s1 1.5"}, 500, "<>");
-          newBrace.animate({transform:"s1 1"}, 500, "<>")
+          if (isClicked == false) {
+            newBrace.animate({transform:"s1 1.5"}, 500, "<>")
+          }
+          else if (isClicked == true) {
+            newBrace.animate({transform:"s1 1"}, 500, "<>")
+          }
+          isClicked = isClicked == false ? true : false
          }
 
 }
