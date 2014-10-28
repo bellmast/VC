@@ -52,22 +52,20 @@ function textHoverHandler(fontWeight, ourText, speed) {
     }
 
 function clickHandler(ourSet, ourBrace, ourText) {
-         var newSet = paper.set()
-         for (item in ourSet) {
-          newSet.push(item)
-         }
+         var newSet = ourSet
          console.log(newSet)
          console.log(factSet)
          console.log(ourSet)
          var newBrace = ourBrace
          var newText = ourText
 
+         var setLength = newSet.length
+        var yTransform = setLength*17
+
 
     
          var isClicked = false
-         return function(){
-          var setLength = newSet.length
-          var yTransform = setLength*17
+         return function(){     
           if (isClicked == false) {
             newBrace.animate({transform:"s1 1.5"}, 500, "<>")
             newSet.forEach(function(e) {
@@ -133,9 +131,9 @@ function drawList(data) {
         factLength = data[question][stream][fact].length
         newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
-        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "stroke-opacity":1})
-        newFact.hide()
-        factSet2.push(newFact)
+        if (widgetThickness != 1) {
+          factSet2.push(newFact)
+        }
       }
       arrayOfSets.push(factSet)
       setOfFactSets.push(factSet2)
@@ -169,8 +167,7 @@ function drawList(data) {
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
                           textHoverHandler(16, t, 150));
-      factSet.pop()
-      controllerBox.click(clickHandler(factSet, streamBrace, t))
+      controllerBox.click(clickHandler(factSet2, streamBrace, t))
       streamY += 20+(widgetThickness*10)
     }
   }
