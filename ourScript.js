@@ -128,7 +128,7 @@ function drawList(data) {
       else {
         arrayOfSets.push("")
       }
-      controllerBox = paper.rect((indent+maxWidth+6-25), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
+      controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
