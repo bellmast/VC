@@ -63,13 +63,23 @@ function clickHandler(ourSet, ourBrace, ourText) {
          return function(){
           if (isClicked == false) {
             newBrace.animate({transform:"s1 1.5"}, 500, "<>")
+            var k = 17
+            for (elem in newSet) {
+              elem.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
+              k += 17
+            }
+            var textMove = k/17
+            newText.animate({transform:"t1 "+textMove}, 500, "<>")
           }
           else if (isClicked == true) {
             newBrace.animate({transform:"s1 1"}, 500, "<>")
+            for (elem in cSet) {
+              elem.animate({transform:"t1 1s1 1"}, 500, "<>")
+            }
+            cText.animate({transform:"t1 1"}, 500, "<>")
           }
           isClicked = isClicked == false ? true : false
          }
-
 }
 
 
