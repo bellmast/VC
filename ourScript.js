@@ -60,7 +60,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
 
          return function(){
           newBrace.animate({transform:"s1 1.5"}, 500, "<>");
-          newBrace.animate({transform:"s1 1"}, 500, "<>")
+          
          }
 
 }
