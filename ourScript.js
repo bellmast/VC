@@ -63,12 +63,10 @@ function clickHandler(ourSet, ourBrace, ourText) {
          return function(){
           if (isClicked == false) {
             newBrace.animate({transform:"s1 1.5"}, 500, "<>")
-            var k = 17
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
-              k += 17
+              e.animate({transform:"t1 17s1.5 1"}, 500, "<>")
             })
-            var textMove = k/17
+            var textMove = 50
             newText.animate({transform:"t1 "+textMove}, 500, "<>")
           }
           else if (isClicked == true) {
