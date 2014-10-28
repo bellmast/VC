@@ -81,7 +81,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
             this.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
-            stackBelow.animate({transform:"t1 "+yTransform}, 500, "<>")
+            stackBelow.animate({transform:"t1 "+(yTransform*2)}, 500, "<>")
           }
           else if (isClicked == true) {
             newBrace.animate({transform:"t1 1s1 1"}, 500, "<>")
