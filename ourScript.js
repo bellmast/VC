@@ -144,7 +144,7 @@ function drawList(data) {
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
-                          textHoverHandler(16, t, 300));
+                          textHoverHandler(16, t, 150));
 
       streamY += 20+(widgetThickness*10)
     }
