@@ -76,7 +76,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             newSet.forEach(function(e) {
               e.animate({transform:"t1 1s1 1"}, 500, "<>")
             })
-            cText.animate({transform:"t1 1"}, 500, "<>")
+            newText.animate({transform:"t1 1"}, 500, "<>")
           }
           isClicked = isClicked == false ? true : false
          }
