@@ -2,7 +2,7 @@ var canvasWidth = 800;
 var canvasHeight= 700;
 var maxWidth = 80;
 var indent = 50;
-var arrayOfSets = [];
+var ourStack = [];
 
 
 
@@ -56,15 +56,13 @@ function clickHandler(ourSet, ourBrace, ourText) {
          var newBrace = ourBrace
          var newText = ourText
 
-         
-               
-
-
-    
          var isClicked = false
          return function(){
           var setLength = newSet.length
-          var yTransform = setLength!=0 ? (setLength-2)*17 : 1      
+          var yTransform = setLength!=0 ? (setLength-2)*17 : 1
+          //for (item in ourStack) {
+          //  if (item in )
+          //}      
           if (isClicked == false) {
             
             var k = 17
@@ -72,11 +70,13 @@ function clickHandler(ourSet, ourBrace, ourText) {
               e.animate({transform:"t1 "+k}, 500, "<>")
               k += 17
             })
-            newDistance = (streamBottomY - streamTopY + k) / 2
+            newDistance = (streamBottomY - streamTopY + k - 17) / 2
             oldDistance = (streamBottomY - streamTopY) / 2
             sTransform = newDistance/oldDistance
             newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
+            this.animate({transform:"t1 "+yTransform}, 500, "<>")
+            //stackBelow.animate({transform:"t1 "+yTransform}, 500, "<>")
           }
           else if (isClicked == true) {
             newBrace.animate({transform:"t1 1s1 1"}, 500, "<>")
@@ -84,6 +84,8 @@ function clickHandler(ourSet, ourBrace, ourText) {
               e.animate({transform:"t1 1"}, 500, "<>")
             })
             newText.animate({transform:"t1 1"}, 500, "<>")
+            this.animate({transform:"t1 "+yTransform}, 500, "<>")
+            //stackBelow.animate({transform:"t1 1"}, 500, "<>")
           }
           isClicked = isClicked == false ? true : false
          }
@@ -139,7 +141,7 @@ function drawList(data) {
           factSet2.push(newFact)
         }
       }
-      arrayOfSets.push(factSet)
+      ourStack.push(factSet)
       setOfFactSets.push(factSet2)
       var words = stream.split(" ");
       var tempText = "";
@@ -153,7 +155,7 @@ function drawList(data) {
         }
       }
       t.attr("text", tempText.substring(1));
-      arrayOfSets.push(t)
+      ourStack.push(t)
       if (widgetThickness > 1) {
         streamTopX = (indent+maxWidth+6)
         streamTopY = streamY+4
@@ -169,8 +171,10 @@ function drawList(data) {
         streamBrace.hide()
         factSet.push(streamBrace)
       }
+      ourStack.push(streamBrace)
       controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
+      ourStack.push(controllerBox)
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
