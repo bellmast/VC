@@ -39,18 +39,7 @@ $(document).ready( function() {
     runProgram()
 });
 
-function setObj(inSet)
-{
-    var that=this;
-    that.set = inSet;
-    that.set.hover(function(){
-              that.set.animate({fill: '#000'}, 300);
-          }, function(){
-              that.set.animate({fill: '#FFF'}, 300);
-          }
-    );
 
-}
 
 /**************************************************************/
 /* Prepares the cv to be dynamically expandable/collapsible   */
@@ -79,6 +68,19 @@ function drawList(data) {
     
   }
 
+  function setObj(inSet)
+  {
+      var that=this;
+      that.set = inSet;
+      that.set.hover(function(){
+                that.set.animate({fill: '#000'}, 300);
+            }, function(){
+                that.set.animate({fill: '#FFF'}, 300);
+            }
+      );
+
+  }
+  
   dataLength = data.length
   questionY = 10
 
