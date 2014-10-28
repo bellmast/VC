@@ -158,7 +158,7 @@ function drawList(data) {
         streamTopY = streamY+4
         streamBottomX = (indent+maxWidth+6)
         streamBottomY = (streamY+5+(widgetThickness*10)
-        ourPath = makeCurlyBrace(streamTopX, streamTopY, streamBottomX, streamBottomY), 25, .5)
+        ourPath = makeCurlyBrace((streamTopX, streamTopY, streamBottomX, streamBottomY), 25, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
         factSet.push(streamBrace)
       }
