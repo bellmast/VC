@@ -43,11 +43,11 @@ function getHoverHandler(strokeOpacity, ourSet) {
           };
     }
 
-function textHoverHandler(fontWeight, ourText) {
+function textHoverHandler(fontWeight, ourText, speed) {
          var cText = ourText;
          
          return function(){
-              cText.attr({"font-weight": fontWeight})
+              cText.animate({"font-size": fontWeight}, speed);
           };
     }
 
@@ -143,8 +143,8 @@ function drawList(data) {
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
-      controllerBox.hover(textHoverHandler("bold", t),
-                          textHoverHandler("normal", t));
+      controllerBox.hover(textHoverHandler(18, t, 100),
+                          textHoverHandler(16, t, 300));
 
       streamY += 20+(widgetThickness*10)
     }
