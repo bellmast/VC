@@ -61,9 +61,10 @@ function clickHandler(ourSet, ourBrace, ourText) {
           var setLength = newSet.length
           var yTransform = setLength!=0 ? (setLength-2)*17 : 1
           stackBelow = paper.set()
-          var cStackIndex = ourStack.indexOf(this)
-          for (item in ourStack) {
-            if (ourStack.indexOf(item) > cStackIndex) {
+          cStackIndex = ourStack.indexOf(this)
+
+          for (var i = 0; i < ourStack.length; i++) {
+            if (i > cStackIndex) {
               stackBelow.push(item)
             }
           }      
