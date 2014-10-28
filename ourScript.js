@@ -43,7 +43,7 @@ function getHoverHandler(strokeOpacity, ourSet) {
           };
     }
 
-function textHoverHandler(fontWeight, ourSet) {
+function textHoverHandler(fontWeight, ourText) {
          var cText = ourText;
          
          return function(){
