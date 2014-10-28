@@ -88,8 +88,8 @@ function drawList(data) {
       cBrace.animate({transform:"s1 1.5"}, 500, "<>")
       var k = 17
       if (cSet != []) {
-        for (elem in cSet) {
-          elem.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
+        for (guy in cSet) {
+          guy.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
           k += 17
         }
       }
