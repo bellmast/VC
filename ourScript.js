@@ -74,8 +74,12 @@ function drawList(data) {
   controllers = paper.set();
   setOfFactSets = paper.set();
   var clickedCheck = false
-  var clickToggle = function (cSet, cBrace, cText) {
+  var clickToggle = function (ourSet, ourBrace, ourText) {
     
+    var cSet = ourSet
+    var cBrace = ourBrace
+    var cText = 
+
     cSet.splice(0, 1)
 
     if (clickedCheck == false) {
@@ -83,9 +87,11 @@ function drawList(data) {
 
       cBrace.animate({transform:"s1 1.5"}, 500, "<>")
       var k = 17
-      for (elem in cSet) {
-        elem.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
-        k += 17
+      if (cSet != []) {
+        for (elem in cSet) {
+          elem.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
+          k += 17
+        }
       }
       var textMove = k/17
       cText.animate({transform:"t1 "+textMove}, 500, "<>")
@@ -93,12 +99,9 @@ function drawList(data) {
     } else if (clickedCheck == true) {
       clickedCheck = false
       cBrace.animate({transform:"s1 1"}, 500, "<>")
-
-      for (elem in cSet) {
-        elem.animate({transform:"t1 1s1 1"}, 500, "<>")
-
+      if (cSet != []) {
+        cSet.animate({transform:"t1 1s1 1"}, 500, "<>")
       }
-
       cText.animate({transform:"t1 1"}, 500, "<>")
     }
     
