@@ -54,8 +54,14 @@ function textHoverHandler(fontWeight, ourText, speed) {
 function clickHandler(ourSet, ourBrace, ourText) {
          var newSet = ourSet
          var newBrace = ourBrace
-         var newText = ourText    
+         var newText = ourText
 
+         var setLength = newSet.length
+         var yTransform = (setLength-2)*17
+         
+
+
+    
          var isClicked = false
          return function(){     
           if (isClicked == false) {
@@ -65,7 +71,6 @@ function clickHandler(ourSet, ourBrace, ourText) {
               e.animate({transform:"t1 "+k}, 500, "<>")
               k += 17
             })
-            yTransform = k-17
             newDistance = (streamBottomY - streamTopY + k) / 2
             oldDistance = (streamBottomY - streamTopY) / 2
             sTransform = newDistance/oldDistance
