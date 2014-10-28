@@ -143,7 +143,7 @@ function drawList(data) {
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
-      controllerBox.hover(textHoverHandler(24, t),
+      controllerBox.hover(textHoverHandler(18, t),
                           textHoverHandler(16, t));
 
       streamY += 20+(widgetThickness*10)
