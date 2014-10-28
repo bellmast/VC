@@ -88,10 +88,7 @@ function drawList(data) {
       cBrace.animate({transform:"s1 1.5"}, 500, "<>")
       var k = 17
       if (cSet != []) {
-        for (guy in cSet) {
-          guy.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
-          k += 17
-        }
+        cSet.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
       }
       var textMove = k/17
       cText.animate({transform:"t1 "+textMove}, 500, "<>")
