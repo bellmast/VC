@@ -47,7 +47,7 @@ function textHoverHandler(fontWeight, ourText) {
          var cText = ourText;
          
          return function(){
-              cText.animate({"font-weight": fontWeight}, 300);
+              cText.animate({"font-size": fontWeight}, 300);
           };
     }
 
@@ -143,8 +143,8 @@ function drawList(data) {
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
-      controllerBox.hover(textHoverHandler("bold", t),
-                          textHoverHandler("normal", t));
+      controllerBox.hover(textHoverHandler(24, t),
+                          textHoverHandler(16, t));
 
       streamY += 20+(widgetThickness*10)
     }
