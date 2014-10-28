@@ -60,9 +60,13 @@ function clickHandler(ourSet, ourBrace, ourText) {
          return function(){
           var setLength = newSet.length
           var yTransform = setLength!=0 ? (setLength-2)*17 : 1
-          //for (item in ourStack) {
-          //  if (item in )
-          //}      
+          var stackBelow = set.()
+          var cStackIndex = ourStack.indexOf(this)
+          for (item in ourStack) {
+            if (ourStack.indexOf(item) > cStackIndex) {
+              stackBelow.push(item)
+            }
+          }      
           if (isClicked == false) {
             
             var k = 17
