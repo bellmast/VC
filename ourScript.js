@@ -52,18 +52,19 @@ function textHoverHandler(fontWeight, ourText, speed) {
     }
 
 function clickHandler(ourSet, ourBrace, ourText) {
-         newSet = paper.set()
+         var newSet = paper.set()
          for (item in ourSet) {
           newSet.push(item)
          }
          var newBrace = ourBrace
          var newText = ourText
 
-         setLength = newSet.length
-         yTransform = setLength*17
+
     
          var isClicked = false
          return function(){
+          var setLength = newSet.length
+          var yTransform = setLength*17
           if (isClicked == false) {
             newBrace.animate({transform:"s1 1.5"}, 500, "<>")
             newSet.forEach(function(e) {
