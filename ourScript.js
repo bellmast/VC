@@ -74,16 +74,32 @@ function drawList(data) {
   controllers = paper.set();
   setOfFactSets = paper.set();
   var clickedCheck = false
-  var clickToggle = function () {
+  var clickToggle = function (cSet, cBrace, cText) {
+    
+    cSet.splice(0, 1)
+
     if (clickedCheck == false) {
       clickedCheck = true
 
-      wingLeftSet.animate({transform: "r5,"+masterNodeCenterX+","+rotationAxisY}, 1500, "bounce");
-      wingRightSet.animate({transform: "r-5,"+masterNodeCenterX+","+rotationAxisY}, 1500, "bounce");
+      cBrace.animate({transform:"s1 1.5"}, 500, "<>")
+      var k = 17
+      for (elem in cSet) {
+        elem.animate({transform:"t1 "+k+"s1.5 1"}, 500, "<>")
+        k += 17
+      }
+      var textMove = k/17
+      cText.animate({transform:"t1 "+textMove}, 500, "<>")
+
     } else if (clickedCheck == true) {
       clickedCheck = false
-      wingLeftSet.animate({transform: "r0,"+masterNodeCenterX+","+rotationAxisY}, 1000, "<>");
-      wingRightSet.animate({transform: "r0,"+masterNodeCenterX+","+rotationAxisY}, 1000, "<>");
+      cBrace.animate({transform:"s1 1"}, 500, "<>")
+
+      for (elem in cSet) {
+        elem.animate({transform:"t1 1s1 1"}, 500, "<>")
+
+      }
+
+      cText.animate({transform:"t1 1"}, 500, "<>")
     }
     
   }
@@ -137,6 +153,8 @@ function drawList(data) {
         factSet.push(streamBrace)
       }
       else {
+        ourPath = makeCurlyBrace((indent+maxWidth+6), streamY+4, (indent+maxWidth+6), (streamY+5+(widgetThickness*10)), 0, .5)
+        streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
         arrayOfSets.push("")
       }
       controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
@@ -145,7 +163,7 @@ function drawList(data) {
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
                           textHoverHandler(16, t, 150));
-
+      controllerBox.click(clickToggle(factSet, streamBrace, t))
       streamY += 20+(widgetThickness*10)
     }
   }
