@@ -59,10 +59,11 @@ function clickHandler(ourSet, ourBrace, ourText) {
          var newBrace = ourBrace
          var newText = ourText
     
-
+         var isClicked = false
          return function(){
+          newBrace.cy == newBrace.cy;
           newBrace.animate({transform:"s1 1.5"}, 500, "<>");
-          
+          newBrace.animate({transform:"s1 1"}, 500, "<>")
          }
 
 }
