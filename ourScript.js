@@ -123,7 +123,7 @@ function drawList(data) {
       if (widgetThickness > 1) {
         ourPath = makeCurlyBrace((indent+maxWidth+6), streamY+4, (indent+maxWidth+6), (streamY+5+(widgetThickness*10)), 25, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
-        arrayOfSets.push(streamBrace)
+        factSet.push(streamBrace)
       }
       else {
         arrayOfSets.push("")
