@@ -35,9 +35,17 @@ function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https:/
               " T " + tx1 + " " + ty1 );
     }
 
+function getHoverHandler(fillColor, ourSet) {
+  var cSet = ourSet
+  return function(){
+    cSet.animate({fill:fillColor}, 300);
+  } 
+}
+
 $(document).ready( function() {
     runProgram()
 });
+
 
 
 
@@ -68,19 +76,6 @@ function drawList(data) {
     
   }
 
-  function setObj(inSet)
-  {
-      var that=this;
-      that.set = inSet;
-      that.set.hover(function(){
-                that.set.animate({fill: '#000'}, 300);
-            }, function(){
-                that.set.animate({fill: '#FFF'}, 300);
-            }
-      );
-
-  }
-  
   dataLength = data.length
   questionY = 10
 
@@ -134,8 +129,9 @@ function drawList(data) {
       }
       controllerBox = paper.rect((indent+maxWidth+6-25), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
-      factSet.push(controllerBox)
-      new setObj(factSet)
+      controllerBox.hover(getHoverHandler('#00', factSet),
+                         (getHoverHandler('#f00', factSet))
+
       streamY += 20+(widgetThickness*10)
     }
   }
