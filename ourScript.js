@@ -53,15 +53,12 @@ function textHoverHandler(fontWeight, ourText, speed) {
 
 function clickHandler(ourSet, ourBrace, ourText) {
          var newSet = ourSet
-         console.log(newSet)
-         console.log(factSet)
-         console.log(ourSet)
          var newBrace = ourBrace
          var newText = ourText
 
          var setLength = newSet.length
          var yTransform = setLength*17
-         var k = 17
+         
 
 
     
@@ -69,6 +66,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
          return function(){     
           if (isClicked == false) {
             newBrace.animate({transform:"t1 "+yTransform+"s1 1.5"}, 500, "<>")
+            var k = 17
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+k}, 500, "<>")
               k += 17
