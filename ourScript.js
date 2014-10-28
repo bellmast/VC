@@ -63,8 +63,11 @@ function clickHandler(ourSet, ourBrace, ourText) {
     
          var isClicked = false
          return function(){
+          console.log(newSet)
           var setLength = newSet.length
+          console.log(setLength)
           var yTransform = setLength*17
+          consolte.log(yTransform)
           if (isClicked == false) {
             newBrace.animate({transform:"s1 1.5"}, 500, "<>")
             newSet.forEach(function(e) {
