@@ -65,13 +65,16 @@ function clickHandler(ourSet, ourBrace, ourText) {
          var isClicked = false
          return function(){     
           if (isClicked == false) {
-            newBrace.animate({transform:"t1 "+yTransform+"s1 1.5"}, 500, "<>")
+            
             var k = 17
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+k}, 500, "<>")
               k += 17
             })
-
+            newDistance = (streamTopY - streamBottomY + k) / 2
+            oldDistance = (streamTopY - streamBottomY) / 2
+            sTransform = newDistance/oldDistance
+            newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
           }
           else if (isClicked == true) {
@@ -151,7 +154,11 @@ function drawList(data) {
       t.attr("text", tempText.substring(1));
       arrayOfSets.push(t)
       if (widgetThickness > 1) {
-        ourPath = makeCurlyBrace((indent+maxWidth+6), streamY+4, (indent+maxWidth+6), (streamY+5+(widgetThickness*10)), 25, .5)
+        streamTopX = (indent+maxWidth+6)
+        streamTopY = streamY+4
+        streamBottomX = (indent+maxWidth+6)
+        streamBottomY = (streamY+5+(widgetThickness*10)
+        ourPath = makeCurlyBrace(streamTopX, streamTopY, streamBottomX, streamBottomY), 25, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
         factSet.push(streamBrace)
       }
