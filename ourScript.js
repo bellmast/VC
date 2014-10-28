@@ -40,6 +40,7 @@ function getHoverHandler(fillColor, ourSet) {
          
          return function(){
               cSet.animate({"stroke-opacity": fillColor}, 300);
+              cSet.animate({"font-weight": bold}, 300);
           };
     }
 
