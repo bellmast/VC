@@ -39,7 +39,7 @@ function getHoverHandler(fillColor, ourSet) {
          var cSet = ourSet;
          
          return function(){
-              cSet.animate({"stroke-width": fillColor}, 300);
+              cSet.animate({"stroke-opacity": fillColor}, 300);
           };
     }
 
@@ -130,8 +130,8 @@ function drawList(data) {
       }
       controllerBox = paper.rect((indent+maxWidth+6-25), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
-      controllerBox.hover(getHoverHandler(5, factSet),
-                          getHoverHandler(20, factSet));
+      controllerBox.hover(getHoverHandler(1, factSet),
+                          getHoverHandler(.3, factSet));
 
       streamY += 20+(widgetThickness*10)
     }
