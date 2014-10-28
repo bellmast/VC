@@ -64,7 +64,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
          var isClicked = false
          return function(){
           var setLength = newSet.length
-          var yTransform = setLength!=0 ? (setLength-2)*17 : 0      
+          var yTransform = setLength!=0 ? (setLength-2)*17 : 1      
           if (isClicked == false) {
             
             var k = 17
