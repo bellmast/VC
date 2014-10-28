@@ -52,7 +52,10 @@ function textHoverHandler(fontWeight, ourText, speed) {
     }
 
 function clickHandler(ourSet, ourBrace, ourText) {
-         newSet = factSet.items.splice(1, factSet.length)
+         var newSet = paper.set()
+         for (item in ourSet) {
+          newSet.push(item)
+         }
          var newBrace = ourBrace
          var newText = ourText
     
