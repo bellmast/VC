@@ -65,7 +65,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
 
           for (var i = 0; i < ourStack.length; i++) {
             if (i > cStackIndex) {
-              stackBelow.push(item)
+              stackBelow.push(ourStack[i])
             }
           }      
           if (isClicked == false) {
