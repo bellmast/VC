@@ -60,6 +60,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
          return function(){
           var setLength = newSet.length
           var yTransform = setLength!=0 ? (setLength-2)*17 : 1
+          console.log(yTransform)
           stackBelow = paper.set()
           cStackIndex = ourStack.indexOf(this)
 
