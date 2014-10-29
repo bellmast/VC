@@ -3,7 +3,9 @@ var canvasHeight= 700;
 var maxWidth = 80;
 var indent = 50;
 var ourStack = [];
+var ourStackArray = [];
 var globalY = 0
+
 
 
 function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
@@ -60,13 +62,16 @@ function clickHandler(ourSet, ourBrace, ourText) {
          return function(){
           var setLength = newSet.length
           var yTransform = setLength!=0 ? (setLength-2)*17 : 1
-          console.log(yTransform)
-          stackBelow = paper.set()
-          cStackIndex = ourStack.indexOf(this)
+          var stackBelow = paper.set()
+          var stackAbove = 0
+          var cStackIndex = ourStack.indexOf(this)
 
           for (var i = 0; i < ourStack.length; i++) {
             if (i > cStackIndex) {
               stackBelow.push(ourStack[i])
+            }
+            else if (i < cStackIndex) {
+              stackAbove += ourStackArray[i]
             }
           }      
           if (isClicked == false) {
@@ -76,16 +81,16 @@ function clickHandler(ourSet, ourBrace, ourText) {
               e.animate({transform:"t1 "+k}, 500, "<>")
               k += 17
             })
-            newDistance = (streamBottomY - streamTopY + k) / 2
-            oldDistance = (streamBottomY - streamTopY) / 2
-            sTransform = newDistance/oldDistance
-            yTransform += globalY  
+            var newDistance = (streamBottomY - streamTopY + k) / 2
+            var oldDistance = (streamBottomY - streamTopY) / 2
+            var sTransform = newDistance/oldDistance
+            ourStackArray[cStackIndex] = yTransform
+            var yTransform += stackAbove 
             newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
             this.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
-            globalY += (yTransform*2)
-            console.log(globalY)
-            stackBelow.animate({transform:"t1 "+globalY}, 500, "<>")
+            stackAbove += (yTransform*2)
+            stackBelow.animate({transform:"t1 "+stackAbove}, 500, "<>")
           }
           else if (isClicked == true) {
             newBrace.animate({transform:"t1 1s1 1"}, 500, "<>")
@@ -95,8 +100,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             newText.animate({transform:"t1 1"}, 500, "<>")
             this.animate({transform:"t1 1s1 1"}, 500, "<>")
             stackBelow.animate({transform:"t1 1"}, 500, "<>")
-            globalY -= (yTransform*2)
-            console.log(globalY)
+            ourStackArray[cStackIndex] = 0
           }
           isClicked = isClicked == false ? true : false
          }
@@ -142,6 +146,7 @@ function drawList(data) {
       }
       factSet = paper.set()
       factSet2 = paper.set()
+      globalYArray.push(0)
       widgetThickness = 0
       for (fact in data[question][stream]) {
         widgetThickness += 1
@@ -153,6 +158,7 @@ function drawList(data) {
         }
       }
       ourStack.push(factSet)
+      ourStackArray.push(0)
       setOfFactSets.push(factSet2)
       var words = stream.split(" ");
       var tempText = "";
@@ -167,6 +173,7 @@ function drawList(data) {
       }
       t.attr("text", tempText.substring(1));
       ourStack.push(t)
+      ourStackArray.push(0)
       if (widgetThickness > 1) {
         streamTopX = (indent+maxWidth+6)
         streamTopY = streamY+4
@@ -183,9 +190,11 @@ function drawList(data) {
         factSet.push(streamBrace)
       }
       ourStack.push(streamBrace)
+      ourStackArray.push(0)
       controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       ourStack.push(controllerBox)
+      ourStackArray.push(0)
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
