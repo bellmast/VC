@@ -3,7 +3,7 @@ var canvasHeight= 700;
 var maxWidth = 80;
 var indent = 50;
 var ourStack = [];
-
+var globalY = 0
 
 
 function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https://gist.github.com/alexhornbake/6005176
@@ -78,10 +78,12 @@ function clickHandler(ourSet, ourBrace, ourText) {
             newDistance = (streamBottomY - streamTopY + k) / 2
             oldDistance = (streamBottomY - streamTopY) / 2
             sTransform = newDistance/oldDistance
+            yTransform += globalY    
             newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
             this.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
-            stackBelow.animate({transform:"t1 "+(yTransform*2)}, 500, "<>")
+            globalY += (yTransform*2)
+            stackBelow.animate({transform:"t1 "+globalY}, 500, "<>")
           }
           else if (isClicked == true) {
             newBrace.animate({transform:"t1 1s1 1"}, 500, "<>")
@@ -91,6 +93,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             newText.animate({transform:"t1 1"}, 500, "<>")
             this.animate({transform:"t1 1s1 1"}, 500, "<>")
             stackBelow.animate({transform:"t1 1"}, 500, "<>")
+            globalY -= (yTransform*2)
           }
           isClicked = isClicked == false ? true : false
          }
