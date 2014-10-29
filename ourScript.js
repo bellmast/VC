@@ -84,7 +84,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             var newDistance = (streamBottomY - streamTopY + k) / 2
             var oldDistance = (streamBottomY - streamTopY) / 2
             var sTransform = newDistance/oldDistance
-            ourStackArray[cStackIndex] = yTransform
+            ourStackArray[cStackIndex] = (yTransform*2)
             console.log(yTransform)
             console.log(stackAbove)
             yTransform += stackAbove 
