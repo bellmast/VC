@@ -78,11 +78,12 @@ function clickHandler(ourSet, ourBrace, ourText) {
             newDistance = (streamBottomY - streamTopY + k) / 2
             oldDistance = (streamBottomY - streamTopY) / 2
             sTransform = newDistance/oldDistance
-            yTransform += globalY    
+            yTransform += globalY  
             newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
             this.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             globalY += (yTransform*2)
+            console.log(globalY)
             stackBelow.animate({transform:"t1 "+globalY}, 500, "<>")
           }
           else if (isClicked == true) {
@@ -94,6 +95,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             this.animate({transform:"t1 1s1 1"}, 500, "<>")
             stackBelow.animate({transform:"t1 1"}, 500, "<>")
             globalY -= (yTransform*2)
+            console.log(globalY)
           }
           isClicked = isClicked == false ? true : false
          }
