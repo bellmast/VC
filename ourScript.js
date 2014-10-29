@@ -85,7 +85,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             var oldDistance = (streamBottomY - streamTopY) / 2
             var sTransform = newDistance/oldDistance
             ourStackArray[cStackIndex] = yTransform
-            var yTransform += stackAbove 
+            yTransform += stackAbove 
             newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+yTransform}, 500, "<>")
             this.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
