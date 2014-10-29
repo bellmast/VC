@@ -146,7 +146,7 @@ function drawList(data) {
       }
       factSet = paper.set()
       factSet2 = paper.set()
-      globalYArray.push(0)
+
       widgetThickness = 0
       for (fact in data[question][stream]) {
         widgetThickness += 1
