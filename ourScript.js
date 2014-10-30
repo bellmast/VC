@@ -91,6 +91,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
             ourStackArray[cStackIndex-2] += localTransform
             ourStackArray[cStackIndex-3] += localTransform
             ourStackArray[cStackIndex-4] += localTransform
+            console.log(ourStackArray)
           }
           else if (isClicked == true) {
             for (var i = 0; i < ourStack.length; i++) {
@@ -113,6 +114,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
+            console.log(ourStackArray)
           }
           isClicked = isClicked == false ? true : false
          }
@@ -221,4 +223,5 @@ function drawList(data) {
       streamY += 20+(widgetThickness*10)
     }
   }
+  console.log(ourStackArray)
 }
