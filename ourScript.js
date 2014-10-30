@@ -260,7 +260,7 @@ function drawList(data) {
       ourStack.push(streamBrace)
       ourStackArray.push(0)
       if (factTextSet[0] == undefined) {
-        controllerBox = paper.rect(indent, streamY-10, (qBbox["width"]-indent), (((widgetThickness*10))+20)).attr({"stroke-width":1})
+        controllerBox = paper.rect(indent, streamY-13, (qBbox["width"]-indent), (((widgetThickness*10))+27)).attr({"stroke-width":1})
       }
       else {
         controllerBox = paper.rect(indent, streamY, (qBbox["width"]-indent), (((widgetThickness*10))+7)).attr({"stroke-width":1})
