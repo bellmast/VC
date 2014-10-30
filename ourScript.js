@@ -149,7 +149,7 @@ function drawList(data) {
     }
     textQuestion = paper.text(10, questionY, question).attr({"font-size":16, "text-anchor":"start"})
     ourStack.push(textQuestion)
-    ourStackArray.push(0)
+    ourStackArray.push(1)
     qBbox = textQuestion.getBBox()
     streamY = questionY + 20
     q = question
@@ -172,11 +172,11 @@ function drawList(data) {
         } else {
           firstFact = newFact
           ourStack.push(firstFact)
-          ourStackArray.push(0)
+          ourStackArray.push(1)
         }
       }
       ourStack.push(factSet)
-      ourStackArray.push(0)
+      ourStackArray.push(1)
       setOfFactSets.push(factSet2)
       var words = stream.split(" ");
       var tempText = "";
@@ -191,7 +191,7 @@ function drawList(data) {
       }
       t.attr("text", tempText.substring(1));
       ourStack.push(t)
-      ourStackArray.push(0)
+      ourStackArray.push(1)
       if (widgetThickness > 1) {
         streamTopX = (indent+maxWidth+6)
         streamTopY = streamY+4
@@ -208,11 +208,11 @@ function drawList(data) {
         factSet.push(streamBrace)
       }
       ourStack.push(streamBrace)
-      ourStackArray.push(0)
+      ourStackArray.push(1)
       controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       ourStack.push(controllerBox)
-      ourStackArray.push(0)
+      ourStackArray.push(1)
       controllerBox.hover(getHoverHandler(1, factSet),
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
