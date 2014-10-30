@@ -170,18 +170,20 @@ function drawList(data) {
         factLength = data[question][stream][fact].length
         newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
-        var words = fact.split(" ");
-        var tempText = "";
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start"})
-        for (var i=0; i<words.length; i++) {
-          t.attr("text", tempText + " " + words[i]);
-          if (t.getBBox().width > maxWidth2) {
-            tempText += "\n" + words[i];
-          } else {
-            tempText += " " + words[i];
-          }
-        }
-        t.attr("text", tempText.substring(1));
+        t.attr("text", fact);
+        //var words = fact.split(" ");
+        //var tempText = "";
+        //var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start"})
+        //for (var i=0; i<words.length; i++) {
+        //  t.attr("text", tempText + " " + words[i]);
+        //  if (t.getBBox().width > maxWidth2) {
+        //    tempText += "\n" + words[i];
+        //  } else {
+        //    tempText += " " + words[i];
+        //  }
+        //}
+        //t.attr("text", tempText.substring(1));
         if (widgetThickness != 1) {
           factSet2.push(newFact)
         } else {
