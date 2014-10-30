@@ -53,10 +53,11 @@ function textHoverHandler(fontWeight, ourText, speed) {
           };
     }
 
-function clickHandler(ourSet, ourBrace, ourText) {
+function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
          var newSet = ourSet
          var newBrace = ourBrace
          var newText = ourText
+         var newFirstFact = ourFirstFact
 
          var isClicked = false
          return function(){
@@ -72,16 +73,16 @@ function clickHandler(ourSet, ourBrace, ourText) {
                 ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
               }
             }
-            localTransform += ourStackArray[cStackIndex]
+            newFirstFact.animate({transform:"t1 "+ourStackArray[cSTackIndex]})
             var k = 17
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+(k+localTransform)}, 500, "<>")
+              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
               k += 17
             })
             var newDistance = (streamBottomY - streamTopY + k) / 2
             var oldDistance = (streamBottomY - streamTopY) / 2
             var sTransform = newDistance/oldDistance
-            
+            localTransform += ourStackArray[cStackIndex]
             newBrace.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
@@ -89,6 +90,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
             ourStackArray[cStackIndex-1] += localTransform
             ourStackArray[cStackIndex-2] += localTransform
             ourStackArray[cStackIndex-3] += localTransform
+            ourStackArray[cStackIndex-4] += localTransform
           }
           else if (isClicked == true) {
             for (var i = 0; i < ourStack.length; i++) {
@@ -101,7 +103,9 @@ function clickHandler(ourSet, ourBrace, ourText) {
             ourStackArray[cStackIndex-1] -= localTransform
             ourStackArray[cStackIndex-2] -= localTransform
             ourStackArray[cStackIndex-3] -= localTransform
+            ourStackArray[cSTackIndex-4] -= localTransform
             localTransform = ourStackArray[cStackIndex]
+            newFirstFact.animate({transform:"t1 "+localTransform})          
             newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+localTransform}, 500, "<>")
@@ -164,6 +168,10 @@ function drawList(data) {
         factSet.push(newFact)
         if (widgetThickness != 1) {
           factSet2.push(newFact)
+        } else {
+          firstFact = newFact
+          ourStack.push(firstFact)
+          ourStackArray.push(0)
         }
       }
       ourStack.push(factSet)
@@ -208,7 +216,7 @@ function drawList(data) {
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
                           textHoverHandler(16, t, 150));
-      controllerBox.click(clickHandler(factSet2, streamBrace, t))
+      controllerBox.click(clickHandler(firstFact, factSet2, streamBrace, t))
       streamY += 20+(widgetThickness*10)
     }
   }
