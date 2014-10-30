@@ -76,18 +76,20 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
                 ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
               }
             }
-            newFirstFact.animate({transform:"t1 "+ourStackArray[cStackIndex]}).hide()
-            newFirstFactText.animate({transform:"t1 "+ourStackArray[cStackIndex]}).show()
+            newFirstFact.animate({transform:"t1 "+ourStackArray[cStackIndex]}, 500, "<>")
+            newFirstFact.animate({opacity: 0}, 1000, "<>")
+            newFirstFactText.animate({transform:"t1 "+ourStackArray[cStackIndex]}, 500, "<>")
+            newFirstFactText.animate({opacity: 1}, 1000, "<>")
             var k = 17
             var h = 17
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]), opacity: 0}, 500, "<>")
-              //e.hide()
+              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
+              e.animate({opacity: 0}, 1000, "<>")
               k += 17
             })
             newFactText.forEach(function(e) {
-              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]), opacity: 1}, 500, "<>")
-              //e.show()
+              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex])}, 500, "<>")
+              e.animate({opacity: 1}, 1000, "<>")
               h += 17
             })
             var newDistance = (streamBottomY - streamTopY + k) / 2
@@ -118,14 +120,18 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             ourStackArray[cStackIndex-3] -= localTransform
             ourStackArray[cStackIndex-4] -= localTransform
             localTransform = ourStackArray[cStackIndex]
-            newFirstFact.animate({transform:"t1 "+localTransform}).show() 
-            newFirstFactText.animate({transform:"t1 "+localTransform}).hide()         
+            newFirstFact.animate({transform:"t1 "+localTransform}, 500, "<>")
+            newFirstFact.animate({opacity: 1}, 1000, "<>")
+            newFirstFactText.animate({transform:"t1 "+localTransform}, 500, "<>")
+            newFirstFactText.animate({opacity: 0}, 1000, "<>")         
             newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+localTransform, opacity: 1}, 500, "<>").show()
+              e.animate({transform:"t1 "+localTransform, opacity: 1}, 500, "<>")
+              e.animate({opacity: 1}, 1000, "<>")
             })
             newFactText.forEach(function(e) {
-              e.animate({transform:"t1 "+localTransform, opacity: 0}, 500, "<>").hide()
+              e.animate({transform:"t1 "+localTransform, opacity: 0}, 500, "<>")
+              e.animate({opacity: 0}, 1000, "<>")
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
