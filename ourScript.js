@@ -81,6 +81,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFirstFact.animate({opacity: 0}, 1000, "<>")
             newFirstFactText.animate({transform:"t1 "+ourStackArray[cStackIndex]}, 500, "<>")
             newFirstFactText.animate({opacity: 1}, 1000, "<>")
+            newFirstFactText.show()
             var k = 17
             var h = 17
             newSet.forEach(function(e) {
@@ -91,6 +92,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFactText.forEach(function(e) {
               e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex])}, 500, "<>")
               e.animate({opacity: 1}, 1000, "<>")
+              e.show()
               h += 17
             })
             var newDistance = (streamBottomY - streamTopY + k) / 2
@@ -130,6 +132,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFirstFactText.animate({transform:"t1 "+localTransform}, 500, "<>")
             newFirstFactText.animate({opacity: 0}, 1000, "<>")         
             newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
+            newFirstFactText.hide()
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+localTransform, opacity: 1}, 500, "<>")
               e.animate({opacity: 1}, 1000, "<>")
@@ -137,6 +140,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFactText.forEach(function(e) {
               e.animate({transform:"t1 "+localTransform, opacity: 0}, 500, "<>")
               e.animate({opacity: 0}, 1000, "<>")
+              e.hide()
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1", width: newQWidth-indent}, 500, "<>")
