@@ -121,8 +121,8 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             ourStackArray[cStackIndex-2] -= localTransform
             ourStackArray[cStackIndex-3] -= localTransform
             ourStackArray[cStackIndex-4] -= localTransform
-            ourStackArray[cStackIndex-5] = localTransform
-            ourStackArray[cStackIndex-6] = localTransform
+            ourStackArray[cStackIndex-5] -= localTransform
+            ourStackArray[cStackIndex-6] -= localTransform
             localTransform = ourStackArray[cStackIndex]
             newFirstFact.animate({transform:"t1 "+localTransform}, 500, "<>")
             newFirstFact.animate({opacity: 1}, 1000, "<>")
