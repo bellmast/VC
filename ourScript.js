@@ -218,7 +218,7 @@ function drawList(data) {
           firstFact = newFact
           firstFactText = t
           ourStack.push(firstFactText)
-          ourStack.push(0)
+          ourStackArray.push(0)
           ourStack.push(firstFact)
           ourStackArray.push(0)
         }
