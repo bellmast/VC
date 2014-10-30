@@ -259,8 +259,9 @@ function drawList(data) {
       }
       ourStack.push(streamBrace)
       ourStackArray.push(0)
-      controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":1})
-      controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
+      controllerBox = paper.rect((indent), streamY, (qBbox["width"]-(indent+maxWidth+6-25)), ((streamY+5+(widgetThickness*10))-streamY+2)).attr({"stroke-width":0})
+      controllerBox.attr({fill: "#f00", "fill-opacity": 0})
+      //stroke: "none"
       ourStack.push(controllerBox)
       ourStackArray.push(0)
       controllerBox.hover(getHoverHandler(1, factSet),
