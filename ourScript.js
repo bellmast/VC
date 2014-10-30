@@ -262,13 +262,12 @@ function drawList(data) {
       ourStack.push(streamBrace)
       ourStackArray.push(0)
       if (factTextSet[0] == undefined) {
-        controllerBox = paper.rect(indent, streamY-13, (qWidth-indent), (((widgetThickness*10))+30)).attr({"stroke-width":1})
+        controllerBox = paper.rect(indent, streamY-13, (qWidth-indent), (((widgetThickness*10))+30)).attr({"stroke-width":0})
       }
       else {
-        controllerBox = paper.rect(indent, streamY, (qWidth-indent), (((widgetThickness*10))+7)).attr({"stroke-width":1})
+        controllerBox = paper.rect(indent, streamY, (qWidth-indent), (((widgetThickness*10))+7)).attr({"stroke-width":0})
       }
-      controllerBox.attr({fill: "#f00", "fill-opacity": 0})
-      //stroke: "none"
+      controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
       ourStack.push(controllerBox)
       ourStackArray.push(0)
       controllerBox.hover(getHoverHandler(1, factSet),
