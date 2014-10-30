@@ -196,7 +196,7 @@ function drawList(data) {
         newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
-        t.attr("text", widgetThickness+".&nbsp"+fact);
+        t.attr("text", widgetThickness+". "+fact);
         
         
         //var words = fact.split(" ");
