@@ -213,7 +213,8 @@ function drawList(data) {
         var numberOfNewLines = 0
         var words = fact.split(" ");
         var tempText = "";
-        var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
+        desiredTextY = streamY+(widgetThickness*10)
+        var t = paper.text(indent+maxWidth+6, desiredTextY).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
           t.attr("text", tempText + " " + words[i]);
           if (t.getBBox().width > maxWidth2) {
@@ -225,10 +226,8 @@ function drawList(data) {
         }
         lineBreaks = numberOfNewLines*12
         t.attr("text", widgetThickness+". "+tempText.substring(1));
-        if (lineBreaks != 0) {
-          alignTop(t)
-        }
-        
+        t.attr({'y': desiredTextY});
+       
         t.hide()
         if (widgetThickness != 1) {
           factSet2.push(newFact)
