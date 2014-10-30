@@ -71,6 +71,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
                 ourStackArray[i] +=  stackBelowTransform
                 ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
               }
+            }
             localTransform += ourStackArray[cStackIndex]
             var k = 17
             newSet.forEach(function(e) {
@@ -95,6 +96,7 @@ function clickHandler(ourSet, ourBrace, ourText) {
                 ourStackArray[i] -=  stackBelowTransform
                 ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
               }
+            }
             ourStackArray[cStackIndex] -= localTransform
             ourStackArray[cStackIndex-1] -= localTransform
             ourStackArray[cStackIndex-2] -= localTransform
