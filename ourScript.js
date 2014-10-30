@@ -139,7 +139,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             })
             newFactText.forEach(function(e) {
               e.animate({transform:"t1 "+localTransform, opacity: 0}, 500, "<>")
-              e.animate({opacity: 0}, 1000, "<>", function() {newFirstFactText.hide()})
+              e.animate({opacity: 0}, 1000, "<>", function() {e.hide()})
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1", width: newQWidth-indent}, 500, "<>")
