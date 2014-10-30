@@ -199,7 +199,7 @@ function drawList(data) {
         factSet.push(newFact)
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         t.attr("text", widgetThickness+". "+fact);
-        
+        t.hide()
         
         //var words = fact.split(" ");
         //var tempText = "";
