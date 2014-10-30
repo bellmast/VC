@@ -73,7 +73,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
                 ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
               }
             }
-            newFirstFact.animate({transform:"t1 "+ourStackArray[cstackIndex]})
+            newFirstFact.animate({transform:"t1 "+ourStackArray[cStackIndex]})
             var k = 17
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
