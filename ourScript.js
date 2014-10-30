@@ -81,13 +81,13 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             var k = 17
             var h = 17
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
-              e.hide()
+              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]), opacity: 0}, 500, "<>")
+              //e.hide()
               k += 17
             })
             newFactText.forEach(function(e) {
-              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex])}, 500, "<>")
-              e.show()
+              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]), opacity: 1}, 500, "<>")
+              //e.show()
               h += 17
             })
             var newDistance = (streamBottomY - streamTopY + k) / 2
@@ -122,10 +122,10 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFirstFactText.animate({transform:"t1 "+localTransform}).hide()         
             newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+localTransform}, 500, "<>").show()
+              e.animate({transform:"t1 "+localTransform, opacity: 1}, 500, "<>").show()
             })
             newFactText.forEach(function(e) {
-              e.animate({transform:"t1 "+localTransform}, 500, "<>").hide()
+              e.animate({transform:"t1 "+localTransform, opacity: 0}, 500, "<>").hide()
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
@@ -185,9 +185,9 @@ function drawList(data) {
         factLength = data[question][stream][fact].length
         newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
-        var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start"})
+        var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         t.attr("text", fact);
-        t.hide()
+        
         
         //var words = fact.split(" ");
         //var tempText = "";
