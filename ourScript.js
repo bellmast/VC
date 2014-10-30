@@ -200,22 +200,24 @@ function drawList(data) {
         factLength = data[question][stream][fact].length
         newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qWidth+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
-        var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
-        t.attr("text", widgetThickness+". "+fact);
-        t.hide()
         
-        //var words = fact.split(" ");
-        //var tempText = "";
-        //var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start"})
-        //for (var i=0; i<words.length; i++) {
-        //  t.attr("text", tempText + " " + words[i]);
-        //  if (t.getBBox().width > maxWidth2) {
-        //    tempText += "\n" + words[i];
-        //  } else {
-        //    tempText += " " + words[i];
-        //  }
-        //}
-        //t.attr("text", tempText.substring(1));
+        var numberOfNewLines = 0
+        var words = fact.split(" ");
+        var tempText = "";
+        var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
+        for (var i=0; i<words.length; i++) {
+          t.attr("text", tempText + " " + words[i]);
+          if (t.getBBox().width > maxWidth2) {
+            tempText += "\n" + words[i];
+            numberOfNewLines += 1
+          } else {
+            tempText += " " + words[i];
+          }
+        }
+        lineBreaks = numberOfNewLines*12
+        t.attr("text", widgetThickness+". "+tempText.substring(1));
+        t.animate({y: lineBreaks})
+        t.hide()
         if (widgetThickness != 1) {
           factSet2.push(newFact)
           factTextSet.push(t)
