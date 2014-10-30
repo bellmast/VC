@@ -104,6 +104,8 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             ourStackArray[cStackIndex-2] = localTransform
             ourStackArray[cStackIndex-3] = localTransform
             ourStackArray[cStackIndex-4] = localTransform
+            ourStackArray[cStackIndex-5] = localTransform
+            ourStackArray[cStackIndex-6] = localTransform
             console.log(ourStackArray)
           }
           else if (isClicked == true) {
@@ -119,6 +121,8 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             ourStackArray[cStackIndex-2] -= localTransform
             ourStackArray[cStackIndex-3] -= localTransform
             ourStackArray[cStackIndex-4] -= localTransform
+            ourStackArray[cStackIndex-5] = localTransform
+            ourStackArray[cStackIndex-6] = localTransform
             localTransform = ourStackArray[cStackIndex]
             newFirstFact.animate({transform:"t1 "+localTransform}, 500, "<>")
             newFirstFact.animate({opacity: 1}, 1000, "<>")
@@ -192,7 +196,7 @@ function drawList(data) {
         newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
-        t.attr("text", fact);
+        t.attr("text", widgetThickness+".&nbsp"+fact);
         
         
         //var words = fact.split(" ");
@@ -213,11 +217,15 @@ function drawList(data) {
         } else {
           firstFact = newFact
           firstFactText = t
+          ourStack.push(firstFactText)
+          ourStack.push(0)
           ourStack.push(firstFact)
           ourStackArray.push(0)
         }
       }
       ourStack.push(factSet)
+      ourStack.push(factTextSet)
+      ourStackArray.push(0)
       ourStackArray.push(0)
       setOfFactSets.push(factSet2)
       var words = stream.split(" ");
