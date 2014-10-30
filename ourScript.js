@@ -54,11 +54,13 @@ function textHoverHandler(fontWeight, ourText, speed) {
           };
     }
 
-function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2) {
+function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirstFactText) {
          var newSet = ourSet
          var newBrace = ourBrace
          var newText = ourText
          var newFirstFact = ourFirstFact
+         var newFactText = ourText2
+         var newFirstFactText = ourFirstFactText
 
          var isClicked = false
          return function(){
@@ -74,10 +76,17 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2) {
                 ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
               }
             }
-            newFirstFact.animate({transform:"t1 "+ourStackArray[cStackIndex]})
+            newFirstFact.animate({transform:"t1 "+ourStackArray[cStackIndex]}).hide()
+            newFirstFactText.animate({transform:"t1 "+ourStackArray[cStackIndex]}).show()
             var k = 17
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
+              e.hide()
+              k += 17
+            })
+            newFactText.forEach(function(e) {
+              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
+              e.show()
               k += 17
             })
             var newDistance = (streamBottomY - streamTopY + k) / 2
@@ -108,10 +117,14 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2) {
             ourStackArray[cStackIndex-3] -= localTransform
             ourStackArray[cStackIndex-4] -= localTransform
             localTransform = ourStackArray[cStackIndex]
-            newFirstFact.animate({transform:"t1 "+localTransform})          
+            newFirstFact.animate({transform:"t1 "+localTransform}).show() 
+            newFirstFactText.animate({transform:"t1 "+localTransform}).hide()         
             newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+localTransform}, 500, "<>")
+              e.animate({transform:"t1 "+localTransform}, 500, "<>").show()
+            })
+            newFactText.forEach(function(e) {
+              e.animate({transform:"t1 "+localTransform}, 500, "<>").hide()
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
@@ -163,6 +176,7 @@ function drawList(data) {
       }
       factSet = paper.set()
       factSet2 = paper.set()
+      factTextSet = paper.set()
 
       widgetThickness = 0
       for (fact in data[question][stream]) {
@@ -172,6 +186,8 @@ function drawList(data) {
         factSet.push(newFact)
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start"})
         t.attr("text", fact);
+        t.hide()
+        
         //var words = fact.split(" ");
         //var tempText = "";
         //var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start"})
@@ -186,8 +202,10 @@ function drawList(data) {
         //t.attr("text", tempText.substring(1));
         if (widgetThickness != 1) {
           factSet2.push(newFact)
+          factTextSet.push(t)
         } else {
           firstFact = newFact
+          firstFactText = t
           ourStack.push(firstFact)
           ourStackArray.push(0)
         }
@@ -234,7 +252,7 @@ function drawList(data) {
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
                           textHoverHandler(16, t, 150));
-      controllerBox.click(clickHandler(firstFact, factSet2, streamBrace, t))
+      controllerBox.click(clickHandler(firstFact, factSet2, streamBrace, t, factTextSet, firstFactText))
       streamY += 20+(widgetThickness*10)
     }
   }
