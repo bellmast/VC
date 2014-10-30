@@ -61,48 +61,51 @@ function clickHandler(ourSet, ourBrace, ourText) {
          var isClicked = false
          return function(){
           var setLength = newSet.length
-          var yTransform = setLength!=0 ? (setLength-2)*17 : 1
-          var stackBelow = paper.set()
-          var stackAbove = 0
+          var localTransform = setLength!=0 ? (setLength-2)*17 : 1
+          var stackBelowTransform = (localTransform*2)
           var cStackIndex = ourStack.indexOf(this)
 
-          for (var i = 0; i < ourStack.length; i++) {
-            if (i > cStackIndex) {
-              stackBelow.push(ourStack[i])
-            }
-            else if (i < cStackIndex) {
-              stackAbove += ourStackArray[i]
-            }
-          }      
           if (isClicked == false) {
-            
+            for (var i = 0; i < ourStack.length; i++) {
+              if (i > cStackIndex) {
+                ourStackArray[i] +=  stackBelowTransform
+                ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
+              }
+            localTransform += ourStackArray[cStackIndex]
             var k = 17
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+k}, 500, "<>")
+              e.animate({transform:"t1 "+(k+localTransform)}, 500, "<>")
               k += 17
             })
             var newDistance = (streamBottomY - streamTopY + k) / 2
             var oldDistance = (streamBottomY - streamTopY) / 2
             var sTransform = newDistance/oldDistance
-            ourStackArray[cStackIndex] = (yTransform*2)
-            console.log(yTransform)
-            console.log(stackAbove)
-            yTransform += stackAbove 
-            newBrace.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
-            newText.animate({transform:"t1 "+yTransform}, 500, "<>")
-            this.animate({transform:"t1 "+yTransform+"s1 "+sTransform}, 500, "<>")
-            stackAbove += (yTransform*2)
-            stackBelow.animate({transform:"t1 "+stackAbove}, 500, "<>")
+            
+            newBrace.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
+            newText.animate({transform:"t1 "+localTransform}, 500, "<>")
+            this.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
+            ourStackArray[cStackIndex] += localTransform
+            ourStackArray[cStackIndex-1] += localTransform
+            ourStackArray[cStackIndex-2] += localTransform
+            ourStackArray[cStackIndex-3] += localTransform
           }
           else if (isClicked == true) {
-            newBrace.animate({transform:"t1 1s1 1"}, 500, "<>")
+            for (var i = 0; i < ourStack.length; i++) {
+              if (i > cStackIndex) {
+                ourStackArray[i] -=  stackBelowTransform
+                ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
+              }
+            ourStackArray[cStackIndex] -= localTransform
+            ourStackArray[cStackIndex-1] -= localTransform
+            ourStackArray[cStackIndex-2] -= localTransform
+            ourStackArray[cStackIndex-3] -= localTransform
+            localTransform = ourStackArray[cStackIndex]
+            newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 1"}, 500, "<>")
+              e.animate({transform:"t1 "+localTransform}, 500, "<>")
             })
-            newText.animate({transform:"t1 1"}, 500, "<>")
-            this.animate({transform:"t1 1s1 1"}, 500, "<>")
-            stackBelow.animate({transform:"t1 1"}, 500, "<>")
-            ourStackArray[cStackIndex] = 0
+            newText.animate({transform:"t1 "+localTransform}, 500, "<>")
+            this.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
           }
           isClicked = isClicked == false ? true : false
          }
@@ -138,6 +141,8 @@ function drawList(data) {
         continue;
     }
     textQuestion = paper.text(10, questionY, question).attr({"font-size":16, "text-anchor":"start"})
+    ourStack.push(textQuestion)
+    ourStackArray.push(0)
     qBbox = textQuestion.getBBox()
     streamY = questionY + 20
     q = question
