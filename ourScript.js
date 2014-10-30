@@ -225,7 +225,10 @@ function drawList(data) {
         }
         lineBreaks = numberOfNewLines*12
         t.attr("text", widgetThickness+". "+tempText.substring(1));
-        alignTop(t)
+        if (lineBreaks != 0) {
+          alignTop(t)
+        }
+        
         t.hide()
         if (widgetThickness != 1) {
           factSet2.push(newFact)
