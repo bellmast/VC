@@ -79,15 +79,16 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFirstFact.animate({transform:"t1 "+ourStackArray[cStackIndex]}).hide()
             newFirstFactText.animate({transform:"t1 "+ourStackArray[cStackIndex]}).show()
             var k = 17
+            var h = 17
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
               e.hide()
               k += 17
             })
             newFactText.forEach(function(e) {
-              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
+              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex])}, 500, "<>")
               e.show()
-              k += 17
+              h += 17
             })
             var newDistance = (streamBottomY - streamTopY + k) / 2
             var oldDistance = (streamBottomY - streamTopY) / 2
