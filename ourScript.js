@@ -94,6 +94,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
           }
           else if (isClicked == true) {
             for (var i = 0; i < ourStack.length; i++) {
+              console.log(stackBelowTransform)
               if (i > cStackIndex) {
                 ourStackArray[i] -=  stackBelowTransform
                 ourStack[i].animate({transform:"t1 "+ourStackArray[i]}, 500, "<>")
