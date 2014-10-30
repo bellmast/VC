@@ -38,12 +38,13 @@ function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https:/
               " T " + tx1 + " " + ty1 );
     }
 
-function alignTop(t) { //http://stackoverflow.com/questions/2124763/raphael-js-and-text-positioning
+function alignTop(t, n, desY) { //http://stackoverflow.com/questions/2124763/raphael-js-and-text-positioning
     var b = t.getBBox();
     var h = Math.abs(b.y2) - Math.abs(b.y) + 1;
-
+    var topLine = h/(n+1)
+    var movement = h/2 - topLine
     t.attr({
-        'y': b.y + h
+        'y': b.y + movement
     });
 }
 
@@ -227,8 +228,7 @@ function drawList(data) {
         lineBreaks = numberOfNewLines*12
         t.attr("text", widgetThickness+". "+tempText.substring(1));
         if (lineBreaks != 0) {
-          desiredTextY -= ((desiredTextY)*(1/lineBreaks))
-          t.attr({"t": desiredTextY})
+          alignTop(t, lineBreaks, desiredTextY)
         }
         
         t.hide()
