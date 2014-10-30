@@ -144,8 +144,6 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1", width: newQWidth-indent}, 500, "<>")
             console.log(ourStackArray)
-            newFirstFactText.hide()
-            newFactText.hide()
           }
           isClicked = isClicked == false ? true : false
          }
