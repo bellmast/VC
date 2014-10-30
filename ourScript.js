@@ -54,13 +54,14 @@ function textHoverHandler(fontWeight, ourText, speed) {
           };
     }
 
-function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirstFactText) {
+function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirstFactText, ourQWidth) {
          var newSet = ourSet
          var newBrace = ourBrace
          var newText = ourText
          var newFirstFact = ourFirstFact
          var newFactText = ourText2
          var newFirstFactText = ourFirstFactText
+         var newQWidth = ourQWidth
 
          var isClicked = false
          return function(){
@@ -98,7 +99,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             localTransform += ourStackArray[cStackIndex]
             newBrace.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
-            this.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
+            this.animate({transform:"t1 "+localTransform+"s1 "+sTransform, width: (maxWidth2-indent)}, 500, "<>")
             ourStackArray[cStackIndex] = localTransform
             ourStackArray[cStackIndex-1] = localTransform
             ourStackArray[cStackIndex-2] = localTransform
@@ -138,7 +139,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
               e.animate({opacity: 0}, 1000, "<>")
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
-            this.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
+            this.animate({transform:"t1 "+localTransform+"s1 1", width: newQWidth-indent}, 500, "<>")
             console.log(ourStackArray)
           }
           isClicked = isClicked == false ? true : false
@@ -178,6 +179,7 @@ function drawList(data) {
     ourStack.push(textQuestion)
     ourStackArray.push(0)
     qBbox = textQuestion.getBBox()
+    qWidth = qBbox["width"]
     streamY = questionY + 20
     q = question
 
@@ -193,7 +195,7 @@ function drawList(data) {
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qBbox["width"]+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
+        newFact = paper.path("M"+(indent+maxWidth+6)+" "+(streamY+(widgetThickness*10))+"L"+qWidth+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         t.attr("text", widgetThickness+". "+fact);
@@ -260,10 +262,10 @@ function drawList(data) {
       ourStack.push(streamBrace)
       ourStackArray.push(0)
       if (factTextSet[0] == undefined) {
-        controllerBox = paper.rect(indent, streamY-13, (qBbox["width"]-indent), (((widgetThickness*10))+30)).attr({"stroke-width":1})
+        controllerBox = paper.rect(indent, streamY-13, (qWidth-indent), (((widgetThickness*10))+30)).attr({"stroke-width":1})
       }
       else {
-        controllerBox = paper.rect(indent, streamY, (qBbox["width"]-indent), (((widgetThickness*10))+7)).attr({"stroke-width":1})
+        controllerBox = paper.rect(indent, streamY, (qWidth-indent), (((widgetThickness*10))+7)).attr({"stroke-width":1})
       }
       controllerBox.attr({fill: "#f00", "fill-opacity": 0})
       //stroke: "none"
@@ -273,7 +275,7 @@ function drawList(data) {
                           getHoverHandler(.3, factSet));
       controllerBox.hover(textHoverHandler(18, t, 100),
                           textHoverHandler(16, t, 150));
-      controllerBox.click(clickHandler(firstFact, factSet2, streamBrace, t, factTextSet, firstFactText))
+      controllerBox.click(clickHandler(firstFact, factSet2, streamBrace, t, factTextSet, firstFactText, qWidth))
       streamY += 20+(widgetThickness*10)
     }
   }
