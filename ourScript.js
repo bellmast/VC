@@ -38,6 +38,15 @@ function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https:/
               " T " + tx1 + " " + ty1 );
     }
 
+function alignTop(t) { //http://stackoverflow.com/questions/2124763/raphael-js-and-text-positioning
+    var b = t.getBBox();
+    var h = Math.abs(b.y2) - Math.abs(b.y) + 1;
+
+    t.attr({
+        'y': b.y + h
+    });
+}
+
 function getHoverHandler(strokeOpacity, ourSet) {
          var cSet = ourSet;
          
@@ -216,6 +225,7 @@ function drawList(data) {
         }
         lineBreaks = numberOfNewLines*12
         t.attr("text", widgetThickness+". "+tempText.substring(1));
+        alignTop(t)
         t.hide()
         if (widgetThickness != 1) {
           factSet2.push(newFact)
