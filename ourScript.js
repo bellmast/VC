@@ -103,7 +103,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
             ourStackArray[cStackIndex-1] -= localTransform
             ourStackArray[cStackIndex-2] -= localTransform
             ourStackArray[cStackIndex-3] -= localTransform
-            ourStackArray[cSTackIndex-4] -= localTransform
+            ourStackArray[cStackIndex-4] -= localTransform
             localTransform = ourStackArray[cStackIndex]
             newFirstFact.animate({transform:"t1 "+localTransform})          
             newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
