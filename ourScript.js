@@ -62,7 +62,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
          var isClicked = false
          return function(){
           var setLength = newSet.length
-          var localTransform = setLength!=0 ? (setLength-2)*17 : 1
+          var localTransform = setLength!=0 ? (setLength-2)*17 : 0
           var stackBelowTransform = (localTransform*2)
           var cStackIndex = ourStack.indexOf(this)
 
