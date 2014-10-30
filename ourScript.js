@@ -132,7 +132,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFirstFactText.animate({transform:"t1 "+localTransform}, 500, "<>")
             newFirstFactText.animate({opacity: 0}, 1000, "<>")         
             newBrace.animate({transform:"t1 "+localTransform+"s1 1"}, 500, "<>")
-            newFirstFactText.hide()
+            
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+localTransform, opacity: 1}, 500, "<>")
               e.animate({opacity: 1}, 1000, "<>")
@@ -140,11 +140,12 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFactText.forEach(function(e) {
               e.animate({transform:"t1 "+localTransform, opacity: 0}, 500, "<>")
               e.animate({opacity: 0}, 1000, "<>")
-              e.hide()
             })
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 1", width: newQWidth-indent}, 500, "<>")
             console.log(ourStackArray)
+            newFirstFactText.hide()
+            newFactText.hide()
           }
           isClicked = isClicked == false ? true : false
          }
