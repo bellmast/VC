@@ -86,11 +86,11 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText) {
             newBrace.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
             this.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
-            ourStackArray[cStackIndex] += localTransform
-            ourStackArray[cStackIndex-1] += localTransform
-            ourStackArray[cStackIndex-2] += localTransform
-            ourStackArray[cStackIndex-3] += localTransform
-            ourStackArray[cStackIndex-4] += localTransform
+            ourStackArray[cStackIndex] = localTransform
+            ourStackArray[cStackIndex-1] = localTransform
+            ourStackArray[cStackIndex-2] = localTransform
+            ourStackArray[cStackIndex-3] = localTransform
+            ourStackArray[cStackIndex-4] = localTransform
             console.log(ourStackArray)
           }
           else if (isClicked == true) {
