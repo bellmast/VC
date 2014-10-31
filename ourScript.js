@@ -76,6 +76,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
          return function(){
           var setLength = newSet.length
           var localTransform = setLength!=1 ? (setLength-1)*17 : 0
+          console.log(localTransform)
           var stackBelowTransform = (localTransform*2)
           var cStackIndex = ourStack.indexOf(this)
           var totalMove = 0
@@ -117,8 +118,6 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFactText.forEach(function(e) {
               if (counter != 0) {
                 e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+factMoveArray[counter-1])}, 500, "<>")
-                tempArray = [h, ourStackArray[cStackIndex], factMoveArray[counter-1], (h+ourStackArray[cStackIndex]+factMoveArray[counter-1])]
-                console.log(tempArray)
                 e.animate({opacity: 1}, 1000, "<>")
                 e.show()
               }              
