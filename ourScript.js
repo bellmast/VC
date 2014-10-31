@@ -224,7 +224,7 @@ function drawList(data) {
           }
         }
         lineBreaks = numberOfNewLines*12
-        t.attr("text", widgetThickness+". "+tempText.substring(1));
+        t.attr("text", widgetThickness+". "+tempText.substring(1)+"more info to break this thing");
         alignTop(t)       
         t.hide()
         if (widgetThickness != 1) {
@@ -241,6 +241,7 @@ function drawList(data) {
       }
       if (factTextSet[0] == undefined) {
         t.remove()
+        var tempText = "";
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
           t.attr("text", tempText + " " + words[i]);
