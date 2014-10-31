@@ -339,7 +339,7 @@ function drawList(data) {
         controllerBox = paper.rect(indent, streamY, (qWidth-indent), (((widgetThickness*10))+7)).attr({"stroke-width":0})
       }
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
-
+      questionY = controllerBox.getBBox().y2+20
       ourStack.push(controllerBox)
       ourStackArray.push(0)
       controllerBox.hover(getHoverHandler(1, factSet),
@@ -348,7 +348,6 @@ function drawList(data) {
                           textHoverHandler(16, t, 150));
       controllerBox.click(clickHandler(firstFact, factSet2, streamBrace, t, factTextSet, firstFactText, qWidth))
       streamY += 20+(widgetThickness*10)
-      questionY += 20+(widgetThickness*10)
     }
   }
   console.log(ourStackArray)
