@@ -1,6 +1,6 @@
 var canvasWidth = 800;
 var canvasHeight= 700;
-var maxWidth = 80;
+var maxWidth = 90;
 var maxWidth2 = 570
 var indent = 50;
 var ourStack = [];
