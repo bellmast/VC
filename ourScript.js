@@ -81,11 +81,8 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
           var totalMove = 0
           var factMoveArray = []
           newFactText.forEach(function(e) {
-            if (factMoveArray.length >= 1) {
-              totalMove += e.data("lines")
-            }
-            factMoveArray.push(totalMove)
-                        
+            totalMove += e.data("lines")
+            factMoveArray.push(totalMove)                        
           })
           localTransform += totalMove
           if (isClicked == false) {
