@@ -211,7 +211,8 @@ function drawList(data) {
         factSet.push(newFact)
         
         var numberOfNewLines = 0
-        var words = fact.split(" ")+" more info to break this thing";
+        fact += " more info to break this thing"
+        var words = fact.split(" ");
         var tempText = "";
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
