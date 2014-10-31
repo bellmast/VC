@@ -100,6 +100,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
               factMoveArray.push[e.data("lines")]
               console.log(e.data("lines"))
               e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+e.data["lines"])}, 500, "<>")
+              console.log((h+ourStackArray[cStackIndex]+e.data["lines"]))
               e.animate({opacity: 1}, 1000, "<>")
               e.show()
               h += 17
