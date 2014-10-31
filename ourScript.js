@@ -78,7 +78,13 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
           var localTransform = setLength!=0 ? (setLength-2)*17 : 0
           var stackBelowTransform = (localTransform*2)
           var cStackIndex = ourStack.indexOf(this)
-
+          var totalMove = 0
+          var factMoveArray = []
+          newFactText.forEach(function(e) {
+            factMoveArray.push(e.data("lines"))
+            totalMove += e.data("lines")
+          })
+          localTransform += totalMove
           if (isClicked == false) {
             for (var i = 0; i < ourStack.length; i++) {
               if (i > cStackIndex) {
@@ -94,20 +100,11 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             var k = 17
             var h = 17
             var counter = 0
-            var totalMove = 0
-            var factMoveArray = []
             newFactText.forEach(function(e) {
-              factMoveArray.push(e.data("lines"))
-              newVar = e.data("lines")
               e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+e.data("lines"))}, 500, "<>")
-              console.log(h)
-              console.log(ourStackArray[cStackIndex])
-              console.log(e.data("lines"))
-              console.log((h+ourStackArray[cStackIndex]+e.data("lines")))
               e.animate({opacity: 1}, 1000, "<>")
               e.show()
               h += 17
-              totalMove += e.data("lines")
             })
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]+factMoveArray[counter])}, 500, "<>")
