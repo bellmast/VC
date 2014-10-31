@@ -41,7 +41,7 @@
     }
   },
     "How can entrepreneurs attract VC?": {
-      "Founding Team Attributes": {
+      "Founding Team": {
         "Previous startup experience increases the likelihood of funding, and results in higher valuations": [
           "Hsu (2007)"
           ],
