@@ -54,8 +54,10 @@
       },
       "Strategies": {
         "Companies can leverage their early accomplishments into further financing": [
-          "Hallen (2008"
-          ]
+          "Hallen (2008)"
+          ],
+        "Second fact which shouldn't move": [
+          "Hallen again"]
       }
       
     }
