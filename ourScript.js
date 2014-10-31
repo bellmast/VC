@@ -75,7 +75,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
          var isClicked = false
          return function(){
           var setLength = newSet.length
-          var localTransform = setLength!=0 ? (setLength-2)*17 : 0
+          var localTransform = setLength!=1 ? (setLength-1)*17 : 0
           var stackBelowTransform = (localTransform*2)
           var cStackIndex = ourStack.indexOf(this)
           var totalMove = 0
@@ -97,18 +97,24 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFirstFactText.animate({transform:"t1 "+ourStackArray[cStackIndex]}, 500, "<>")
             newFirstFactText.animate({opacity: 1}, 1000, "<>")
             newFirstFactText.show()
-            var k = 17
-            var h = 17
+            var k = 0
+            var h = 0
             var counter = 0
             newFactText.forEach(function(e) {
-              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+e.data("lines"))}, 500, "<>")
-              e.animate({opacity: 1}, 1000, "<>")
-              e.show()
+              if (counter == 0) {
+                e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+factMoveArray[counter-1])}, 500, "<>")
+                e.animate({opacity: 1}, 1000, "<>")
+                e.show()
+              }              
               h += 17
+              counter += 1
             })
+            var counter = 0
             newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]+factMoveArray[counter])}, 500, "<>")
-              e.animate({opacity: 0}, 1000, "<>")
+              if (counter == 0) {
+                e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]+factMoveArray[counter-1])}, 500, "<>")
+                e.animate({opacity: 0}, 1000, "<>")
+              }
               k += 17
               counter += 1
             })
@@ -237,8 +243,8 @@ function drawList(data) {
         alignTop(t)       
         t.hide()
         if (widgetThickness != 1) {
-          factSet2.push(newFact)
-          factTextSet.push(t)
+          
+          
           t.data("lines", lineBreaks)
         } else {
           firstFact = newFact
@@ -247,10 +253,14 @@ function drawList(data) {
           ourStackArray.push(0)
           ourStack.push(firstFactText)
           ourStackArray.push(0)
+          t.data("lines", lineBreaks)
         }
+        factTextSet.push(t)
+        factSet2.push(newFact)
       }
-      if (factTextSet[0] == undefined) {
+      if (factTextSet.length == 1) {
         t.remove()
+        factTextSet.pop()
         var tempText = "";
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
@@ -264,8 +274,10 @@ function drawList(data) {
         }
         lineBreaks = numberOfNewLines*12
         t.attr("text", widgetThickness+". "+tempText.substring(1));
+        t.data("lines", lineBreaks)
         t.hide()
         firstFactText = t
+        factTextSet.push(t)
         ourStack.pop()
         ourStack.push(firstFactText)
       }
