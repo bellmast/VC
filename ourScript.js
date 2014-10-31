@@ -77,7 +77,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
           var setLength = newSet.length
           var localTransform = setLength!=1 ? 17 : 0
           console.log(localTransform)
-          var stackBelowTransform = setLength!=1 ? (setLength+3)*17 : 0
+          var stackBelowTransform = setLength!=1 ? (setLength+2)*17 : 0
           var cStackIndex = ourStack.indexOf(this)
           var totalMove = 0
           var factMoveArray = []
