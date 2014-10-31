@@ -1,6 +1,6 @@
 var canvasWidth = 800;
 var canvasHeight= 700;
-var maxWidth = 80;
+var maxWidth = 110;
 var maxWidth2 = 570
 var indent = 50;
 var ourStack = [];
@@ -312,6 +312,7 @@ function drawList(data) {
           tempText += " " + words[i];
         }
       }
+      alignTop(t)
       t.attr("text", tempText.substring(1));
       ourStack.push(t)
       ourStackArray.push(0)
@@ -340,7 +341,7 @@ function drawList(data) {
         controllerBox = paper.rect(indent, streamY, (qWidth-indent), (((widgetThickness*10))+7)).attr({"stroke-width":0})
       }
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
-      questionY = controllerBox.getBBox().y2+30
+      questionY = controllerBox.getBBox().y2+25
       ourStack.push(controllerBox)
       ourStackArray.push(0)
       controllerBox.hover(getHoverHandler(1, factSet),
