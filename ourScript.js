@@ -115,7 +115,6 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             var newDistance = (streamBottomY - streamTopY + k + totalMove) / 2
             var oldDistance = (streamBottomY - streamTopY) / 2
             var sTransform = newDistance/oldDistance
-            localTransform += totalMove
             localTransform += ourStackArray[cStackIndex]
             newBrace.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
