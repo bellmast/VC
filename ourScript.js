@@ -81,11 +81,11 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
           var totalMove = 0
           var factMoveArray = []
           newFactText.forEach(function(e) {
-            factMoveArray.push(e.data("lines"))
             if (factMoveArray.length > 1) {
               totalMove += e.data("lines")
             }
-            
+            factMoveArray.push(totalMove)
+                        
           })
           localTransform += totalMove
           if (isClicked == false) {
@@ -106,7 +106,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFactText.forEach(function(e) {
               if (counter != 0) {
                 e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+factMoveArray[counter-1])}, 500, "<>")
-                tempArray = [h, ourStackArray[cStackIndex], factMoveArray[counter-1]]
+                tempArray = [h, ourStackArray[cStackIndex], factMoveArray[counter-1], (h+ourStackArray[cStackIndex]+factMoveArray[counter-1])]
                 console.log(tempArray)
                 e.animate({opacity: 1}, 1000, "<>")
                 e.show()
