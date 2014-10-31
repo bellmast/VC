@@ -100,6 +100,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
               factMoveArray.push(e.data("lines"))
               newVar = e.data("lines")
               e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+e.data("lines"))}, 500, "<>")
+              console.log((h+ourStackArray[cStackIndex]+e.data("lines")))
               e.animate({opacity: 1}, 1000, "<>")
               e.show()
               h += 17
@@ -114,6 +115,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             var newDistance = (streamBottomY - streamTopY + k + totalMove) / 2
             var oldDistance = (streamBottomY - streamTopY) / 2
             var sTransform = newDistance/oldDistance
+            localTransform += totalMove
             localTransform += ourStackArray[cStackIndex]
             newBrace.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
             newText.animate({transform:"t1 "+localTransform}, 500, "<>")
