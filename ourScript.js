@@ -133,8 +133,8 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
               k += 17
               counter += 1
             })
-            var newDistance = (streamBottomY - streamTopY + k + totalMove) / 2
-            var oldDistance = (streamBottomY - streamTopY) / 2
+            var newDistance = (newBrace.data("bottomY") - newBrace.data("topY") + k + totalMove) / 2
+            var oldDistance = (newBrace.data("bottomY") - newBrace.data("topY")) / 2
             var sTransform = newDistance/oldDistance
             localTransform += ourStackArray[cStackIndex]
             newBrace.animate({transform:"t1 "+localTransform+"s1 "+sTransform}, 500, "<>")
@@ -322,6 +322,7 @@ function drawList(data) {
         streamBottomY = (streamY+5+(widgetThickness*10))
         ourPath = makeCurlyBrace(streamTopX, streamTopY, streamBottomX, streamBottomY, 25, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
+        streamBrace.data({"topY": streamTopY, "bottomY": streamBottomY})
         factSet.push(streamBrace)
       }
       else {
