@@ -80,6 +80,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
           var cStackIndex = ourStack.indexOf(this)
           var totalMove = 0
           var factMoveArray = []
+          var counter = 0
           newFactText.forEach(function(e) {
             if (e.data("lines") == 0) {
               additionalMove = 6
@@ -88,9 +89,14 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
               additionalMove = e.data("lines")
             }
             totalMove += additionalMove
-            factMoveArray.push(totalMove)                        
+            localTransformMove += additionalMove
+            factMoveArray.push(totalMove)
+            if (counter == 0) {
+              localTransformMove -= additionalMove
+            }
+            counter += 1                        
           })
-          localTransform += totalMove
+          localTransform += localTransformMove
           if (isClicked == false) {
             for (var i = 0; i < ourStack.length; i++) {
               if (i > cStackIndex) {
