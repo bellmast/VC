@@ -38,13 +38,12 @@ function makeCurlyBrace(x1,y1,x2,y2,w,q) // Massive, massive credit due: https:/
               " T " + tx1 + " " + ty1 );
     }
 
-function alignTop(t, n, desY) { //http://stackoverflow.com/questions/2124763/raphael-js-and-text-positioning
+function alignTop(t) { //http://stackoverflow.com/questions/2124763/raphael-js-and-text-positioning
     var b = t.getBBox();
     var h = Math.abs(b.y2) - Math.abs(b.y) + 1;
-    var topLine = h/(n+1)
-    var movement = h/2 - topLine
+
     t.attr({
-        'y': b.y + movement
+        'y': b.y + h
     });
 }
 
@@ -214,8 +213,7 @@ function drawList(data) {
         var numberOfNewLines = 0
         var words = fact.split(" ");
         var tempText = "";
-        desiredTextY = streamY+(widgetThickness*10)
-        var t = paper.text(indent+maxWidth+6, desiredTextY).attr({"font-size":16, "text-anchor":"start", opacity: 0})
+        var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
           t.attr("text", tempText + " " + words[i]);
           if (t.getBBox().width > maxWidth2) {
@@ -227,22 +225,38 @@ function drawList(data) {
         }
         lineBreaks = numberOfNewLines*12
         t.attr("text", widgetThickness+". "+tempText.substring(1));
-        if (lineBreaks != 0) {
-          alignTop(t, lineBreaks, desiredTextY)
-        }
-        
+        alignTop(t)       
         t.hide()
         if (widgetThickness != 1) {
           factSet2.push(newFact)
           factTextSet.push(t)
         } else {
           firstFact = newFact
-          firstFactText = t
-          ourStack.push(firstFactText)
-          ourStackArray.push(0)
+          firstFactText = t  
           ourStack.push(firstFact)
           ourStackArray.push(0)
+          ourStack.push(firstFactText)
+          ourStackArray.push(0)
         }
+      }
+      if (factTextSet[0] == undefined) {
+        t.remove()
+        var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
+        for (var i=0; i<words.length; i++) {
+          t.attr("text", tempText + " " + words[i]);
+          if (t.getBBox().width > maxWidth2) {
+            tempText += "\n" + words[i];
+            numberOfNewLines += 1
+          } else {
+            tempText += " " + words[i];
+          }
+        }
+        lineBreaks = numberOfNewLines*12
+        t.attr("text", widgetThickness+". "+tempText.substring(1));
+        t.hide()
+        firstFactText = t
+        ourStack.pop()
+        ourStack.push(firstFactText)
       }
       ourStack.push(factSet)
       ourStack.push(factTextSet)
