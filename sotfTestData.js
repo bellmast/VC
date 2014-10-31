@@ -29,7 +29,7 @@
         "Megginson and Weiss (1991)",
         "Artificial Addition 1"
         ],
-      "VC-backed companies have greater post-IPO survival           rates": [
+      "VC-backed companies have greater post-IPO survival rates": [
         "Baker and Gompers (2003)"
         ]
     },
@@ -37,7 +37,9 @@
       "VCs may pressure companies to IPO earlier than optimal"       : [
         "Gompers (1996)",
         "Lee and Wahal (2004)"
-        ]
+        ],
+      "Have I just not seen it?" : [
+        "Gomps"]
     }
   },
     "How can entrepreneurs attract VC?": {
