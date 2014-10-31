@@ -339,6 +339,7 @@ function drawList(data) {
         controllerBox = paper.rect(indent, streamY, (qWidth-indent), (((widgetThickness*10))+7)).attr({"stroke-width":0})
       }
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
+      questionY += controllerBox.getBBox().height
       ourStack.push(controllerBox)
       ourStackArray.push(0)
       controllerBox.hover(getHoverHandler(1, factSet),
