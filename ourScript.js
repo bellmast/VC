@@ -6,7 +6,7 @@ var indent = 50;
 var ourStack = [];
 var ourStackArray = [];
 var globalY = 0;
-var standardFactLength = 400
+var standardFactLength = 30
 
 
 
