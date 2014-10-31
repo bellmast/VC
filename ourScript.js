@@ -5,7 +5,8 @@ var maxWidth2 = 570
 var indent = 50;
 var ourStack = [];
 var ourStackArray = [];
-var globalY = 0
+var globalY = 0;
+var standardFactLength = 400
 
 
 
@@ -220,7 +221,7 @@ function drawList(data) {
     ourStack.push(textQuestion)
     ourStackArray.push(0)
     qBbox = textQuestion.getBBox()
-    qWidth = qBbox["width"]
+    qWidth = standardFactLength
     streamY = questionY + 20
     q = question
 
@@ -236,14 +237,14 @@ function drawList(data) {
       for (fact in data[question][stream]) {
         widgetThickness += 1
         factLength = data[question][stream][fact].length
-        newFact = paper.path("M"+(indent+maxWidth+12)+" "+(streamY+(widgetThickness*10))+"L"+qWidth+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
+        newFact = paper.path("M"+(indent+maxWidth+15)+" "+(streamY+(widgetThickness*10))+"L"+qWidth+" "+(streamY+(widgetThickness*10))).attr({"stroke-width":factLength, "fill":"black", "stroke-opacity":0.3})
         factSet.push(newFact)
         
         var numberOfNewLines = 0
         fact += " more info to break this thing"
         var words = fact.split(" ");
         var tempText = "";
-        var t = paper.text(indent+maxWidth+12, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
+        var t = paper.text(indent+maxWidth+15, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
           t.attr("text", tempText + " " + words[i]);
           if (t.getBBox().width > maxWidth2) {
@@ -277,7 +278,7 @@ function drawList(data) {
         t.remove()
         factTextSet.pop()
         var tempText = "";
-        var t = paper.text(indent+maxWidth+12, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
+        var t = paper.text(indent+maxWidth+15, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
           t.attr("text", tempText + " " + words[i]);
           if (t.getBBox().width > maxWidth2) {
@@ -316,9 +317,9 @@ function drawList(data) {
       ourStack.push(t)
       ourStackArray.push(0)
       if (widgetThickness > 1) {
-        streamTopX = (indent+maxWidth+12)
+        streamTopX = (indent+maxWidth+15)
         streamTopY = streamY+4
-        streamBottomX = (indent+maxWidth+12)
+        streamBottomX = (indent+maxWidth+15)
         streamBottomY = (streamY+5+(widgetThickness*10))
         ourPath = makeCurlyBrace(streamTopX, streamTopY, streamBottomX, streamBottomY, 25, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
@@ -326,7 +327,7 @@ function drawList(data) {
         factSet.push(streamBrace)
       }
       else {
-        ourPath = makeCurlyBrace((indent+maxWidth+12), streamY+4, (indent+maxWidth+12), (streamY+5+(widgetThickness*10)), 0, .5)
+        ourPath = makeCurlyBrace((indent+maxWidth+15), streamY+4, (indent+maxWidth+15), (streamY+5+(widgetThickness*10)), 0, .5)
         streamBrace = paper.path(ourPath).attr({"stroke-opacity":0.3, "stroke-width":widgetThickness/2})
         streamBrace.hide()
         factSet.push(streamBrace)
@@ -340,7 +341,8 @@ function drawList(data) {
         controllerBox = paper.rect(indent, streamY, (qWidth-indent), (((widgetThickness*10))+7)).attr({"stroke-width":0})
       }
       controllerBox.attr({stroke: "none", fill: "#f00", "fill-opacity": 0})
-      questionY = controllerBox.getBBox().y2+28
+      questionY = (controllerBox.getBBox().y2)+26
+      console.log(questionY)
       ourStack.push(controllerBox)
       ourStackArray.push(0)
       controllerBox.hover(getHoverHandler(1, factSet),
