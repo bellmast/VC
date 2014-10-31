@@ -93,18 +93,24 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFirstFactText.show()
             var k = 17
             var h = 17
-            newSet.forEach(function(e) {
-              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex])}, 500, "<>")
-              e.animate({opacity: 0}, 1000, "<>")
-              k += 17
-            })
+            var counter = 0
+            var totalMove = 0
+            var factMoveArray = []
             newFactText.forEach(function(e) {
-              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex])}, 500, "<>")
+              factMoveArray.push[e.data("lines")]
+              e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+e.data["lines"])}, 500, "<>")
               e.animate({opacity: 1}, 1000, "<>")
               e.show()
               h += 17
+              totalMove += e.data["lines"]
             })
-            var newDistance = (streamBottomY - streamTopY + k) / 2
+            newSet.forEach(function(e) {
+              e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]+factMoveArray[counter])}, 500, "<>")
+              e.animate({opacity: 0}, 1000, "<>")
+              k += 17
+              counter += 1
+            })
+            var newDistance = (streamBottomY - streamTopY + k + totalMove) / 2
             var oldDistance = (streamBottomY - streamTopY) / 2
             var sTransform = newDistance/oldDistance
             localTransform += ourStackArray[cStackIndex]
@@ -224,13 +230,14 @@ function drawList(data) {
             tempText += " " + words[i];
           }
         }
-        lineBreaks = numberOfNewLines*12
+        lineBreaks = numberOfNewLines*23
         t.attr("text", widgetThickness+". "+tempText.substring(1));
         alignTop(t)       
         t.hide()
         if (widgetThickness != 1) {
           factSet2.push(newFact)
           factTextSet.push(t)
+          t.data("lines", lineBreaks)
         } else {
           firstFact = newFact
           firstFactText = t  
