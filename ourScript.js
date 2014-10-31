@@ -77,7 +77,6 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
          return function(){
           var setLength = newSet.length
           var localTransform = setLength!=1 ? 17 : 0
-          console.log(localTransform)
           var stackBelowTransform = setLength!=1 ? (setLength+2)*17 : 0
           var cStackIndex = ourStack.indexOf(this)
           var totalMove = 0
@@ -119,6 +118,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             newFactText.forEach(function(e) {
               if (counter != 0) {
                 e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+factMoveArray[counter-1])}, 500, "<>")
+                console.log((h+ourStackArray[cStackIndex]+factMoveArray[counter-1]))
                 e.animate({opacity: 1}, 1000, "<>")
                 e.show()
               }              
@@ -334,7 +334,7 @@ function drawList(data) {
       }
       ourStack.push(streamBrace)
       ourStackArray.push(0)
-      if (factTextSet[0] == undefined) {
+      if (factTextSet[1] == undefined) {
         controllerBox = paper.rect(indent, streamY-13, (qWidth-indent), (((widgetThickness*10))+30)).attr({"stroke-width":0})
       }
       else {
