@@ -98,6 +98,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             counter += 1                        
           })
           localTransform += localTransformMove
+          stackBelowTransform += localTransformMove
           if (isClicked == false) {
             for (var i = 0; i < ourStack.length; i++) {
               if (i > cStackIndex) {
