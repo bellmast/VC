@@ -211,7 +211,7 @@ function drawList(data) {
         factSet.push(newFact)
         
         var numberOfNewLines = 0
-        var words = fact.split(" ");
+        var words = fact.split(" ")+" more info to break this thing";
         var tempText = "";
         var t = paper.text(indent+maxWidth+6, streamY+(widgetThickness*10)).attr({"font-size":16, "text-anchor":"start", opacity: 0})
         for (var i=0; i<words.length; i++) {
@@ -224,7 +224,7 @@ function drawList(data) {
           }
         }
         lineBreaks = numberOfNewLines*12
-        t.attr("text", widgetThickness+". "+tempText.substring(1)+"more info to break this thing");
+        t.attr("text", widgetThickness+". "+tempText.substring(1));
         alignTop(t)       
         t.hide()
         if (widgetThickness != 1) {
