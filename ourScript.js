@@ -104,7 +104,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             var h = 0
             var counter = 0
             newFactText.forEach(function(e) {
-              if (counter == 0) {
+              if (counter != 0) {
                 e.animate({transform:"t1 "+(h+ourStackArray[cStackIndex]+factMoveArray[counter-1])}, 500, "<>")
                 e.animate({opacity: 1}, 1000, "<>")
                 e.show()
@@ -114,7 +114,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
             })
             var counter = 0
             newSet.forEach(function(e) {
-              if (counter == 0) {
+              if (counter != 0) {
                 e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]+factMoveArray[counter-1])}, 500, "<>")
                 e.animate({opacity: 0}, 1000, "<>")
               }
