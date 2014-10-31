@@ -103,7 +103,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
               e.animate({opacity: 1}, 1000, "<>")
               e.show()
               h += 17
-              totalMove += e.data["lines"]
+              totalMove += e.data("lines")
             })
             newSet.forEach(function(e) {
               e.animate({transform:"t1 "+(k+ourStackArray[cStackIndex]+factMoveArray[counter])}, 500, "<>")
