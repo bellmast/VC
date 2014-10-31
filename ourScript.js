@@ -75,7 +75,7 @@ function clickHandler(ourFirstFact, ourSet, ourBrace, ourText, ourText2, ourFirs
          var isClicked = false
          return function(){
           var setLength = newSet.length
-          var localTransform = setLength!=1 ? (setLength-1)*17 : 0
+          var localTransform = setLength!=1 ? (setLength-3)*17 : 0
           console.log(localTransform)
           var stackBelowTransform = (localTransform*2)
           var cStackIndex = ourStack.indexOf(this)
